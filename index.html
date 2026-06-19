@@ -44,15 +44,15 @@ nav{
   text-decoration:none;
   font-weight:500;
 }
-.nav-links{display:flex;gap:2.4rem;list-style:none;}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
 .nav-links a{
-  font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;
+  font-size:0.68rem;letter-spacing:0.13em;text-transform:uppercase;
   color:var(--soft);text-decoration:none;transition:color .2s;
 }
 .nav-links a:hover{color:var(--accent);}
 
 .hero{
-  min-height:100vh;
+  min-height:92vh;
   display:flex;flex-direction:column;justify-content:center;
   padding:8rem 3rem 4rem;
   position:relative;
@@ -74,7 +74,7 @@ nav{
   opacity:0.12;
   filter:blur(50px);
 }
-.hero-content{max-width:780px;position:relative;z-index:1;}
+.hero-content{max-width:800px;position:relative;z-index:1;}
 .hero-tag{
   font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;
   color:var(--accent);margin-bottom:1.6rem;
@@ -83,38 +83,38 @@ nav{
 .hero-tag::before{content:'';width:30px;height:1px;background:var(--accent);}
 .hero-name{
   font-family:'Fraunces',serif;
-  font-size:clamp(3rem,7vw,5.5rem);
+  font-size:clamp(2.8rem,6.5vw,5rem);
   font-weight:400;
-  line-height:1.02;
+  line-height:1.04;
   margin-bottom:1.6rem;
 }
 .hero-name em{font-style:italic;color:var(--accent);font-weight:400;}
 .hero-sub{
-  font-size:1.05rem;
+  font-size:1.02rem;
   color:var(--soft);
-  max-width:54ch;
+  max-width:58ch;
   margin-bottom:2.6rem;
   font-weight:300;
 }
 .hero-meta{
-  display:flex;gap:2.4rem;flex-wrap:wrap;
+  display:flex;gap:2.2rem;flex-wrap:wrap;
   padding-top:2rem;border-top:1px solid var(--line);
 }
 .meta-item{display:flex;flex-direction:column;gap:0.3rem;}
-.meta-label{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--soft);}
-.meta-value{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--ink);}
+.meta-label{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--soft);}
+.meta-value{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--ink);}
 
-section{padding:6rem 3rem;}
-.section-inner{max-width:1100px;margin:0 auto;}
+section{padding:5.5rem 3rem;}
+.section-inner{max-width:1120px;margin:0 auto;}
 .kicker{
-  font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;
+  font-size:0.66rem;letter-spacing:0.22em;text-transform:uppercase;
   color:var(--accent);margin-bottom:1rem;
 }
 .section-title{
   font-family:'Fraunces',serif;
-  font-size:clamp(1.9rem,3.2vw,2.8rem);
+  font-size:clamp(1.8rem,3vw,2.6rem);
   font-weight:400;
-  margin-bottom:2.5rem;
+  margin-bottom:2.2rem;
   line-height:1.2;
 }
 .section-title em{font-style:italic;color:var(--accent);}
@@ -124,52 +124,68 @@ section{padding:6rem 3rem;}
   display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start;
 }
 .about-text p{
-  color:var(--soft);font-size:0.98rem;margin-bottom:1.4rem;max-width:58ch;
+  color:var(--soft);font-size:0.96rem;margin-bottom:1.3rem;max-width:60ch;
 }
 .about-text p strong{color:var(--ink);font-weight:500;}
 .langs{
-  display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:1.6rem;
+  display:flex;gap:0.7rem;flex-wrap:wrap;margin-top:1.4rem;
 }
 .lang-pill{
-  font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;
-  padding:0.5rem 1rem;border:1px solid var(--line);
+  font-size:0.65rem;letter-spacing:0.07em;text-transform:uppercase;
+  padding:0.45rem 0.9rem;border:1px solid var(--line);
   background:var(--card);color:var(--ink);
 }
 .stat-card{
   background:var(--card);border:1px solid var(--line);
-  padding:2.2rem;
+  padding:2.1rem;
 }
 .stat-row{
   display:flex;justify-content:space-between;align-items:baseline;
-  padding:1rem 0;border-bottom:1px solid var(--line);
+  padding:0.95rem 0;border-bottom:1px solid var(--line);
 }
 .stat-row:last-child{border-bottom:none;}
-.stat-num{font-family:'Fraunces',serif;font-size:1.8rem;color:var(--accent);}
-.stat-label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);text-align:right;}
+.stat-num{font-family:'Fraunces',serif;font-size:1.7rem;color:var(--accent);}
+.stat-label{font-size:0.68rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--soft);text-align:right;}
 
-.focus-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;
+.theme-block{
+  border-top:1px solid var(--line);
+  padding:3rem 0;
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:3rem;
 }
-.focus-card{
-  background:var(--card);border:1px solid var(--line);
-  padding:2.2rem;position:relative;
-  transition:transform .25s, box-shadow .25s;
+.theme-block:last-child{border-bottom:1px solid var(--line);}
+.theme-head{}
+.theme-num{
+  font-family:'Fraunces',serif;font-style:italic;color:var(--accent);
+  font-size:0.85rem;margin-bottom:0.8rem;
 }
-.focus-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(43,36,32,0.08);}
-.focus-num{
-  font-family:'Fraunces',serif;font-style:italic;
-  font-size:0.85rem;color:var(--accent);margin-bottom:1rem;
+.theme-title{
+  font-family:'Fraunces',serif;font-size:1.55rem;line-height:1.25;margin-bottom:0.8rem;
 }
-.focus-title{
-  font-family:'Fraunces',serif;font-size:1.3rem;margin-bottom:0.8rem;
+.theme-title em{font-style:italic;color:var(--accent);}
+.theme-desc{font-size:0.84rem;color:var(--soft);}
+
+.role-list{display:flex;flex-direction:column;gap:1.5rem;}
+.role{
+  border-left:2px solid var(--line);
+  padding-left:1.3rem;
 }
-.focus-desc{font-size:0.88rem;color:var(--soft);}
+.role-top{
+  display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;
+  margin-bottom:0.4rem;
+}
+.role-title{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--ink);}
+.role-title em{font-style:italic;color:var(--accent);}
+.role-time{font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);white-space:nowrap;}
+.role-org{font-size:0.78rem;color:var(--soft);margin-bottom:0.5rem;}
+.role-desc{font-size:0.84rem;color:var(--soft);}
 
 .cases{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
 .case-list{display:flex;flex-direction:column;}
 .case-item{
-  display:grid;grid-template-columns:90px 1fr;gap:2.4rem;
-  padding:2.6rem 0;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:90px 1fr;gap:2.2rem;
+  padding:2.4rem 0;border-top:1px solid var(--line);
 }
 .case-list .case-item:last-child{border-bottom:1px solid var(--line);}
 .case-tag{
@@ -177,68 +193,56 @@ section{padding:6rem 3rem;}
   font-size:0.85rem;padding-top:0.2rem;
 }
 .case-title{
-  font-family:'Fraunces',serif;font-size:1.4rem;margin-bottom:0.7rem;
+  font-family:'Fraunces',serif;font-size:1.32rem;margin-bottom:0.65rem;
 }
 .case-title em{font-style:italic;color:var(--accent);}
-.case-desc{color:var(--soft);font-size:0.92rem;max-width:64ch;margin-bottom:1rem;}
+.case-desc{color:var(--soft);font-size:0.88rem;max-width:64ch;margin-bottom:0.9rem;}
 .case-tags{display:flex;gap:0.5rem;flex-wrap:wrap;}
 .tag-pill{
-  font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--soft);border:1px solid var(--line);padding:0.3rem 0.7rem;
+  font-size:0.58rem;letter-spacing:0.07em;text-transform:uppercase;
+  color:var(--soft);border:1px solid var(--line);padding:0.28rem 0.65rem;
 }
 .tag-pill.hot{color:var(--accent);border-color:var(--accent2);background:rgba(184,150,106,0.08);}
-
-.approach-steps{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-  border:1px solid var(--line);
-}
-.step{
-  padding:2.2rem 1.8rem;border-right:1px solid var(--line);
-}
-.step:last-child{border-right:none;}
-.step-n{font-family:'Fraunces',serif;font-style:italic;color:var(--accent);font-size:1.4rem;margin-bottom:1rem;}
-.step-t{font-family:'Fraunces',serif;font-size:1.05rem;margin-bottom:0.6rem;}
-.step-d{font-size:0.82rem;color:var(--soft);}
 
 .contact{background:var(--ink);color:var(--bg);}
 .contact .kicker{color:var(--accent2);}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
 .contact-title{
-  font-family:'Fraunces',serif;font-size:clamp(2rem,3.5vw,3.2rem);
-  margin-bottom:1.6rem;
+  font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.3vw,3rem);
+  margin-bottom:1.5rem;
 }
 .contact-title em{font-style:italic;color:var(--accent2);}
-.contact-desc{color:#cfc6b8;font-size:0.96rem;max-width:48ch;margin-bottom:2rem;}
+.contact-desc{color:#cfc6b8;font-size:0.94rem;max-width:48ch;margin-bottom:1.8rem;}
 .btn{
   display:inline-flex;align-items:center;gap:0.6rem;
-  font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
-  background:var(--accent2);color:var(--ink);padding:0.95rem 1.8rem;
+  font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;
+  background:var(--accent2);color:var(--ink);padding:0.9rem 1.7rem;
   text-decoration:none;transition:background .2s;
 }
 .btn:hover{background:var(--bg);}
 .contact-card{
   background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);
-  padding:2.2rem;
+  padding:2.1rem;
 }
-.field{margin-bottom:1.3rem;}
-.field label{display:block;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#a99f8e;margin-bottom:0.5rem;}
+.field{margin-bottom:1.2rem;}
+.field label{display:block;font-size:0.6rem;letter-spacing:0.13em;text-transform:uppercase;color:#a99f8e;margin-bottom:0.45rem;}
 .field input,.field textarea{
   width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.2);
-  color:var(--bg);font-family:'Inter',sans-serif;font-size:0.9rem;padding:0.5rem 0;outline:none;
+  color:var(--bg);font-family:'Inter',sans-serif;font-size:0.88rem;padding:0.45rem 0;outline:none;
 }
-.field textarea{resize:none;height:70px;}
+.field textarea{resize:none;height:68px;}
 .field input::placeholder,.field textarea::placeholder{color:#7d7568;}
 .submit-btn{
-  margin-top:0.5rem;background:var(--accent2);border:none;color:var(--ink);
-  font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;
-  padding:0.9rem 1.8rem;cursor:pointer;transition:background .2s;
+  margin-top:0.4rem;background:var(--accent2);border:none;color:var(--ink);
+  font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.85rem 1.7rem;cursor:pointer;transition:background .2s;
 }
 .submit-btn:hover{background:var(--bg);}
 
 footer{
   padding:2rem 3rem;background:var(--ink);color:#9a9080;
   display:flex;justify-content:space-between;align-items:center;
-  font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;
+  font-size:0.63rem;letter-spacing:0.09em;text-transform:uppercase;
   border-top:1px solid rgba(255,255,255,0.08);
 }
 
@@ -249,14 +253,12 @@ footer{
   nav{padding:1.2rem 1.5rem;}
   .nav-links{display:none;}
   .hero{padding:7rem 1.5rem 3rem;}
-  .hero-meta{flex-wrap:wrap;gap:1.4rem;}
-  section{padding:4rem 1.5rem;}
+  .hero-meta{flex-wrap:wrap;gap:1.2rem;}
+  section{padding:3.5rem 1.5rem;}
   .about-grid{grid-template-columns:1fr;gap:2rem;}
-  .focus-grid{grid-template-columns:1fr;}
-  .case-item{grid-template-columns:1fr;gap:0.8rem;}
-  .approach-steps{grid-template-columns:1fr;}
-  .step{border-right:none;border-bottom:1px solid var(--line);}
-  .contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .theme-block{grid-template-columns:1fr;gap:1.2rem;}
+  .case-item{grid-template-columns:1fr;gap:0.7rem;}
+  .contact-grid{grid-template-columns:1fr;gap:2.3rem;}
   footer{flex-direction:column;gap:0.6rem;text-align:center;}
 }
 </style>
@@ -267,7 +269,7 @@ footer{
   <a href="#" class="logo">Chahira Grimes</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#focus">Focus</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -277,13 +279,13 @@ footer{
   <div class="hero-deco"></div>
   <div class="hero-deco2"></div>
   <div class="hero-content">
-    <p class="hero-tag">Executive Operations · International Sourcing · Private Travel</p>
-    <h1 class="hero-name">Quietly making the<br><em>complex</em> look simple.</h1>
-    <p class="hero-sub">Fifteen years across Europe, the Middle East, and North America — in executive operations, project coordination, sourcing, and travel logistics. I work where precision matters and nothing is left to chance.</p>
+    <p class="hero-tag">Executive Operations · Sourcing & Procurement · Travel Coordination</p>
+    <h1 class="hero-name">Eighteen years of making<br>complex operations look <em>simple.</em></h1>
+    <p class="hero-sub">From executive support and CRM systems to international sourcing and confidential personal affairs — across five countries, six languages, and every kind of operational pressure. I work where precision matters and nothing is left to chance.</p>
     <div class="hero-meta">
-      <div class="meta-item"><span class="meta-label">Experience</span><span class="meta-value">15 Years</span></div>
-      <div class="meta-item"><span class="meta-label">Languages</span><span class="meta-value">4</span></div>
-      <div class="meta-item"><span class="meta-label">Regions</span><span class="meta-value">3 Continents</span></div>
+      <div class="meta-item"><span class="meta-label">Experience</span><span class="meta-value">18 Years</span></div>
+      <div class="meta-item"><span class="meta-label">Languages</span><span class="meta-value">6</span></div>
+      <div class="meta-item"><span class="meta-label">Countries Worked</span><span class="meta-value">5</span></div>
       <div class="meta-item"><span class="meta-label">Based In</span><span class="meta-value">Istanbul</span></div>
     </div>
   </div>
@@ -293,47 +295,108 @@ footer{
   <div class="section-inner about-grid">
     <div class="about-text">
       <p class="kicker">About</p>
-      <h2 class="section-title">A career built on<br><em>getting it right.</em></h2>
-      <p>I've spent fifteen years moving between executive operations, project coordination, and education — across markets in Europe, the Middle East, and North America. Each environment demanded the same thing: <strong>precision under pressure</strong>.</p>
-      <p>Over time, my focus has sharpened toward two specific disciplines — sourcing specific, hard-to-find items through international markets, and coordinating complex, multi-layered travel where every detail has to hold up under real-world conditions.</p>
-      <p>I don't work from templates. Every brief is treated as its own problem to solve, methodically, and discreetly.</p>
+      <h2 class="section-title">A career built across<br><em>five countries.</em></h2>
+      <p>My career started in Algeria, supporting executives in administration and operations, and has since moved through Turkey, the Gulf, and international project work spanning Europe, North America, and the Middle East. Along the way I've built CRM systems from scratch, run logistics for 100+ person offices, sourced rare items for private principals, and taught languages on the side — sometimes all in the same year.</p>
+      <p>What ties it together is <strong>not a single job title</strong>, but a consistent standard: understand the real problem, build the structure to solve it, and follow through until it's actually done — not just delegated.</p>
+      <p>I move fluidly between high-level executive support, hands-on systems building, and detail-precise coordination — because most environments need all three, even if no single role description says so.</p>
       <div class="langs">
         <span class="lang-pill">English</span>
         <span class="lang-pill">French</span>
         <span class="lang-pill">Arabic</span>
         <span class="lang-pill">Turkish</span>
+        <span class="lang-pill">Spanish</span>
+        <span class="lang-pill">German</span>
       </div>
     </div>
     <div class="stat-card">
-      <div class="stat-row"><span class="stat-num">15</span><span class="stat-label">Years of Experience</span></div>
-      <div class="stat-row"><span class="stat-num">4</span><span class="stat-label">Languages Spoken</span></div>
-      <div class="stat-row"><span class="stat-num">3</span><span class="stat-label">Continents Worked</span></div>
-      <div class="stat-row"><span class="stat-num">∞</span><span class="stat-label">Attention to Detail</span></div>
+      <div class="stat-row"><span class="stat-num">18</span><span class="stat-label">Years of Experience</span></div>
+      <div class="stat-row"><span class="stat-num">6</span><span class="stat-label">Languages Spoken</span></div>
+      <div class="stat-row"><span class="stat-num">5</span><span class="stat-label">Countries Worked</span></div>
+      <div class="stat-row"><span class="stat-num">4</span><span class="stat-label">Professional Certifications</span></div>
     </div>
   </div>
 </section>
 
-<section class="reveal" id="focus">
+<section class="reveal" id="experience">
   <div class="section-inner">
-    <p class="kicker">Focus Areas</p>
-    <h2 class="section-title">Where I add the<br><em>most value.</em></h2>
-    <div class="focus-grid">
-      <div class="focus-card">
-        <div class="focus-num">01</div>
-        <h3 class="focus-title">Executive Operations</h3>
-        <p class="focus-desc">Managing complex, fast-moving priorities for senior stakeholders — calendars, logistics, decisions, and everything that keeps an operation running smoothly behind the scenes.</p>
+    <p class="kicker">Experience</p>
+    <h2 class="section-title">Range, organized by<br>what it actually <em>solves.</em></h2>
+
+    <div class="theme-block">
+      <div class="theme-head">
+        <div class="theme-num">01</div>
+        <h3 class="theme-title">Executive Operations<br>& <em>Leadership</em></h3>
+        <p class="theme-desc">Running the operational backbone behind senior leadership — schedules, logistics, communications, and people.</p>
       </div>
-      <div class="focus-card">
-        <div class="focus-num">02</div>
-        <h3 class="focus-title">International Sourcing</h3>
-        <p class="focus-desc">Finding specific items across global markets when conventional channels come up empty. Patience, verification, and a wide network make the difference.</p>
-      </div>
-      <div class="focus-card">
-        <div class="focus-num">03</div>
-        <h3 class="focus-title">Complex Travel Coordination</h3>
-        <p class="focus-desc">Planning and executing multi-leg, multi-stakeholder travel — where transfers, timing, and contingencies are confirmed before anyone boards a flight.</p>
+      <div class="role-list">
+        <div class="role">
+          <div class="role-top"><span class="role-title">Sr. Executive Assistant</span><span class="role-time">2025 – Present</span></div>
+          <div class="role-org">FUPS Bank</div>
+          <p class="role-desc">Coordinating executive priorities and cross-functional initiatives using Asana, Notion, and AI copilots; managing high-discretion travel logistics and internal/corporate communications using AI-assisted drafting and visual tools.</p>
+        </div>
+        <div class="role">
+          <div class="role-top"><span class="role-title">Lead Administrative Assistant</span><span class="role-time">2020 – 2022</span></div>
+          <div class="role-org">Honeywell — Turkey, Central Asia & North Africa</div>
+          <p class="role-desc">Comprehensive executive support to the President and senior leadership; managed internal communications across 100+ staff; oversaw logistics for major events and retreats; supported HR with work permits and engagement programs.</p>
+        </div>
+        <div class="role">
+          <div class="role-top"><span class="role-title">Chief Administrative Officer</span><span class="role-time">2006 – 2007</span></div>
+          <div class="role-org">Consolidated Contractors Company — Algiers</div>
+          <p class="role-desc">Held senior administrative leadership early in my career, setting the standard of operational ownership that has carried through every role since.</p>
+        </div>
       </div>
     </div>
+
+    <div class="theme-block">
+      <div class="theme-head">
+        <div class="theme-num">02</div>
+        <h3 class="theme-title">International Sourcing<br>& <em>Private Travel</em></h3>
+        <p class="theme-desc">Operating with full discretion for principals who require precision, not approximation.</p>
+      </div>
+      <div class="role-list">
+        <div class="role">
+          <div class="role-top"><span class="role-title">Sr. Executive Assistant / PA to Chairman</span><span class="role-time">2023 – 2025</span></div>
+          <div class="role-org">FUPS</div>
+          <p class="role-desc">Trusted representative for international luxury sourcing and procurement, securing rare and high-end items across Europe, North America, and the Middle East. Managed confidential personal affairs and time-sensitive, hard-to-find requests under strict discretion, leveraging an international network of suppliers and brand contacts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-block">
+      <div class="theme-head">
+        <div class="theme-num">03</div>
+        <h3 class="theme-title">Systems &<br><em>Process Design</em></h3>
+        <p class="theme-desc">Building the structure — CRM, workflows, automation — that makes everything else run smoothly.</p>
+      </div>
+      <div class="role-list">
+        <div class="role">
+          <div class="role-top"><span class="role-title">Project Coordinator</span><span class="role-time">2023</span></div>
+          <div class="role-org">Bureau Veritas Consumer Products Services — EMEA & NA</div>
+          <p class="role-desc">Coordinated project activities, timelines, and resources across regions; built workflow automation in Asana; built a working CRM in Asana to manage the full customer lifecycle for the sales team; trained and onboarded cross-functional team members.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-block">
+      <div class="theme-head">
+        <div class="theme-num">04</div>
+        <h3 class="theme-title">Languages &<br><em>Education</em></h3>
+        <p class="theme-desc">The foundation underneath the cross-border, cross-cultural work — six languages and a formal background in both translation and teaching.</p>
+      </div>
+      <div class="role-list">
+        <div class="role">
+          <div class="role-top"><span class="role-title">English & CLIL Teacher</span><span class="role-time">2012 – 2019</span></div>
+          <div class="role-org">Çevre Koleji, Birebir İngilizce, and others — Istanbul</div>
+          <p class="role-desc">Designed and delivered language instruction across multiple institutions, including content and language integrated learning for young children, with certifications in TESOL/TEFL and Early Childhood Education.</p>
+        </div>
+        <div class="role">
+          <div class="role-top"><span class="role-title">Bachelor's, Language Interpretation & Translation</span><span class="role-time">2003 – 2007</span></div>
+          <div class="role-org">University of Algiers 2</div>
+          <p class="role-desc">Formal training in interpretation and translation — the basis for working fluently across English, French, Arabic, and Turkish in high-stakes professional contexts ever since.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -347,7 +410,7 @@ footer{
         <div class="case-tag">01</div>
         <div>
           <h3 class="case-title">The piece that <em>didn't exist</em> anywhere</h3>
-          <p class="case-desc">A request for a specific item — discontinued, sold out everywhere, no resale listings active. Working through a small network of contacts across three markets, it was located, verified, and delivered within four days.</p>
+          <p class="case-desc">A request for a specific, discontinued item — sold out everywhere, no resale listings active. Working through a small network of contacts across three markets, it was located, verified, and delivered within four days.</p>
           <div class="case-tags">
             <span class="tag-pill hot">Sourcing</span>
             <span class="tag-pill">4 Days</span>
@@ -359,12 +422,12 @@ footer{
       <div class="case-item">
         <div class="case-tag">02</div>
         <div>
-          <h3 class="case-title">A trip with <em>zero room</em> for error</h3>
-          <p class="case-desc">Multi-city travel with tight connections, multiple stakeholders, and no flexibility in the schedule. Every transfer was pre-confirmed, every contingency mapped, and the trip ran exactly as planned — no surprises on either end.</p>
+          <h3 class="case-title">A CRM built from <em>nothing</em></h3>
+          <p class="case-desc">A sales team had no structured way to track customer lifecycle from first contact to ongoing engagement. Using Asana as the base, a working CRM was designed and built in-house — no external software cost, fully adopted by the team.</p>
           <div class="case-tags">
-            <span class="tag-pill hot">Travel Coordination</span>
-            <span class="tag-pill">Multi-city</span>
-            <span class="tag-pill">Zero Delays</span>
+            <span class="tag-pill hot">Systems</span>
+            <span class="tag-pill">CRM Build</span>
+            <span class="tag-pill">Zero Extra Cost</span>
           </div>
         </div>
       </div>
@@ -373,44 +436,15 @@ footer{
         <div class="case-tag">03</div>
         <div>
           <h3 class="case-title">Operations during a <em>leadership transition</em></h3>
-          <p class="case-desc">Keeping day-to-day operations stable while a senior team restructured priorities mid-quarter. The work was invisible by design — nothing dropped, nothing delayed, despite the shifting ground underneath.</p>
+          <p class="case-desc">Keeping day-to-day operations stable for 100+ staff while senior leadership restructured priorities mid-quarter. The work was invisible by design — nothing dropped, nothing delayed, despite the shifting ground underneath.</p>
           <div class="case-tags">
             <span class="tag-pill hot">Executive Operations</span>
             <span class="tag-pill">Continuity</span>
-            <span class="tag-pill">Discretion</span>
+            <span class="tag-pill">100+ Staff</span>
           </div>
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<section class="reveal">
-  <div class="section-inner">
-    <p class="kicker">How I Work</p>
-    <h2 class="section-title">A consistent <em>method,</em><br>regardless of the brief.</h2>
-    <div class="approach-steps">
-      <div class="step">
-        <div class="step-n">01</div>
-        <h3 class="step-t">Understand</h3>
-        <p class="step-d">Every task starts with a real conversation — understanding not just the ask, but the standard behind it.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">02</div>
-        <h3 class="step-t">Verify</h3>
-        <p class="step-d">Information is checked, sources are confirmed, and assumptions are tested before anything moves forward.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">03</div>
-        <h3 class="step-t">Execute</h3>
-        <p class="step-d">Work is carried out methodically, with contingencies planned in advance — not improvised under pressure.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">04</div>
-        <h3 class="step-t">Follow Through</h3>
-        <p class="step-d">Nothing is considered finished until it's confirmed done — and done to the right standard.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -420,7 +454,7 @@ footer{
     <div>
       <p class="kicker">Get in Touch</p>
       <h2 class="contact-title">Let's start with<br>a <em>conversation.</em></h2>
-      <p class="contact-desc">Whether it's an operational challenge, a sourcing request, or a travel logistics problem — I'm happy to hear what you're working with.</p>
+      <p class="contact-desc">Whether it's an operational challenge, a sourcing request, a systems problem, or something that doesn't fit neatly into one category — I'm happy to hear what you're working with.</p>
       <a href="mailto:cliffs.hidden2117@eagreverest.com" class="btn">Send a Message →</a>
     </div>
     <div class="contact-card">
