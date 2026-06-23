@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chahira Grimes — Portfolio</title>
+<title>Chahira Grimes — Executive Operations</title>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -21,285 +21,407 @@
   --accent-soft:#f4e9e1;
 }
 
-body{ font-family:'Inter',sans-serif; color:var(--ink); font-weight:400; line-height:1.6; -webkit-font-smoothing:antialiased; background:var(--bg2); }
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
 
-.page{
-  width:100%; max-width:840px; margin:0 auto 28px; position:relative;
-  background:var(--bg); padding:56px 60px;
-  box-shadow:0 8px 30px rgba(26,29,35,0.06);
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.4rem 3.5rem;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.logo{
+  font-family:'Newsreader',serif;
+  font-size:1.25rem;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+  text-decoration:none;
+  font-weight:500;
+}
+.nav-links{display:flex;gap:2.4rem;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:0.8rem;letter-spacing:0.01em;
+  color:var(--slate);text-decoration:none;transition:color .2s;font-weight:400;
+}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{
+  font-size:0.78rem;
+  color:#fff !important;
+  background:var(--ink);
+  padding:0.55rem 1.2rem;
+  border-radius:4px;
+  transition:background .2s !important;
+}
+.nav-cta:hover{background:var(--accent) !important;}
+
+.hero{
+  min-height:88vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:9rem 3.5rem 4rem;
+  position:relative;
   overflow:hidden;
 }
-.page:first-child{ margin-top:28px; }
-
-.serif{ font-family:'Newsreader',serif; }
-
-/* ---------- COVER ---------- */
-.cover{ min-height:560px; display:flex; flex-direction:column; justify-content:center; }
-.cover::before{
-  content:''; position:absolute; top:-12%; right:-10%;
-  width:420px; height:420px; border-radius:50%;
-  background:radial-gradient(circle at 40% 40%, rgba(181,104,60,0.16) 0%, transparent 65%);
+.hero::before{
+  content:'';
+  position:absolute;top:-20%;right:-10%;
+  width:650px;height:650px;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%, rgba(181,104,60,0.14) 0%, transparent 65%);
   pointer-events:none;
 }
-.cover::after{
-  content:''; position:absolute; bottom:-14%; left:-12%;
-  width:360px; height:360px; border-radius:50%;
-  background:radial-gradient(circle at 60% 60%, rgba(45,106,106,0.12) 0%, transparent 65%);
+.hero::after{
+  content:'';
+  position:absolute;bottom:-25%;left:-12%;
+  width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle at 60% 60%, rgba(45,106,106,0.10) 0%, transparent 65%);
   pointer-events:none;
 }
-.cover-inner{ position:relative; z-index:1; }
-.cover-eyebrow{ font-size:0.82rem; letter-spacing:0.06em; color:var(--accent); font-weight:600; text-transform:uppercase; margin-bottom:18px; }
-.cover-name{ font-family:'Newsreader',serif; font-size:4.2rem; font-weight:500; line-height:1.02; letter-spacing:-0.015em; color:var(--ink); margin-bottom:18px; }
-.cover-role{ font-size:1.15rem; color:var(--slate); font-weight:300; margin-bottom:10px; }
-.cover-tag{ font-size:0.9rem; color:var(--soft); letter-spacing:0.02em; }
-.cover-rule{ width:70px; height:2px; background:var(--accent); margin:34px 0; }
-.cover-meta{ display:flex; gap:42px; flex-wrap:wrap; }
-.cm-val{ font-family:'Newsreader',serif; font-size:2rem; color:var(--ink); font-weight:500; line-height:1; }
-.cm-lab{ font-size:0.72rem; color:var(--soft); letter-spacing:0.02em; margin-top:4px; }
-.cover-foot{ margin-top:48px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-size:0.78rem; color:var(--soft); border-top:1px solid var(--line); padding-top:14px; position:relative; z-index:1; }
+.hero-inner{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:1;}
+.hero-eyebrow{
+  font-size:0.8rem;letter-spacing:0.04em;
+  color:var(--accent);margin-bottom:1.4rem;font-weight:500;
+}
+.hero-name{
+  font-family:'Newsreader',serif;
+  font-size:clamp(2.6rem,5.5vw,4.4rem);
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:-0.015em;
+  margin-bottom:1.8rem;
+  max-width:18ch;
+}
+.hero-sub{
+  font-size:1.12rem;
+  color:var(--slate);
+  max-width:60ch;
+  margin-bottom:2.8rem;
+  font-weight:300;
+  line-height:1.7;
+}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;}
+.btn-primary{
+  font-size:0.85rem;font-weight:500;
+  color:#fff;background:var(--ink);
+  padding:0.85rem 1.7rem;border-radius:4px;
+  text-decoration:none;transition:background .2s;
+}
+.btn-primary:hover{background:var(--accent);}
+.btn-text{
+  font-size:0.85rem;font-weight:500;color:var(--slate);
+  text-decoration:none;transition:color .2s;
+}
+.btn-text:hover{color:var(--accent);}
 
-/* ---------- SECTIONS ---------- */
-.kicker{ font-size:0.78rem; letter-spacing:0.04em; color:var(--accent); font-weight:600; text-transform:uppercase; margin-bottom:10px; }
-.sec-title{ font-family:'Newsreader',serif; font-size:2rem; font-weight:500; letter-spacing:-0.01em; color:var(--ink); margin-bottom:8px; line-height:1.15; }
-.sec-sub{ font-size:0.9rem; color:var(--soft); font-weight:300; margin-bottom:26px; }
+.hero-meta{
+  display:flex;gap:3rem;flex-wrap:wrap;
+  margin-top:3.5rem;padding-top:2.2rem;border-top:1px solid var(--line);
+}
+.meta-item{display:flex;flex-direction:column;gap:0.25rem;}
+.meta-value{font-family:'Newsreader',serif;font-size:1.6rem;color:var(--ink);font-weight:500;line-height:1;}
+.meta-label{font-size:0.74rem;color:var(--soft);}
 
-.lead{ font-size:1.05rem; color:var(--slate); font-weight:300; line-height:1.7; max-width:62ch; margin-bottom:16px; }
-.lead strong{ color:var(--ink); font-weight:500; }
-
-.stat-row{ display:flex; gap:0; margin-top:30px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); flex-wrap:wrap; }
-.stat{ flex:1; min-width:120px; padding:20px 0; }
-.stat + .stat{ border-left:1px solid var(--line); padding-left:22px; }
-.stat-val{ font-family:'Newsreader',serif; font-size:2.6rem; color:var(--accent2); font-weight:500; line-height:1; }
-.stat-lab{ font-size:0.78rem; color:var(--soft); margin-top:8px; }
-
-/* capability cards */
-.cap{ border-top:1px solid var(--line); padding:18px 0; }
-.cap:last-child{ border-bottom:1px solid var(--line); }
-.cap-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:7px; }
-.cap-num{ font-family:'Newsreader',serif; font-size:1.1rem; color:var(--accent); font-weight:500; min-width:30px; }
-.cap-title{ font-size:1.05rem; font-weight:600; color:var(--ink); }
-.cap-desc{ font-size:0.92rem; color:var(--slate); font-weight:300; line-height:1.65; padding-left:44px; }
-
-/* how I work grid */
-.hiw{ display:flex; flex-wrap:wrap; gap:16px; margin-top:6px; }
-.hiw-card{ width:calc(50% - 8px); background:var(--bg2); border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:6px; padding:20px; }
-.hiw-step{ font-size:0.72rem; font-weight:600; color:var(--accent); letter-spacing:0.03em; text-transform:uppercase; margin-bottom:9px; }
-.hiw-title{ font-family:'Newsreader',serif; font-size:1.2rem; font-weight:500; color:var(--ink); margin-bottom:8px; line-height:1.25; }
-.hiw-desc{ font-size:0.88rem; color:var(--slate); font-weight:300; line-height:1.6; }
-
-/* experience */
-.exp{ border-top:1px solid var(--line); padding:16px 0; }
-.exp:last-child{ border-bottom:1px solid var(--line); }
-.exp-top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:3px; flex-wrap:wrap; }
-.exp-role{ font-size:1rem; font-weight:600; color:var(--ink); }
-.exp-time{ font-size:0.8rem; color:var(--accent); font-weight:500; white-space:nowrap; }
-.exp-org{ font-size:0.88rem; color:var(--accent2); font-weight:500; margin-bottom:7px; }
-.exp-desc{ font-size:0.88rem; color:var(--soft); font-weight:300; line-height:1.6; }
-
-/* credentials + languages */
-.two-col{ display:flex; gap:36px; margin-top:6px; flex-wrap:wrap; }
-.col{ flex:1; min-width:240px; }
-.col-title{ font-size:0.82rem; font-weight:600; color:var(--ink); letter-spacing:0.02em; text-transform:uppercase; margin-bottom:14px; }
-.cred-row{ display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px solid var(--line); font-size:0.9rem; color:var(--slate); }
-.cred-row:last-child{ border-bottom:none; }
-.dot{ width:5px; height:5px; border-radius:50%; background:var(--accent); flex-shrink:0; position:relative; top:-2px; }
-.lang-row{ display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line); font-size:0.92rem; }
-.lang-row:last-child{ border-bottom:none; }
-.lang-name{ color:var(--ink); font-weight:500; }
-.lang-lvl{ color:var(--soft); font-size:0.8rem; }
-
-.foot{ margin-top:32px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-size:0.75rem; color:var(--soft); border-top:1px solid var(--line); padding-top:12px; }
-
-@media (max-width:680px){
-  .page{ padding:36px 24px; }
-  .cover-name{ font-size:3rem; }
-  .hiw-card{ width:100%; }
-  .cap-desc{ padding-left:0; }
+section{padding:5.5rem 3.5rem;}
+.section-inner{max-width:1180px;margin:0 auto;}
+.kicker{
+  font-size:0.78rem;letter-spacing:0.02em;
+  color:var(--accent);margin-bottom:0.9rem;font-weight:600;
+}
+.section-title{
+  font-family:'Newsreader',serif;
+  font-size:clamp(1.7rem,2.8vw,2.4rem);
+  font-weight:400;
+  letter-spacing:-0.01em;
+  margin-bottom:2.4rem;
+  line-height:1.2;
 }
 
-@media print{
-  body{ background:#fff; }
-  .page{ box-shadow:none; margin:0; max-width:none; min-height:100vh; padding:24mm 22mm; page-break-after:always; }
+.about{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:4.5rem;align-items:start;}
+.about-text p{color:var(--slate);font-size:1rem;margin-bottom:1.3rem;max-width:62ch;line-height:1.75;font-weight:300;}
+.about-text p strong{color:var(--ink);font-weight:500;}
+.langs{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:1.6rem;}
+.lang-pill{
+  font-size:0.78rem;font-weight:400;
+  padding:0.4rem 0.85rem;border:1px solid var(--line2);border-radius:4px;
+  background:#fff;color:var(--slate);
+}
+.cred-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:2rem;}
+.cred-title{font-size:0.78rem;font-weight:600;color:var(--ink);letter-spacing:0.02em;margin-bottom:1.2rem;}
+.cred-row{display:flex;align-items:baseline;gap:0.7rem;padding:0.7rem 0;border-bottom:1px solid var(--line);font-size:0.88rem;color:var(--slate);}
+.cred-row:last-child{border-bottom:none;}
+.cred-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+
+.exp-block{
+  border-top:1px solid var(--line);
+  padding:2.8rem 0;
+  display:grid;grid-template-columns:260px 1fr;gap:3rem;
+}
+.exp-block:last-child{border-bottom:1px solid var(--line);}
+.exp-cat{font-family:'Newsreader',serif;font-size:1.3rem;font-weight:500;color:var(--accent2);margin-bottom:0.6rem;line-height:1.25;}
+.exp-catdesc{font-size:0.85rem;color:var(--soft);line-height:1.6;}
+.role-list{display:flex;flex-direction:column;gap:1.6rem;}
+.role-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.2rem;}
+.role-title{font-size:0.98rem;font-weight:600;color:var(--ink);}
+.role-time{font-size:0.76rem;color:var(--accent);font-weight:500;white-space:nowrap;}
+.role-org{font-size:0.85rem;color:var(--slate);margin-bottom:0.5rem;font-weight:500;}
+.role-desc{font-size:0.9rem;color:var(--soft);line-height:1.65;font-weight:300;}
+
+.work{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;}
+.work-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1.8rem;transition:border-color .2s, transform .2s, box-shadow .2s;border-top:3px solid var(--accent);}
+.work-card:hover{border-color:var(--line2);transform:translateY(-3px);box-shadow:0 12px 28px rgba(26,29,35,0.07);}
+.work-cat{font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.02em;margin-bottom:0.9rem;}
+.work-title{font-family:'Newsreader',serif;font-size:1.2rem;font-weight:500;margin-bottom:0.7rem;line-height:1.3;}
+.work-desc{font-size:0.86rem;color:var(--slate);line-height:1.6;font-weight:300;margin-bottom:1.2rem;}
+.work-metric{font-size:0.78rem;color:var(--soft);border-top:1px solid var(--line);padding-top:0.9rem;}
+.work-metric strong{color:var(--ink);font-weight:600;}
+
+.contact{background:linear-gradient(135deg, #1f2d2d 0%, #1a1d23 100%);color:#fff;}
+.contact .kicker{color:#d99873;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center;}
+.contact-title{font-family:'Newsreader',serif;font-size:clamp(1.9rem,3vw,2.8rem);font-weight:400;margin-bottom:1.4rem;line-height:1.15;letter-spacing:-0.01em;}
+.contact-desc{color:#aeb8c2;font-size:1rem;max-width:46ch;margin-bottom:2rem;font-weight:300;line-height:1.7;}
+.btn-light{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:500;background:#fff;color:var(--ink);padding:0.85rem 1.7rem;border-radius:4px;text-decoration:none;transition:background .2s;}
+.btn-light:hover{background:var(--accent-soft);}
+.contact-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:2rem;}
+.field{margin-bottom:1.2rem;}
+.field label{display:block;font-size:0.74rem;color:#8a96a3;margin-bottom:0.4rem;font-weight:500;}
+.field input,.field textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);border-radius:5px;color:#fff;font-family:'Inter',sans-serif;font-size:0.9rem;padding:0.65rem 0.8rem;outline:none;transition:border-color .2s;}
+.field input:focus,.field textarea:focus{border-color:#d99873;}
+.field textarea{resize:none;height:80px;}
+.field input::placeholder,.field textarea::placeholder{color:#6b7785;}
+.submit-btn{margin-top:0.3rem;background:#fff;border:none;color:var(--ink);font-size:0.82rem;font-weight:600;padding:0.8rem 1.7rem;border-radius:4px;cursor:pointer;transition:background .2s;}
+.submit-btn:hover{background:var(--accent-soft);}
+
+footer{padding:2.2rem 3.5rem;background:var(--ink);color:#7b8794;display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;border-top:1px solid rgba(255,255,255,0.08);}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s, transform .6s;}
+.reveal.show{opacity:1;transform:none;}
+
+@media(max-width:900px){
+  nav{padding:1.1rem 1.4rem;}
+  .nav-links a:not(.nav-cta){display:none;}
+  .hero{padding:7rem 1.4rem 3rem;}
+  .hero-meta{gap:1.8rem;}
+  section{padding:3.5rem 1.4rem;}
+  .about-grid{grid-template-columns:1fr;gap:2.2rem;}
+  .exp-block{grid-template-columns:1fr;gap:1.3rem;}
+  .work-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;gap:2.3rem;}
+  footer{flex-direction:column;gap:0.6rem;text-align:center;}
 }
 </style>
 </head>
 <body>
 
-<!-- COVER -->
-<section class="page cover">
-  <div class="cover-inner">
-    <div class="cover-eyebrow">Portfolio of Capabilities</div>
-    <div class="cover-name">Chahira<br>Grimes</div>
-    <div class="cover-role">Executive Operations &nbsp;·&nbsp; Project Coordination &nbsp;·&nbsp; Multilingual</div>
-    <div class="cover-tag">Europe &nbsp;·&nbsp; Middle East &nbsp;·&nbsp; North America</div>
-    <div class="cover-rule"></div>
-    <div class="cover-meta">
-      <div class="cm-item"><div class="cm-val">18</div><div class="cm-lab">Years of experience</div></div>
-      <div class="cm-item"><div class="cm-val">3</div><div class="cm-lab">Continents</div></div>
-      <div class="cm-item"><div class="cm-val">4</div><div class="cm-lab">Languages</div></div>
-    </div>
+<nav>
+  <a href="#" class="logo">Chahira Grimes</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#work">Approach</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+  <p class="hero-eyebrow">Executive Operations · International Sourcing · Project Coordination</p>
+  <h1 class="hero-name">Senior operations professional with global reach.</h1>
+  <p class="hero-sub">Eighteen years supporting executives and running operations across Europe, North America, and the Middle East — executive support, project coordination, international sourcing, and systems design. I bring structure, discretion, and follow-through to work where the details matter.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Get in touch</a>
+    <a href="#experience" class="btn-text">View experience →</a>
   </div>
-  <div class="cover-foot">
-    <span>chgrimes.com</span>
-    <span>Istanbul, Türkiye</span>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-value">18</span><span class="meta-label">Years of experience</span></div>
+    <div class="meta-item"><span class="meta-value">3</span><span class="meta-label">Continents covered</span></div>
+    <div class="meta-item"><span class="meta-value">4</span><span class="meta-label">Languages</span></div>
+    <div class="meta-item"><span class="meta-value">6</span><span class="meta-label">Credentials</span></div>
+  </div>
   </div>
 </section>
 
-<!-- PROFILE -->
-<section class="page">
-  <div class="kicker">Profile</div>
-  <h1 class="sec-title">An operations professional with broad range.</h1>
-  <div class="sec-sub">Executive support · project coordination · international sourcing · systems design</div>
-
-  <p class="lead">Senior operations professional with eighteen years supporting executives and running operations across Europe, North America, and the Middle East. My work spans executive support, project coordination, international sourcing, and the design of the systems that keep complex environments organized.</p>
-  <p class="lead">Beginning in executive and administrative roles, my career has since covered international project work, multi-region logistics, and four working languages. <strong>These aren't separate paths — they're what eighteen years in operations actually looks like.</strong></p>
-  <p class="lead">What leaders rely on stays consistent: clear judgment, complete discretion, and work that is finished properly before it leaves my hands.</p>
-
-  <div class="stat-row">
-    <div class="stat"><div class="stat-val">18</div><div class="stat-lab">Years across executive operations</div></div>
-    <div class="stat"><div class="stat-val">3</div><div class="stat-lab">Continents of operation</div></div>
-    <div class="stat"><div class="stat-val">4</div><div class="stat-lab">Working languages</div></div>
+<section class="about reveal" id="about">
+  <div class="section-inner about-grid">
+    <div class="about-text">
+      <p class="kicker">About</p>
+      <h2 class="section-title">An operations professional with broad range.</h2>
+      <p>My career began in Algeria in executive and administrative roles, and has since spanned Turkey, the Gulf, and international project work across Europe, North America, and the Middle East. Throughout, the core of my work has stayed the same: keeping complex, demanding environments organized, accountable, and moving forward.</p>
+      <p>Alongside that, I've worked across international sourcing for senior principals, CRM and workflow systems, multi-region logistics, and four languages. <strong>These aren't separate paths — they're what eighteen years in operations actually looks like.</strong></p>
+      <p>What executives rely on is consistent: clear judgment, complete discretion, and work that is finished properly before it leaves my hands.</p>
+      <div class="langs">
+        <span class="lang-pill">English</span>
+        <span class="lang-pill">French</span>
+        <span class="lang-pill">Arabic</span>
+        <span class="lang-pill">Turkish</span>
+        <span class="lang-pill" style="opacity:0.6;">Spanish · elementary</span>
+        <span class="lang-pill" style="opacity:0.6;">German · elementary</span>
+      </div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-title">CERTIFICATIONS & CREDENTIALS</div>
+      <div class="cred-row"><span class="cred-dot"></span>Certificate in Project Management</div>
+      <div class="cred-row"><span class="cred-dot"></span>Customer Relationship Management</div>
+      <div class="cred-row"><span class="cred-dot"></span>Certificate in Export Compliance</div>
+      <div class="cred-row"><span class="cred-dot"></span>TESOL / TEFL Certificate</div>
+      <div class="cred-row"><span class="cred-dot"></span>Diploma in Day Care Management</div>
+      <div class="cred-row"><span class="cred-dot"></span>Early Childhood Education Certificate</div>
+      <div class="cred-row"><span class="cred-dot"></span>BA, Language Interpretation & Translation</div>
+    </div>
   </div>
-
-  <div class="foot"><span>Chahira Grimes — Executive Operations</span><span>Profile</span></div>
 </section>
 
-<!-- CAPABILITIES -->
-<section class="page">
-  <div class="kicker">Capabilities</div>
-  <h1 class="sec-title">What I do, by capability.</h1>
-  <div class="sec-sub">The kinds of work I take ownership of, end to end.</div>
+<section class="reveal" id="experience">
+  <div class="section-inner">
+    <p class="kicker">Experience</p>
+    <h2 class="section-title">Eighteen years, organized by capability.</h2>
 
-  <div class="cap">
-    <div class="cap-head"><span class="cap-num">01</span><span class="cap-title">Executive Support &amp; Operations</span></div>
-    <p class="cap-desc">High-level support to chairmen and presidents — managing executive priorities, day-to-day operations, complex cross-border travel, and internal communications, with full discretion throughout.</p>
-  </div>
-  <div class="cap">
-    <div class="cap-head"><span class="cap-num">02</span><span class="cap-title">Travel &amp; Itinerary Coordination</span></div>
-    <p class="cap-desc">Multi-leg international travel arranged end to end: detailed day-by-day itineraries, curated dining and experiences, ground logistics, and comparative hotel and venue selection briefs.</p>
-  </div>
-  <div class="cap">
-    <div class="cap-head"><span class="cap-num">03</span><span class="cap-title">International Sourcing &amp; Procurement</span></div>
-    <p class="cap-desc">Locating rare and hard-to-find items for senior principals through trusted international relationships, and managing orders from request through to delivery.</p>
-  </div>
-  <div class="cap">
-    <div class="cap-head"><span class="cap-num">04</span><span class="cap-title">Project Coordination &amp; Systems</span></div>
-    <p class="cap-desc">Coordinating activities, timelines, and resources across regions. Built workflow automation and a working CRM in Asana to manage a full customer lifecycle, and designed and built a custom contact-management web application from data structure through to interface.</p>
-  </div>
-  <div class="cap">
-    <div class="cap-head"><span class="cap-num">05</span><span class="cap-title">Cross-Functional Onboarding &amp; Reporting</span></div>
-    <p class="cap-desc">Training and onboarding cross-functional team members, managing progress reporting, and supporting HR, purchasing, and corporate events and town halls.</p>
-  </div>
-  <div class="cap">
-    <div class="cap-head"><span class="cap-num">06</span><span class="cap-title">Multilingual &amp; Cross-Cultural Work</span></div>
-    <p class="cap-desc">Fluent professional work across English, French, Arabic, and Turkish, underpinned by a degree in language interpretation and translation, and experience spanning EMEA, the Gulf, and North Africa.</p>
-  </div>
+    <div class="exp-block">
+      <div>
+        <div class="exp-cat">Executive Operations & Support</div>
+        <div class="exp-catdesc">The support behind senior leadership.</div>
+      </div>
+      <div class="role-list">
+        <div class="role">
+          <div class="role-top"><span class="role-title">Sr. Executive Assistant / PA to Chairman</span><span class="role-time">2023 – Present</span></div>
+          <div class="role-org">FUPS / FUPS Bank</div>
+          <p class="role-desc">High-level executive and personal support to the Chairman across both group entities. Manage executive priorities, day-to-day operations, and projects across teams using structured and AI-assisted tools; handle complex cross-border travel and internal communications; and source rare and high-end items internationally, all with full discretion.</p>
+        </div>
+        <div class="role">
+          <div class="role-top"><span class="role-title">Lead Administrative Assistant · EA to President</span><span class="role-time">2019 – 2022</span></div>
+          <div class="role-org">Honeywell — Turkey, Central Asia & North Africa</div>
+          <p class="role-desc">Executive support to the President and senior leadership. Managed internal communications across the organization, oversaw logistics for townhalls and corporate events, supported HR with work permits and employee engagement, and administered office purchasing and reporting.</p>
+        </div>
+        <div class="role">
+          <div class="role-top"><span class="role-title">Chief Administrative Officer</span><span class="role-time">2006 – 2007</span></div>
+          <div class="role-org">Consolidated Contractors Company — Algiers</div>
+          <p class="role-desc">Senior administrative leadership early in my career, establishing the standard of operational ownership carried through every role since.</p>
+        </div>
+      </div>
+    </div>
 
-  <div class="foot"><span>Chahira Grimes — Executive Operations</span><span>Capabilities</span></div>
+    <div class="exp-block">
+      <div>
+        <div class="exp-cat">Project Coordination & Systems</div>
+        <div class="exp-catdesc">Building the structure that makes operations scale.</div>
+      </div>
+      <div class="role-list">
+        <div class="role">
+          <div class="role-top"><span class="role-title">Project Coordinator</span><span class="role-time">2023</span></div>
+          <div class="role-org">Bureau Veritas Consumer Products Services — EMEA & NA</div>
+          <p class="role-desc">Coordinated project activities, timelines, and resources across regions. Built workflow automation and a working CRM in Asana to manage the full customer lifecycle for the sales team. Trained and onboarded cross-functional team members and managed progress reporting.</p>
+        </div>
+        <div class="role">
+          <div class="role-top"><span class="role-title">Custom Data-Management Application</span><span class="role-time">Independent build</span></div>
+          <div class="role-org">Self-directed project</div>
+          <p class="role-desc">Designed and built a web-based application to manage a large contact network, relationship data, and the coordination of ongoing work — handling the full pipeline from data structure through to a working interface.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-block">
+      <div>
+        <div class="exp-cat">Languages & Education</div>
+        <div class="exp-catdesc">Formal foundation in translation and instruction.</div>
+      </div>
+      <div class="role-list">
+        <div class="role">
+          <div class="role-top"><span class="role-title">Language Instructor (English / CLIL)</span><span class="role-time">2012 – 2019</span></div>
+          <div class="role-org">Çevre Koleji, Birebir İngilizce & others — Istanbul</div>
+          <p class="role-desc">Designed and delivered language instruction across multiple institutions, with certifications in TESOL/TEFL and Early Childhood Education. A BA in Language Interpretation & Translation underpins fluent professional work across four languages.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<!-- HOW I WORK -->
-<section class="page">
-  <div class="kicker">How I Work</div>
-  <h1 class="sec-title">The same standard, whatever the task.</h1>
-  <div class="sec-sub">A consistent approach across every kind of work.</div>
-
-  <div class="hiw">
-    <div class="hiw-card">
-      <div class="hiw-step">01 — Understand</div>
-      <div class="hiw-title">Start with the real problem</div>
-      <div class="hiw-desc">Every task begins with understanding not just the request, but the standard behind it and what success actually looks like.</div>
+<section class="work reveal" id="work">
+  <div class="section-inner">
+    <p class="kicker">How I Work</p>
+    <h2 class="section-title">The same standard, whatever the task.</h2>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-cat">01 — Understand</div>
+        <h3 class="work-title">Start with the real problem</h3>
+        <p class="work-desc">Every task begins with understanding not just the request, but the standard behind it and what success actually looks like.</p>
+      </div>
+      <div class="work-card">
+        <div class="work-cat">02 — Build structure</div>
+        <h3 class="work-title">Put the right system in place</h3>
+        <p class="work-desc">Whether it's a CRM, a workflow, or a travel plan, I build the structure that makes the work repeatable and reliable rather than improvised.</p>
+      </div>
+      <div class="work-card">
+        <div class="work-cat">03 — Execute with discretion</div>
+        <h3 class="work-title">Handle it quietly and completely</h3>
+        <p class="work-desc">Sensitive work stays confidential, and details are verified before anything moves forward — no assumptions, no loose ends.</p>
+      </div>
+      <div class="work-card">
+        <div class="work-cat">04 — Follow through</div>
+        <h3 class="work-title">Finish properly</h3>
+        <p class="work-desc">Nothing is considered done until it's confirmed done, to the right standard. Follow-through is where most things are won or lost.</p>
+      </div>
     </div>
-    <div class="hiw-card">
-      <div class="hiw-step">02 — Build structure</div>
-      <div class="hiw-title">Put the right system in place</div>
-      <div class="hiw-desc">Whether it's a CRM, a workflow, or a travel plan, I build the structure that makes the work repeatable and reliable rather than improvised.</div>
-    </div>
-    <div class="hiw-card">
-      <div class="hiw-step">03 — Execute with discretion</div>
-      <div class="hiw-title">Handle it quietly and completely</div>
-      <div class="hiw-desc">Sensitive work stays confidential, and details are verified before anything moves forward — no assumptions, no loose ends.</div>
-    </div>
-    <div class="hiw-card">
-      <div class="hiw-step">04 — Follow through</div>
-      <div class="hiw-title">Finish properly</div>
-      <div class="hiw-desc">Nothing is considered done until it's confirmed done, to the right standard. Follow-through is where most things are won or lost.</div>
-    </div>
+    <p style="margin-top:2rem;font-size:0.9rem;color:var(--soft);font-weight:300;">A fuller portfolio of selected work can be shared on request.</p>
   </div>
-
-  <div class="foot"><span>Chahira Grimes — Executive Operations</span><span>How I Work</span></div>
 </section>
 
-<!-- EXPERIENCE -->
-<section class="page">
-  <div class="kicker">Experience</div>
-  <h1 class="sec-title">Eighteen years, across leading organizations.</h1>
-  <div class="sec-sub">Selected roles in executive operations and project coordination.</div>
-
-  <div class="exp">
-    <div class="exp-top"><span class="exp-role">Sr. Executive Assistant / PA to Chairman</span><span class="exp-time">2023 – Present</span></div>
-    <div class="exp-org">FUPS / FUPS Bank</div>
-    <p class="exp-desc">High-level executive and personal support to the Chairman across both group entities — managing executive priorities, day-to-day operations, and cross-team projects using structured and AI-assisted tools; handling complex cross-border travel and internal communications; and sourcing rare and high-end items internationally, all with full discretion.</p>
-  </div>
-  <div class="exp">
-    <div class="exp-top"><span class="exp-role">Lead Administrative Assistant · EA to President</span><span class="exp-time">2019 – 2022</span></div>
-    <div class="exp-org">Honeywell — Turkey, Central Asia &amp; North Africa</div>
-    <p class="exp-desc">Executive support to the President and senior leadership. Managed internal communications across the organization, oversaw logistics for town halls and corporate events, supported HR with work permits and employee engagement, and administered office purchasing and reporting.</p>
-  </div>
-  <div class="exp">
-    <div class="exp-top"><span class="exp-role">Project Coordinator</span><span class="exp-time">2023</span></div>
-    <div class="exp-org">Bureau Veritas Consumer Products Services — EMEA &amp; NA</div>
-    <p class="exp-desc">Coordinated project activities, timelines, and resources across regions. Built workflow automation and a working CRM in Asana to manage the full customer lifecycle for the sales team, trained and onboarded cross-functional team members, and managed progress reporting.</p>
-  </div>
-  <div class="exp">
-    <div class="exp-top"><span class="exp-role">Chief Administrative Officer</span><span class="exp-time">2006 – 2007</span></div>
-    <div class="exp-org">Consolidated Contractors Company — Algiers</div>
-    <p class="exp-desc">Senior administrative leadership early in my career, establishing the standard of operational ownership carried through every role since.</p>
-  </div>
-  <div class="exp">
-    <div class="exp-top"><span class="exp-role">Language Instructor (English / CLIL)</span><span class="exp-time">2012 – 2019</span></div>
-    <div class="exp-org">Çevre Koleji, Birebir İngilizce &amp; others — Istanbul</div>
-    <p class="exp-desc">Designed and delivered language instruction across multiple institutions, with certifications in TESOL/TEFL and Early Childhood Education.</p>
-  </div>
-
-  <div class="foot"><span>Chahira Grimes — Executive Operations</span><span>Experience</span></div>
-</section>
-
-<!-- CREDENTIALS + CONTACT -->
-<section class="page">
-  <div class="kicker">Credentials &amp; Languages</div>
-  <h1 class="sec-title">Formal foundation.</h1>
-  <div class="sec-sub">Certifications, education, and working languages.</div>
-
-  <div class="two-col">
-    <div class="col">
-      <div class="col-title">Certifications &amp; Credentials</div>
-      <div class="cred-row"><span class="dot"></span>Certificate in Project Management</div>
-      <div class="cred-row"><span class="dot"></span>Customer Relationship Management</div>
-      <div class="cred-row"><span class="dot"></span>Certificate in Export Compliance</div>
-      <div class="cred-row"><span class="dot"></span>TESOL / TEFL Certificate</div>
-      <div class="cred-row"><span class="dot"></span>Diploma in Day Care Management</div>
-      <div class="cred-row"><span class="dot"></span>Early Childhood Education Certificate</div>
-      <div class="cred-row"><span class="dot"></span>BA, Language Interpretation &amp; Translation</div>
+<section class="contact reveal" id="contact">
+  <div class="section-inner contact-grid">
+    <div>
+      <p class="kicker">Get in touch</p>
+      <h2 class="contact-title">Contact</h2>
+      <p class="contact-desc">For enquiries regarding executive operations, project coordination, sourcing, or related work, you're welcome to reach out directly.</p>
+      <a href="mailto:cliffs.hidden2117@eagreverest.com" class="btn-light">Send a message →</a>
     </div>
-    <div class="col">
-      <div class="col-title">Languages</div>
-      <div class="lang-row"><span class="lang-name">English</span><span class="lang-lvl">Fluent</span></div>
-      <div class="lang-row"><span class="lang-name">French</span><span class="lang-lvl">Fluent</span></div>
-      <div class="lang-row"><span class="lang-name">Arabic</span><span class="lang-lvl">Fluent</span></div>
-      <div class="lang-row"><span class="lang-name">Turkish</span><span class="lang-lvl">Fluent</span></div>
-      <div class="lang-row"><span class="lang-name">Spanish</span><span class="lang-lvl">Elementary</span></div>
-      <div class="lang-row"><span class="lang-name">German</span><span class="lang-lvl">Elementary</span></div>
-
-      <div class="col-title" style="margin-top:30px;">Contact</div>
-      <div class="lang-row"><span class="lang-name">Portfolio</span><span class="lang-lvl">chgrimes.com</span></div>
-      <div class="lang-row"><span class="lang-name">Based in</span><span class="lang-lvl">Istanbul, Türkiye</span></div>
-      <div class="lang-row"><span class="lang-name">Email</span><span class="lang-lvl">cliffs.hidden2117@eagreverest.com</span></div>
+    <div class="contact-card">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" id="cf-name" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="cf-email" placeholder="you@email.com">
+      </div>
+      <div class="field">
+        <label>Message</label>
+        <textarea id="cf-message" placeholder="How can I help?"></textarea>
+      </div>
+      <button class="submit-btn" id="cf-submit">Send message</button>
     </div>
   </div>
-
-  <div class="foot"><span>Chahira Grimes — Executive Operations</span><span>Credentials</span></div>
 </section>
+
+<footer>
+  <span>Chahira Grimes — Executive Operations</span>
+  <span>© 2026</span>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); } });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+document.getElementById('cf-submit').addEventListener('click', function(){
+  const name = document.getElementById('cf-name').value || 'there';
+  const email = document.getElementById('cf-email').value || '';
+  const message = document.getElementById('cf-message').value || '';
+  const subject = encodeURIComponent('Enquiry from ' + name);
+  const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+  window.location.href = 'mailto:cliffs.hidden2117@eagreverest.com?subject=' + subject + '&body=' + body;
+});
+</script>
 
 </body>
 </html>
