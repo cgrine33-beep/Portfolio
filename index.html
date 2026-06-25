@@ -63,6 +63,15 @@ nav{
 }
 .nav-cta:hover{background:var(--accent) !important;}
 
+.nav-toggle{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:34px;height:34px;background:none;border:none;cursor:pointer;padding:0;
+}
+.nav-toggle span{display:block;height:2px;width:22px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s;}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
 .hero{
   min-height:88vh;
   display:flex;flex-direction:column;justify-content:center;
@@ -96,12 +105,12 @@ nav{
   line-height:1.08;
   letter-spacing:-0.015em;
   margin-bottom:1.8rem;
-  max-width:18ch;
+  max-width:20ch;
 }
 .hero-sub{
   font-size:1.12rem;
   color:var(--slate);
-  max-width:60ch;
+  max-width:62ch;
   margin-bottom:2.8rem;
   font-weight:300;
   line-height:1.7;
@@ -143,7 +152,28 @@ section{padding:5.5rem 3.5rem;}
   line-height:1.2;
 }
 
-.about{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+/* ---- Sample Deliverable (surfaced near top) ---- */
+.sample{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.sample-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:4.5rem;align-items:center;}
+.sample-copy .section-title{margin-bottom:1.4rem;}
+.sample-lead{color:var(--slate);font-size:1.05rem;line-height:1.7;font-weight:300;max-width:52ch;margin-bottom:2rem;}
+.sample-foot{margin-top:1.3rem;font-size:0.8rem;color:var(--soft);font-weight:300;}
+.deck-preview{
+  display:flex;flex-direction:column;gap:1.4rem;
+  background:#fbf7f0;border:1px solid var(--line2);border-radius:12px;
+  padding:2.3rem 2.2rem 1.9rem;text-decoration:none;color:var(--ink);
+  position:relative;overflow:hidden;
+  transition:transform .25s, box-shadow .25s, border-color .25s;
+}
+.deck-preview::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.deck-preview:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(26,29,35,0.10);border-color:var(--accent);}
+.dp-top{display:flex;flex-direction:column;gap:0.45rem;padding-top:0.3rem;}
+.dp-eyebrow{font-family:'Newsreader',serif;font-size:1.55rem;font-weight:500;color:var(--ink);line-height:1.1;}
+.dp-region{font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+.dp-chips{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.dp-chips span{font-size:0.74rem;color:var(--slate);background:#fff;border:1px solid var(--line);border-radius:20px;padding:0.35rem 0.85rem;}
+.dp-open{font-size:0.85rem;font-weight:600;color:var(--accent);margin-top:0.2rem;}
+
 .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:4.5rem;align-items:start;}
 .about-text p{color:var(--slate);font-size:1rem;margin-bottom:1.3rem;max-width:62ch;line-height:1.75;font-weight:300;}
 .about-text p strong{color:var(--ink);font-weight:500;}
@@ -181,8 +211,6 @@ section{padding:5.5rem 3.5rem;}
 .work-cat{font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.02em;margin-bottom:0.9rem;}
 .work-title{font-family:'Newsreader',serif;font-size:1.2rem;font-weight:500;margin-bottom:0.7rem;line-height:1.3;}
 .work-desc{font-size:0.86rem;color:var(--slate);line-height:1.6;font-weight:300;margin-bottom:1.2rem;}
-.work-metric{font-size:0.78rem;color:var(--soft);border-top:1px solid var(--line);padding-top:0.9rem;}
-.work-metric strong{color:var(--ink);font-weight:600;}
 
 .contact{background:linear-gradient(135deg, #1f2d2d 0%, #1a1d23 100%);color:#fff;}
 .contact .kicker{color:#d99873;}
@@ -191,6 +219,7 @@ section{padding:5.5rem 3.5rem;}
 .contact-desc{color:#aeb8c2;font-size:1rem;max-width:46ch;margin-bottom:2rem;font-weight:300;line-height:1.7;}
 .btn-light{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:500;background:#fff;color:var(--ink);padding:0.85rem 1.7rem;border-radius:4px;text-decoration:none;transition:background .2s;}
 .btn-light:hover{background:var(--accent-soft);}
+.contact-email-mobile{display:none;}
 .contact-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:2rem;}
 .field{margin-bottom:1.2rem;}
 .field label{display:block;font-size:0.74rem;color:#8a96a3;margin-bottom:0.4rem;font-weight:500;}
@@ -206,17 +235,102 @@ footer{padding:2.2rem 3.5rem;background:var(--ink);color:#7b8794;display:flex;ju
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s, transform .6s;}
 .reveal.show{opacity:1;transform:none;}
 
+/* ============================================================
+   MOBILE LAYER — rebuilt to adapt, not compress.
+   Desktop styles above are untouched.
+   ============================================================ */
 @media(max-width:900px){
   nav{padding:1.1rem 1.4rem;}
-  .nav-links a:not(.nav-cta){display:none;}
-  .hero{padding:7rem 1.4rem 3rem;}
-  .hero-meta{gap:1.8rem;}
-  section{padding:3.5rem 1.4rem;}
-  .about-grid{grid-template-columns:1fr;gap:2.2rem;}
-  .exp-block{grid-template-columns:1fr;gap:1.3rem;}
-  .work-grid{grid-template-columns:1fr;}
-  .contact-grid{grid-template-columns:1fr;gap:2.3rem;}
-  footer{flex-direction:column;gap:0.6rem;text-align:center;}
+  .nav-toggle{display:flex;}
+  .nav-links{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    padding:0.4rem 1.4rem 1.2rem;
+    max-height:0;overflow:hidden;opacity:0;pointer-events:none;
+    transition:max-height .32s ease, opacity .25s ease;
+  }
+  .nav-links.open{max-height:420px;opacity:1;pointer-events:auto;}
+  .nav-links a:not(.nav-cta){
+    display:block;padding:0.95rem 0;font-size:1rem;color:var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-links .nav-cta{
+    display:inline-block;margin-top:0.9rem;font-size:0.98rem;
+    padding:0.75rem 1.5rem;text-align:center;
+  }
+
+  .hero{padding:6.5rem 1.5rem 3.2rem;min-height:auto;text-align:center;}
+  .hero-inner{display:flex;flex-direction:column;align-items:center;}
+  .hero-eyebrow{font-size:0.85rem;}
+  .hero-name{font-size:clamp(2rem,8vw,2.9rem);max-width:none;margin-bottom:1.4rem;}
+  .hero-sub{font-size:1.05rem;max-width:none;margin-bottom:2rem;}
+  .hero-actions{justify-content:center;gap:0.8rem;}
+  .btn-primary{font-size:1rem;padding:0.9rem 1.8rem;}
+  .hero-secondary{
+    display:inline-block;font-size:1rem;color:var(--ink);
+    border:1px solid var(--line2);padding:0.9rem 1.8rem;border-radius:4px;
+  }
+  .hero-meta{
+    display:grid;grid-template-columns:1fr 1fr;gap:1.6rem 1rem;
+    width:100%;max-width:360px;margin:2.6rem auto 0;justify-items:center;
+    text-align:center;
+  }
+  .meta-item{align-items:center;gap:0.3rem;}
+  .meta-value{font-size:2rem;}
+  .meta-label{font-size:0.85rem;}
+
+  section{padding:3.6rem 1.5rem;}
+  .section-title{font-size:clamp(1.6rem,6.5vw,2.1rem);margin-bottom:2rem;}
+  .kicker{font-size:0.82rem;}
+
+  .sample-grid{grid-template-columns:1fr;gap:2.2rem;}
+  .sample-lead{font-size:1.05rem;max-width:none;}
+  .sample .btn-primary{display:block;width:100%;text-align:center;font-size:1.02rem;padding:1.05rem 1.7rem;}
+  .deck-preview{padding:1.9rem;}
+  .dp-eyebrow{font-size:1.4rem;}
+
+  .about-grid{grid-template-columns:1fr;gap:2.4rem;}
+  .about-text p{font-size:1.02rem;max-width:none;}
+  .lang-pill{font-size:0.88rem;padding:0.45rem 0.9rem;}
+  .cred-card{padding:1.6rem;}
+  .cred-row{font-size:0.95rem;padding:0.8rem 0;}
+
+  .exp-block{grid-template-columns:1fr;gap:1.4rem;padding:2.4rem 0;}
+  .exp-cat{font-size:1.35rem;}
+  .exp-catdesc{font-size:0.9rem;}
+  .role-list{gap:0;}
+  .role{padding:1.5rem 0;border-top:1px solid var(--line);}
+  .role:first-child{border-top:none;padding-top:0.3rem;}
+  .role-title{font-size:1.05rem;}
+  .role-time{font-size:0.82rem;}
+  .role-org{font-size:0.92rem;}
+  .role-desc{font-size:0.95rem;}
+
+  .work-grid{grid-template-columns:1fr;gap:1.1rem;}
+  .work-card{padding:1.6rem;}
+  .work-title{font-size:1.25rem;}
+  .work-desc{font-size:0.95rem;}
+
+  .contact-grid{grid-template-columns:1fr;gap:1.6rem;}
+  .contact-desc{font-size:1.02rem;max-width:none;}
+  .btn-light{font-size:1rem;padding:0.95rem 1.8rem;}
+  .contact-card{display:none;}
+  .contact-email-mobile{
+    display:block;margin-top:1.4rem;font-size:0.95rem;color:#aeb8c2;
+    text-decoration:none;word-break:break-all;
+  }
+  .contact-email-mobile:hover{color:#fff;}
+
+  footer{flex-direction:column;gap:0.6rem;text-align:center;padding:2rem 1.5rem;}
+}
+
+@media(max-width:380px){
+  .hero-meta{gap:1.3rem 0.8rem;}
+  .meta-value{font-size:1.8rem;}
+  .hero-actions{flex-direction:column;width:100%;}
+  .hero-actions .btn-primary,.hero-actions .hero-secondary{width:100%;text-align:center;}
 }
 </style>
 </head>
@@ -224,11 +338,14 @@ footer{padding:2.2rem 3.5rem;background:var(--ink);color:#7b8794;display:flex;ju
 
 <nav>
   <a href="#" class="logo">Chahira Grimes</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#sample">Sample Work</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#work">Approach</a></li>
-    <li><a href="selected-work.html" target="_blank" rel="noopener">Sample Work</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#contact" class="nav-cta">Get in touch</a></li>
   </ul>
 </nav>
@@ -236,11 +353,11 @@ footer{padding:2.2rem 3.5rem;background:var(--ink);color:#7b8794;display:flex;ju
 <section class="hero">
   <div class="hero-inner">
   <p class="hero-eyebrow">Executive Operations · International Sourcing · Project Coordination</p>
-  <h1 class="hero-name">Senior operations professional with global reach.</h1>
-  <p class="hero-sub">Eighteen years supporting executives and running operations across Europe, North America, and the Middle East — executive support, project coordination, international sourcing, and systems design. I bring structure, discretion, and follow-through to work where the details matter.</p>
+  <h1 class="hero-name">Keeping complex executive operations moving across borders.</h1>
+  <p class="hero-sub">From executive operations and international sourcing to multi-country travel and project coordination, I build systems that keep complex work moving. Eighteen years across Europe, North America, and the Middle East, where precision and discretion matter.</p>
   <div class="hero-actions">
-    <a href="#contact" class="btn-primary">Get in touch</a>
-    <a href="#experience" class="btn-text">View experience →</a>
+    <a href="#sample" class="btn-primary">See a sample deliverable →</a>
+    <a href="#contact" class="btn-text hero-secondary">Get in touch</a>
   </div>
   <div class="hero-meta">
     <div class="meta-item"><span class="meta-value">18</span><span class="meta-label">Years of experience</span></div>
@@ -251,33 +368,25 @@ footer{padding:2.2rem 3.5rem;background:var(--ink);color:#7b8794;display:flex;ju
   </div>
 </section>
 
-<section class="about reveal" id="about">
-  <div class="section-inner about-grid">
-    <div class="about-text">
-      <p class="kicker">About</p>
-      <h2 class="section-title">An operations professional with broad range.</h2>
-      <p>My career began in Algeria in executive and administrative roles, and has since spanned Turkey, the Gulf, and international project work across Europe, North America, and the Middle East. Throughout, the core of my work has stayed the same: keeping complex, demanding environments organized, accountable, and moving forward.</p>
-      <p>Alongside that, I've worked across international sourcing for senior principals, CRM and workflow systems, multi-region logistics, and four languages. <strong>These aren't separate paths — they're what eighteen years in operations actually looks like.</strong></p>
-      <p>What executives rely on is consistent: clear judgment, complete discretion, and work that is finished properly before it leaves my hands.</p>
-      <div class="langs">
-        <span class="lang-pill">English</span>
-        <span class="lang-pill">French</span>
-        <span class="lang-pill">Arabic</span>
-        <span class="lang-pill">Turkish</span>
-        <span class="lang-pill" style="opacity:0.6;">Spanish · elementary</span>
-        <span class="lang-pill" style="opacity:0.6;">German · elementary</span>
+<section class="sample reveal" id="sample">
+  <div class="section-inner sample-grid">
+    <div class="sample-copy">
+      <p class="kicker">Selected Work</p>
+      <h2 class="section-title">A sample of the work, not a description of it.</h2>
+      <p class="sample-lead">Representative of the executive-level planning and coordination I regularly produce: a multi-destination brief spanning travel, stays, dining, and the operational layer behind them, verified and confirmed end to end.</p>
+      <a href="selected-work.html" target="_blank" rel="noopener" class="btn-primary">View the full deliverable →</a>
+      <p class="sample-foot">Real venues, illustrative composition. Details anonymised for confidentiality.</p>
+    </div>
+    <a class="deck-preview" href="selected-work.html" target="_blank" rel="noopener" aria-label="Open the sample deliverable in a new tab">
+      <div class="dp-top">
+        <span class="dp-eyebrow">A Seven-Day Journey</span>
+        <span class="dp-region">Paris · French Riviera · Venice</span>
       </div>
-    </div>
-    <div class="cred-card">
-      <div class="cred-title">CERTIFICATIONS & CREDENTIALS</div>
-      <div class="cred-row"><span class="cred-dot"></span>Certificate in Project Management</div>
-      <div class="cred-row"><span class="cred-dot"></span>Customer Relationship Management</div>
-      <div class="cred-row"><span class="cred-dot"></span>Certificate in Export Compliance</div>
-      <div class="cred-row"><span class="cred-dot"></span>TESOL / TEFL Certificate</div>
-      <div class="cred-row"><span class="cred-dot"></span>Diploma in Day Care Management</div>
-      <div class="cred-row"><span class="cred-dot"></span>Early Childhood Education Certificate</div>
-      <div class="cred-row"><span class="cred-dot"></span>BA, Language Interpretation & Translation</div>
-    </div>
+      <div class="dp-chips">
+        <span>All Confirmed</span><span>24/7 Concierge</span><span>Privacy</span><span>Curated</span>
+      </div>
+      <span class="dp-open">Open in a new tab →</span>
+    </a>
   </div>
 </section>
 
@@ -372,8 +481,36 @@ footer{padding:2.2rem 3.5rem;background:var(--ink);color:#7b8794;display:flex;ju
         <p class="work-desc">Nothing is considered done until it's confirmed done, to the right standard. Follow-through is where most things are won or lost.</p>
       </div>
     </div>
-    <p style="margin-top:2rem;font-size:0.9rem;color:var(--soft);font-weight:300;">A fuller portfolio of selected work can be shared on request.</p>
-    <a href="selected-work.html" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;margin-top:1.4rem;">View a sample itinerary →</a>
+  </div>
+</section>
+
+<section class="about reveal" id="about">
+  <div class="section-inner about-grid">
+    <div class="about-text">
+      <p class="kicker">About</p>
+      <h2 class="section-title">An operations professional with broad range.</h2>
+      <p>My career began in Algeria in executive and administrative roles, and has since spanned Turkey, the Gulf, and international project work across Europe, North America, and the Middle East. Throughout, the core of my work has stayed the same: keeping complex, demanding environments organized, accountable, and moving forward.</p>
+      <p>Alongside that, I've worked across international sourcing for senior principals, CRM and workflow systems, multi-region logistics, and four languages. <strong>These aren't separate paths — they're what eighteen years in operations actually looks like.</strong></p>
+      <p>What executives rely on is consistent: clear judgment, complete discretion, and work that is finished properly before it leaves my hands.</p>
+      <div class="langs">
+        <span class="lang-pill">English</span>
+        <span class="lang-pill">French</span>
+        <span class="lang-pill">Arabic</span>
+        <span class="lang-pill">Turkish</span>
+        <span class="lang-pill" style="opacity:0.6;">Spanish · elementary</span>
+        <span class="lang-pill" style="opacity:0.6;">German · elementary</span>
+      </div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-title">CERTIFICATIONS & CREDENTIALS</div>
+      <div class="cred-row"><span class="cred-dot"></span>Certificate in Project Management</div>
+      <div class="cred-row"><span class="cred-dot"></span>Customer Relationship Management</div>
+      <div class="cred-row"><span class="cred-dot"></span>Certificate in Export Compliance</div>
+      <div class="cred-row"><span class="cred-dot"></span>TESOL / TEFL Certificate</div>
+      <div class="cred-row"><span class="cred-dot"></span>Diploma in Day Care Management</div>
+      <div class="cred-row"><span class="cred-dot"></span>Early Childhood Education Certificate</div>
+      <div class="cred-row"><span class="cred-dot"></span>BA, Language Interpretation & Translation</div>
+    </div>
   </div>
 </section>
 
@@ -383,7 +520,8 @@ footer{padding:2.2rem 3.5rem;background:var(--ink);color:#7b8794;display:flex;ju
       <p class="kicker">Get in touch</p>
       <h2 class="contact-title">Contact</h2>
       <p class="contact-desc">For enquiries regarding executive operations, project coordination, sourcing, or related work, you're welcome to reach out directly.</p>
-      <a href="mailto:cliffs.hidden2117@eagreverest.com" class="btn-light">Send a message →</a>
+      <a href="mailto:cliffs.hidden2117@eagreverest.com" class="btn-light">Email me →</a>
+      <a href="mailto:cliffs.hidden2117@eagreverest.com" class="contact-email-mobile">cliffs.hidden2117@eagreverest.com</a>
     </div>
     <div class="contact-card">
       <div class="field">
@@ -413,6 +551,21 @@ const obs = new IntersectionObserver(es=>{
   es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); } });
 }, {threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+navToggle.addEventListener('click', function(){
+  const open = navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', function(){
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+  navToggle.setAttribute('aria-label','Open menu');
+}));
 
 document.getElementById('cf-submit').addEventListener('click', function(){
   const name = document.getElementById('cf-name').value || 'there';
