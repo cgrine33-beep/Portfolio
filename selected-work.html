@@ -38,7 +38,6 @@ body{
 
 h1,h2,h3,.display{font-family:'Poppins',sans-serif;letter-spacing:-0.01em;}
 
-/* ---------- deck mechanics ---------- */
 .deck{position:fixed;inset:0;overflow:hidden;}
 .track{
   display:flex;
@@ -78,7 +77,6 @@ h1,h2,h3,.display{font-family:'Poppins',sans-serif;letter-spacing:-0.01em;}
   background:linear-gradient(to left, var(--bg) 0%, rgba(244,240,231,.45) 14%, rgba(244,240,231,0) 30%);
 }
 
-/* ---------- shared type ---------- */
 .band{
   display:inline-block;align-self:flex-start;
   background:var(--band);color:var(--num);
@@ -98,7 +96,6 @@ h1,h2,h3,.display{font-family:'Poppins',sans-serif;letter-spacing:-0.01em;}
 .stay{font-weight:700;font-size:.97rem;margin-bottom:1.6rem;font-family:'Poppins',sans-serif;}
 .flag{font-family:'Inter',sans-serif;}
 
-/* ---------- timeline ---------- */
 .timeline{display:flex;flex-direction:column;gap:1.45rem;}
 .tl-day{display:grid;grid-template-columns:34px 1fr;gap:1rem;position:relative;}
 .tl-num{
@@ -117,7 +114,6 @@ h1,h2,h3,.display{font-family:'Poppins',sans-serif;letter-spacing:-0.01em;}
 .status{font-weight:600;color:var(--gold);white-space:nowrap;}
 .stars{letter-spacing:-1px;}
 
-/* ---------- feature box ---------- */
 .feature{
   border:1px solid var(--band-edge);border-radius:13px;overflow:hidden;
   background:rgba(221,231,241,.32);max-width:560px;
@@ -127,7 +123,6 @@ h1,h2,h3,.display{font-family:'Poppins',sans-serif;letter-spacing:-0.01em;}
 .feature-row b{font-family:'Poppins',sans-serif;font-weight:600;font-size:.96rem;display:block;margin-bottom:.15rem;}
 .feature-row span{color:var(--muted);font-size:.88rem;}
 
-/* ---------- dining cards ---------- */
 .dine-list{display:flex;flex-direction:column;gap:1rem;max-width:600px;}
 .dine-card{
   border:1px solid var(--line);border-radius:12px;background:var(--card);
@@ -136,7 +131,6 @@ h1,h2,h3,.display{font-family:'Poppins',sans-serif;letter-spacing:-0.01em;}
 .dine-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:.98rem;margin-bottom:.45rem;}
 .dine-desc{color:var(--muted);font-size:.88rem;line-height:1.55;}
 
-/* ---------- notable tables ---------- */
 .notable-grid{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:.5rem;
 }
@@ -146,7 +140,6 @@ h1,h2,h3,.display{font-family:'Poppins',sans-serif;letter-spacing:-0.01em;}
 .nt-stars{margin-bottom:.5rem;}
 .nt-desc{color:var(--muted);font-size:.84rem;line-height:1.5;}
 
-/* ---------- tables ---------- */
 .table-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:.98rem;margin:1.6rem 0 .8rem;}
 .tbl-wrap{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:rgba(255,255,255,.35);}
 table{width:100%;border-collapse:collapse;}
@@ -157,7 +150,6 @@ td .status{font-weight:600;}
 .foot{color:var(--soft);font-size:.86rem;margin-top:1.2rem;}
 .disclaimer{color:var(--soft);font-size:.86rem;margin-top:1.7rem;max-width:62ch;line-height:1.55;}
 
-/* ---------- chrome ---------- */
 .printbtn{
   position:fixed;top:1.4rem;right:1.5rem;z-index:40;
   display:inline-flex;align-items:center;gap:.5rem;
@@ -198,7 +190,6 @@ td .status{font-weight:600;}
 }
 .counter b{color:var(--gold-soft);font-weight:600;}
 
-/* ---------- responsive ---------- */
 @media(max-width:820px){
   body{overflow:auto;}
   .deck{position:static;}
@@ -224,7 +215,6 @@ td .status{font-weight:600;}
   .tbl-wrap{overflow-x:auto;}
 }
 
-/* ---------- print ---------- */
 @media print{
   body{overflow:visible;background:#fff;}
   .deck{position:static;}
@@ -238,88 +228,85 @@ td .status{font-weight:600;}
 </head>
 <body>
 
-<button class="printbtn" onclick="window.print()" aria-label="Print or save as PDF">⤓ Print / PDF</button>
+<button class="printbtn" onclick="window.print()" aria-label="Print or save as PDF">&#8595; Print / PDF</button>
 
 <div class="deck">
   <div class="track" id="track">
 
-    <!-- 01 — COVER -->
     <section class="slide split">
       <div class="pane-text">
         <h1 class="lead">A Seven-Day Journey</h1>
         <p class="framing">Representative of multi-destination travel and arrangements I coordinate on a regular basis; details anonymised for confidentiality.</p>
-        <p class="region">Paris · French Riviera · Venice</p>
+        <p class="region">Paris &middot; French Riviera &middot; Venice</p>
         <p class="subnote">Real venues, illustrative composition.</p>
         <div class="feature">
-          <div class="feature-row"><b>✅ All Confirmed</b><span>Arrangements verified in advance</span></div>
-          <div class="feature-row"><b>🔔 24/7 Concierge</b><span>Support throughout the journey</span></div>
-          <div class="feature-row"><b>🔒 Privacy</b><span>Discretion guaranteed</span></div>
-          <div class="feature-row"><b>✨ Curated</b><span>Experiences tailored to taste</span></div>
+          <div class="feature-row"><b>&#9989; All Confirmed</b><span>Arrangements verified in advance</span></div>
+          <div class="feature-row"><b>&#128276; 24/7 Concierge</b><span>Support throughout the journey</span></div>
+          <div class="feature-row"><b>&#128274; Privacy</b><span>Discretion guaranteed</span></div>
+          <div class="feature-row"><b>&#10024; Curated</b><span>Experiences tailored to taste</span></div>
         </div>
       </div>
       <div class="imgpane feather-left" style="background-image:url('https://images.pexels.com/photos/20413318/pexels-photo-20413318.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
     </section>
 
-    <!-- 02 — PARIS -->
     <section class="slide split">
       <div class="imgpane feather-right" style="background-image:url('https://images.pexels.com/photos/31058041/pexels-photo-31058041.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
       <div class="pane-text">
-        <span class="band">Days 1–3</span>
-        <h2 class="slide-title">Paris 🇫🇷</h2>
-        <p class="stay">Stay: Le Bristol Paris — Rue du Faubourg Saint-Honoré (Oetker Collection)</p>
+        <span class="band">Days 1&ndash;3</span>
+        <h2 class="slide-title">Paris &#127467;&#127479;</h2>
+        <p class="stay">Stay: Le Bristol Paris &mdash; Rue du Faubourg Saint-Honor&eacute; (Oetker Collection)</p>
         <div class="timeline">
           <div class="tl-day">
             <div class="tl-num">1</div>
             <div>
-              <div class="tl-head">Day 1 · Arrival</div>
-              <div class="tl-line"><span class="tl-time">1:00 PM</span> — Arrival, Paris–Charles de Gaulle ✈️</div>
-              <div class="tl-line"><span class="tl-time">1:30 PM</span> — Private transfer to Le Bristol Paris 🚗 <span class="status">✅ Confirmed</span></div>
-              <div class="tl-line"><span class="tl-time">8:00 PM</span> — Dinner at Epicure <span class="stars">⭐⭐⭐</span> (Chef Éric Frechon) <span class="status">✅ Confirmed</span></div>
+              <div class="tl-head">Day 1 &middot; Arrival</div>
+              <div class="tl-line"><span class="tl-time">1:00 PM</span> &mdash; Arrival, Paris&ndash;Charles de Gaulle &#9992;&#65039;</div>
+              <div class="tl-line"><span class="tl-time">1:30 PM</span> &mdash; Private transfer to Le Bristol Paris &#128663; <span class="status">&#9989; Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">8:00 PM</span> &mdash; Dinner at Epicure <span class="stars">&#11088;&#11088;&#11088;</span> (Chef &Eacute;ric Frechon) <span class="status">&#9989; Confirmed</span></div>
             </div>
           </div>
           <div class="tl-day">
             <div class="tl-num">2</div>
             <div>
-              <div class="tl-head">Day 2 · Right Bank</div>
-              <div class="tl-line"><span class="tl-time">10:00 AM</span> — Private early-access visit, Musée du Louvre <span class="status">✅ Confirmed</span></div>
-              <div class="tl-line"><span class="tl-time">3:00 PM</span> — Place Vendôme — couture &amp; jewellery appointments arranged</div>
-              <div class="tl-line"><span class="tl-time">6:30 PM</span> — Cocktails, Hemingway Bar, Ritz Paris</div>
+              <div class="tl-head">Day 2 &middot; Right Bank</div>
+              <div class="tl-line"><span class="tl-time">10:00 AM</span> &mdash; Private early-access visit, Mus&eacute;e du Louvre <span class="status">&#9989; Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">3:00 PM</span> &mdash; Place Vend&ocirc;me &mdash; couture &amp; jewellery appointments arranged</div>
+              <div class="tl-line"><span class="tl-time">6:30 PM</span> &mdash; Cocktails, Hemingway Bar, Ritz Paris</div>
             </div>
           </div>
           <div class="tl-day">
             <div class="tl-num">3</div>
             <div>
-              <div class="tl-head">Day 3 · Gastronomy</div>
+              <div class="tl-head">Day 3 &middot; Gastronomy</div>
               <div class="tl-line">Morning at leisure along the Seine</div>
-              <div class="tl-line"><span class="tl-time">8:00 PM</span> — Dinner at Le Cinq <span class="stars">⭐⭐⭐</span> (Four Seasons Hotel George V, Chef Christian Le Squer) <span class="status">✅ Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">8:00 PM</span> &mdash; Dinner at Le Cinq <span class="stars">&#11088;&#11088;&#11088;</span> (Four Seasons Hotel George V, Chef Christian Le Squer) <span class="status">&#9989; Confirmed</span></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 03 — FRENCH RIVIERA -->
     <section class="slide split">
       <div class="pane-text">
-        <span class="band">Days 4–5</span>
-        <h2 class="slide-title">French Riviera 🌊</h2>
-        <p class="stay">Stay: Grand-Hôtel du Cap-Ferrat, A Four Seasons Hotel — Saint-Jean-Cap-Ferrat</p>
+        <span class="band">Days 4&ndash;5</span>
+        <h2 class="slide-title">French Riviera &#127754;</h2>
+        <p class="stay">Stay: Grand-H&ocirc;tel du Cap-Ferrat, A Four Seasons Hotel &mdash; Saint-Jean-Cap-Ferrat</p>
         <div class="timeline">
           <div class="tl-day">
             <div class="tl-num">1</div>
             <div>
-              <div class="tl-head">Day 4 · To the Coast</div>
-              <div class="tl-line"><span class="tl-time">9:30 AM</span> — Private transfer to airport; flight Paris → Nice (approx. 1h25) ✈️ <span class="status">✅ Confirmed</span></div>
-              <div class="tl-line"><span class="tl-time">12:30 PM</span> — Coastal transfer to the Cap-Ferrat peninsula 🚗</div>
+              <div class="tl-head">Day 4 &middot; To the Coast</div>
+              <div class="tl-line"><span class="tl-time">9:30 AM</span> &mdash; Private transfer to airport; flight Paris &rarr; Nice (approx. 1h25) &#9992;&#65039; <span class="status">&#9989; Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">12:30 PM</span> &mdash; Coastal transfer to the Cap-Ferrat peninsula &#128663;</div>
               <div class="tl-line">Evening at leisure on the terrace overlooking the Mediterranean</div>
             </div>
           </div>
           <div class="tl-day">
             <div class="tl-num">2</div>
             <div>
-              <div class="tl-head">Day 5 · Coast &amp; Sea</div>
-              <div class="tl-line"><span class="tl-time">10:00 AM</span> — Private boat day along the Cap 🛥 <span class="status">✅ Confirmed</span></div>
-              <div class="tl-line"><span class="tl-time">1:00 PM</span> — Lunch at Hôtel du Cap-Eden-Roc, Antibes <span class="status">✅ Confirmed</span></div>
+              <div class="tl-head">Day 5 &middot; Coast &amp; Sea</div>
+              <div class="tl-line"><span class="tl-time">10:00 AM</span> &mdash; Private boat day along the Cap &#128676; <span class="status">&#9989; Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">1:00 PM</span> &mdash; Lunch at H&ocirc;tel du Cap-Eden-Roc, Antibes <span class="status">&#9989; Confirmed</span></div>
               <div class="tl-line">Afternoon spa; dinner at the hotel</div>
             </div>
           </div>
@@ -328,36 +315,35 @@ td .status{font-weight:600;}
       <div class="imgpane feather-left" style="background-image:url('https://images.pexels.com/photos/32486469/pexels-photo-32486469.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
     </section>
 
-    <!-- 04 — VENICE -->
     <section class="slide split">
       <div class="pane-text">
-        <span class="band">Days 6–8</span>
-        <h2 class="slide-title">Venice 🇮🇹</h2>
-        <p class="stay">Stay: Aman Venice — Palazzo Papadopoli, Grand Canal</p>
+        <span class="band">Days 6&ndash;8</span>
+        <h2 class="slide-title">Venice &#127470;&#127481;</h2>
+        <p class="stay">Stay: Aman Venice &mdash; Palazzo Papadopoli, Grand Canal</p>
         <div class="timeline">
           <div class="tl-day">
             <div class="tl-num">1</div>
             <div>
-              <div class="tl-head">Day 6 · Arrival</div>
-              <div class="tl-line"><span class="tl-time">11:00 AM</span> — Flight Nice → Venice (approx. 1h20) ✈️</div>
-              <div class="tl-line"><span class="tl-time">1:00 PM</span> — Private water taxi across the lagoon 🛶 <span class="status">✅ Confirmed</span></div>
-              <div class="tl-line"><span class="tl-time">8:30 PM</span> — Dinner at Arva, the hotel's restaurant <span class="status">✅ Confirmed</span></div>
+              <div class="tl-head">Day 6 &middot; Arrival</div>
+              <div class="tl-line"><span class="tl-time">11:00 AM</span> &mdash; Flight Nice &rarr; Venice (approx. 1h20) &#9992;&#65039;</div>
+              <div class="tl-line"><span class="tl-time">1:00 PM</span> &mdash; Private water taxi across the lagoon &#128758; <span class="status">&#9989; Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">8:30 PM</span> &mdash; Dinner at Arva, the hotel's restaurant <span class="status">&#9989; Confirmed</span></div>
             </div>
           </div>
           <div class="tl-day">
             <div class="tl-num">2</div>
             <div>
-              <div class="tl-head">Day 7 · The Floating City</div>
-              <div class="tl-line"><span class="tl-time">9:30 AM</span> — Chef-led visit to the Rialto Market 🍽 <span class="status">✅ Confirmed</span></div>
-              <div class="tl-line">Afternoon at St Mark's; optional performance at La Fenice 🎭</div>
-              <div class="tl-line"><span class="tl-time">8:00 PM</span> — Farewell dinner, Club del Doge at The Gritti Palace <span class="status">⏳ Requested</span></div>
+              <div class="tl-head">Day 7 &middot; The Floating City</div>
+              <div class="tl-line"><span class="tl-time">9:30 AM</span> &mdash; Chef-led visit to the Rialto Market &#127869;&#65039; <span class="status">&#9989; Confirmed</span></div>
+              <div class="tl-line">Afternoon at St Mark's; optional performance at La Fenice &#127917;</div>
+              <div class="tl-line"><span class="tl-time">8:00 PM</span> &mdash; Farewell dinner, Club del Doge at The Gritti Palace <span class="status">&#8987; Requested</span></div>
             </div>
           </div>
           <div class="tl-day">
             <div class="tl-num">3</div>
             <div>
-              <div class="tl-head">Day 8 · Departure</div>
-              <div class="tl-line"><span class="tl-time">11:00 AM</span> — Private water transfer to Marco Polo airport ✈️ <span class="status">✅ Confirmed</span></div>
+              <div class="tl-head">Day 8 &middot; Departure</div>
+              <div class="tl-line"><span class="tl-time">11:00 AM</span> &mdash; Private water transfer to Marco Polo airport &#9992;&#65039; <span class="status">&#9989; Confirmed</span></div>
             </div>
           </div>
         </div>
@@ -365,77 +351,74 @@ td .status{font-weight:600;}
       <div class="imgpane feather-left" style="background-image:url('https://images.pexels.com/photos/34121991/pexels-photo-34121991.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
     </section>
 
-    <!-- 05 — SIGNATURE DINING -->
     <section class="slide split">
       <div class="pane-text">
         <span class="band">Signature Dining</span>
-        <h2 class="slide-title">The Tables at the Heart of the Journey 🍽</h2>
+        <h2 class="slide-title">The Tables at the Heart of the Journey &#127869;&#65039;</h2>
         <div class="dine-list" style="margin-top:1.2rem;">
           <div class="dine-card">
-            <div class="dine-name">Epicure — Le Bristol Paris <span class="stars">⭐⭐⭐</span></div>
-            <div class="dine-desc">Chef Éric Frechon's celebrated dining room, opening onto the hotel's private courtyard garden. Lunch 12:30–14:00 · Dinner 19:30–22:00.</div>
+            <div class="dine-name">Epicure &mdash; Le Bristol Paris <span class="stars">&#11088;&#11088;&#11088;</span></div>
+            <div class="dine-desc">Chef &Eacute;ric Frechon's celebrated dining room, opening onto the hotel's private courtyard garden. Lunch 12:30&ndash;14:00 &middot; Dinner 19:30&ndash;22:00.</div>
           </div>
           <div class="dine-card">
-            <div class="dine-name">Le Cinq — Four Seasons Hotel George V <span class="stars">⭐⭐⭐</span></div>
+            <div class="dine-name">Le Cinq &mdash; Four Seasons Hotel George V <span class="stars">&#11088;&#11088;&#11088;</span></div>
             <div class="dine-desc">Chef Christian Le Squer's three-star room, set among the hotel's iconic floral displays. Dinner from 19:00.</div>
           </div>
           <div class="dine-card">
-            <div class="dine-name">Arva — Aman Venice</div>
-            <div class="dine-desc">Refined Italian dining inside Palazzo Papadopoli, focused on local, seasonal Venetian produce. Lunch 12:30–15:00 · Dinner 19:00–22:00.</div>
+            <div class="dine-name">Arva &mdash; Aman Venice</div>
+            <div class="dine-desc">Refined Italian dining inside Palazzo Papadopoli, focused on local, seasonal Venetian produce. Lunch 12:30&ndash;15:00 &middot; Dinner 19:00&ndash;22:00.</div>
           </div>
         </div>
       </div>
       <div class="imgpane feather-left" style="background-image:url('https://images.pexels.com/photos/30469688/pexels-photo-30469688.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
     </section>
 
-    <!-- 06 — NOTABLE TABLES -->
     <section class="slide full">
       <div class="pane-wide">
-        <h2 class="slide-title">Notable Tables En Route ✨</h2>
+        <h2 class="slide-title">Notable Tables En Route &#10024;</h2>
         <p class="framing" style="max-width:60ch;margin-bottom:2rem;">A wider selection of celebrated dining, matched to each destination along the way.</p>
         <div class="notable-grid">
           <div class="nt-card">
             <div class="nt-img" style="background-image:url('https://images.pexels.com/photos/2504911/pexels-photo-2504911.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
-            <div class="nt-name">Le Louis XV – Alain Ducasse · Monaco</div>
-            <div class="nt-stars"><span class="stars">⭐⭐⭐</span></div>
-            <div class="nt-desc">Mediterranean Haute cuisine. ~25 min from Cap-Ferrat. A landmark of the Riviera at the Hôtel de Paris Monte-Carlo.</div>
+            <div class="nt-name">Le Louis XV &ndash; Alain Ducasse &middot; Monaco</div>
+            <div class="nt-stars"><span class="stars">&#11088;&#11088;&#11088;</span></div>
+            <div class="nt-desc">Mediterranean Haute cuisine. ~25 min from Cap-Ferrat. A landmark of the Riviera at the H&ocirc;tel de Paris Monte-Carlo.</div>
           </div>
           <div class="nt-card">
             <div class="nt-img" style="background-image:url('https://images.pexels.com/photos/32486469/pexels-photo-32486469.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
-            <div class="nt-name">Mirazur · Menton</div>
-            <div class="nt-stars"><span class="stars">⭐⭐⭐</span></div>
+            <div class="nt-name">Mirazur &middot; Menton</div>
+            <div class="nt-stars"><span class="stars">&#11088;&#11088;&#11088;</span></div>
             <div class="nt-desc">Creative, garden-to-table. ~50 min along the coast. Chef Mauro Colagreco's terraced restaurant perched above the sea.</div>
           </div>
           <div class="nt-card">
             <div class="nt-img" style="background-image:url('https://images.pexels.com/photos/30469688/pexels-photo-30469688.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
-            <div class="nt-name">Glam — Enrico Bartolini · Venice</div>
-            <div class="nt-stars"><span class="stars">⭐⭐</span></div>
+            <div class="nt-name">Glam &mdash; Enrico Bartolini &middot; Venice</div>
+            <div class="nt-stars"><span class="stars">&#11088;&#11088;</span></div>
             <div class="nt-desc">Creative, Contemporary. Inside Palazzo Venart; Venice's two-star table, inspired by the lagoon and its seasons.</div>
           </div>
           <div class="nt-card">
             <div class="nt-img" style="background-image:url('https://images.pexels.com/photos/34121991/pexels-photo-34121991.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
-            <div class="nt-name">Quadri · Venice</div>
-            <div class="nt-stars"><span class="stars">⭐</span></div>
-            <div class="nt-desc">Modern Venetian cuisine. Overlooking Piazza San Marco — traditional dishes reinterpreted with a contemporary turn.</div>
+            <div class="nt-name">Quadri &middot; Venice</div>
+            <div class="nt-stars"><span class="stars">&#11088;</span></div>
+            <div class="nt-desc">Modern Venetian cuisine. Overlooking Piazza San Marco &mdash; traditional dishes reinterpreted with a contemporary turn.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 07 — AVAILABILITY & RESERVATIONS -->
     <section class="slide full">
       <div class="pane-wide">
         <h2 class="slide-title">Availability &amp; Reservations</h2>
-        <p class="framing" style="max-width:60ch;margin-bottom:.5rem;">The operational layer — what is held, confirmed, or on request.</p>
+        <p class="framing" style="max-width:60ch;margin-bottom:.5rem;">The operational layer &mdash; what is held, confirmed, or on request.</p>
 
         <div class="table-title">Stay Availability</div>
         <div class="tbl-wrap">
           <table>
             <thead><tr><th>Property</th><th>Room Category</th><th>Dates</th><th>Rate (from)</th><th>Status</th></tr></thead>
             <tbody>
-              <tr><td>Le Bristol Paris</td><td>Deluxe Room</td><td>Days 1–3</td><td>€1,500 / night</td><td><span class="status">✅ Confirmed</span></td></tr>
-              <tr><td>Grand-Hôtel du Cap-Ferrat</td><td>Prestige, sea view</td><td>Days 4–5</td><td>€1,400 / night</td><td><span class="status">⏳ On request</span></td></tr>
-              <tr><td>Aman Venice</td><td>Palazzo Stanza</td><td>Days 6–7</td><td>€2,400 / night</td><td><span class="status">✅ Confirmed</span></td></tr>
+              <tr><td>Le Bristol Paris</td><td>Deluxe Room</td><td>Days 1&ndash;3</td><td>&euro;1,500 / night</td><td><span class="status">&#9989; Confirmed</span></td></tr>
+              <tr><td>Grand-H&ocirc;tel du Cap-Ferrat</td><td>Prestige, sea view</td><td>Days 4&ndash;5</td><td>&euro;1,400 / night</td><td><span class="status">&#8987; On request</span></td></tr>
+              <tr><td>Aman Venice</td><td>Palazzo Stanza</td><td>Days 6&ndash;7</td><td>&euro;2,400 / night</td><td><span class="status">&#9989; Confirmed</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -445,11 +428,11 @@ td .status{font-weight:600;}
           <table>
             <thead><tr><th>Venue</th><th>Day</th><th>Time</th><th>Party</th><th>Status</th></tr></thead>
             <tbody>
-              <tr><td>Epicure — Le Bristol</td><td>Day 1</td><td>20:00</td><td>2</td><td><span class="status">✅ Confirmed</span></td></tr>
-              <tr><td>Le Cinq — George V</td><td>Day 3</td><td>20:00</td><td>2</td><td><span class="status">✅ Confirmed</span></td></tr>
-              <tr><td>Hôtel du Cap-Eden-Roc</td><td>Day 5</td><td>13:00</td><td>2</td><td><span class="status">✅ Confirmed</span></td></tr>
-              <tr><td>Arva — Aman Venice</td><td>Day 6</td><td>20:30</td><td>2</td><td><span class="status">✅ Confirmed</span></td></tr>
-              <tr><td>Club del Doge — Gritti Palace</td><td>Day 7</td><td>20:00</td><td>2</td><td><span class="status">⏳ Requested</span></td></tr>
+              <tr><td>Epicure &mdash; Le Bristol</td><td>Day 1</td><td>20:00</td><td>2</td><td><span class="status">&#9989; Confirmed</span></td></tr>
+              <tr><td>Le Cinq &mdash; George V</td><td>Day 3</td><td>20:00</td><td>2</td><td><span class="status">&#9989; Confirmed</span></td></tr>
+              <tr><td>H&ocirc;tel du Cap-Eden-Roc</td><td>Day 5</td><td>13:00</td><td>2</td><td><span class="status">&#9989; Confirmed</span></td></tr>
+              <tr><td>Arva &mdash; Aman Venice</td><td>Day 6</td><td>20:30</td><td>2</td><td><span class="status">&#9989; Confirmed</span></td></tr>
+              <tr><td>Club del Doge &mdash; Gritti Palace</td><td>Day 7</td><td>20:00</td><td>2</td><td><span class="status">&#8987; Requested</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -457,16 +440,15 @@ td .status{font-weight:600;}
       </div>
     </section>
 
-    <!-- 08 — THE STANDARD -->
     <section class="slide split">
       <div class="pane-text">
         <h2 class="slide-title">The Standard</h2>
-        <p class="framing">Every detail planned, verified, and confirmed before arrival — so the journey reads as one seamless experience.</p>
+        <p class="framing">Every detail planned, verified, and confirmed before arrival &mdash; so the journey reads as one seamless experience.</p>
         <div class="feature">
-          <div class="feature-row"><b>✅ All Confirmed</b><span>Arrangements verified and held in advance</span></div>
-          <div class="feature-row"><b>🔔 24/7 Concierge</b><span>Dedicated support throughout the journey</span></div>
-          <div class="feature-row"><b>🔒 Privacy</b><span>Absolute discretion guaranteed</span></div>
-          <div class="feature-row"><b>✨ Curated</b><span>Every experience tailored to taste</span></div>
+          <div class="feature-row"><b>&#9989; All Confirmed</b><span>Arrangements verified and held in advance</span></div>
+          <div class="feature-row"><b>&#128276; 24/7 Concierge</b><span>Dedicated support throughout the journey</span></div>
+          <div class="feature-row"><b>&#128274; Privacy</b><span>Absolute discretion guaranteed</span></div>
+          <div class="feature-row"><b>&#10024; Curated</b><span>Every experience tailored to taste</span></div>
         </div>
         <p class="disclaimer">Sample deliverable. Destinations and venues are real; the composition is illustrative and does not represent any client's actual travel.</p>
       </div>
@@ -476,8 +458,8 @@ td .status{font-weight:600;}
   </div>
 </div>
 
-<button class="nav-arrow nav-prev" id="prev" aria-label="Previous slide">‹</button>
-<button class="nav-arrow nav-next" id="next" aria-label="Next slide">›</button>
+<button class="nav-arrow nav-prev" id="prev" aria-label="Previous slide">&lsaquo;</button>
+<button class="nav-arrow nav-next" id="next" aria-label="Next slide">&rsaquo;</button>
 
 <div class="dots" id="dots"></div>
 <div class="counter"><b id="cur">01</b> / 08</div>
@@ -516,7 +498,6 @@ td .status{font-weight:600;}
     if(e.key==='ArrowLeft'||e.key==='PageUp'){go(i-1);}
   });
 
-  // touch swipe (desktop deck only; mobile scrolls vertically)
   var x0=null;
   track.addEventListener('touchstart',function(e){if(window.innerWidth>820)x0=e.touches[0].clientX;},{passive:true});
   track.addEventListener('touchend',function(e){
