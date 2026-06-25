@@ -3,578 +3,531 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chahira Grimes — Executive Operations</title>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Selected Work — Sample Deliverable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 
 :root{
-  --bg:#fbfaf8;
-  --bg2:#f0ece6;
-  --ink:#1a1d23;
-  --slate:#42454d;
-  --soft:#6b6f78;
-  --line:#e6e0d8;
-  --line2:#d6cec3;
-  --accent:#b5683c;
-  --accent2:#2d6a6a;
-  --accent-soft:#f4e9e1;
+  --bg:#f4f0e7;
+  --bg-warm:#f6f2ea;
+  --ink:#1b1b1b;
+  --muted:#6d6d6d;
+  --soft:#8a8a8a;
+  --band:#dde7f1;
+  --band-edge:#cbd7e5;
+  --num:#5d6b7c;
+  --gold:#8c6c3a;
+  --gold-soft:#b8923f;
+  --accent:#b89542;
+  --line:#e4ddd0;
+  --card:#ffffff;
 }
 
-html{scroll-behavior:smooth;}
+html{height:100%;}
 body{
   font-family:'Inter',sans-serif;
   background:var(--bg);
   color:var(--ink);
-  font-weight:400;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
-}
-
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:1.4rem 3.5rem;
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--line);
-}
-.logo{
-  font-family:'Newsreader',serif;
-  font-size:1.25rem;
-  letter-spacing:-0.01em;
-  color:var(--ink);
-  text-decoration:none;
-  font-weight:500;
-}
-.nav-links{display:flex;gap:2.4rem;list-style:none;align-items:center;}
-.nav-links a{
-  font-size:0.8rem;letter-spacing:0.01em;
-  color:var(--slate);text-decoration:none;transition:color .2s;font-weight:400;
-}
-.nav-links a:hover{color:var(--accent);}
-.nav-cta{
-  font-size:0.78rem;
-  color:#fff !important;
-  background:var(--ink);
-  padding:0.55rem 1.2rem;
-  border-radius:4px;
-  transition:background .2s !important;
-}
-.nav-cta:hover{background:var(--accent) !important;}
-
-.nav-toggle{
-  display:none;flex-direction:column;justify-content:center;gap:5px;
-  width:34px;height:34px;background:none;border:none;cursor:pointer;padding:0;
-}
-.nav-toggle span{display:block;height:2px;width:22px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s;}
-.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-toggle.open span:nth-child(2){opacity:0;}
-.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-.hero{
-  min-height:88vh;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:9rem 3.5rem 4rem;
-  position:relative;
   overflow:hidden;
 }
-.hero::before{
-  content:'';
-  position:absolute;top:-20%;right:-10%;
-  width:650px;height:650px;border-radius:50%;
-  background:radial-gradient(circle at 40% 40%, rgba(181,104,60,0.14) 0%, transparent 65%);
-  pointer-events:none;
-}
-.hero::after{
-  content:'';
-  position:absolute;bottom:-25%;left:-12%;
-  width:520px;height:520px;border-radius:50%;
-  background:radial-gradient(circle at 60% 60%, rgba(45,106,106,0.10) 0%, transparent 65%);
-  pointer-events:none;
-}
-.hero-inner{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:1;}
-.hero-eyebrow{
-  font-size:0.8rem;letter-spacing:0.04em;
-  color:var(--accent);margin-bottom:1.4rem;font-weight:500;
-}
-.hero-name{
-  font-family:'Newsreader',serif;
-  font-size:clamp(2.6rem,5.5vw,4.4rem);
-  font-weight:400;
-  line-height:1.08;
-  letter-spacing:-0.015em;
-  margin-bottom:1.8rem;
-  max-width:20ch;
-}
-.hero-sub{
-  font-size:1.12rem;
-  color:var(--slate);
-  max-width:62ch;
-  margin-bottom:2.8rem;
-  font-weight:300;
-  line-height:1.7;
-}
-.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;}
-.btn-primary{
-  font-size:0.85rem;font-weight:500;
-  color:#fff;background:var(--ink);
-  padding:0.85rem 1.7rem;border-radius:4px;
-  text-decoration:none;transition:background .2s;
-}
-.btn-primary:hover{background:var(--accent);}
-.btn-text{
-  font-size:0.85rem;font-weight:500;color:var(--slate);
-  text-decoration:none;transition:color .2s;
-}
-.btn-text:hover{color:var(--accent);}
 
-.hero-meta{
-  display:flex;gap:3rem;flex-wrap:wrap;
-  margin-top:3.5rem;padding-top:2.2rem;border-top:1px solid var(--line);
-}
-.meta-item{display:flex;flex-direction:column;gap:0.25rem;}
-.meta-value{font-family:'Newsreader',serif;font-size:1.6rem;color:var(--ink);font-weight:500;line-height:1;}
-.meta-label{font-size:0.74rem;color:var(--soft);}
+h1,h2,h3,.display{font-family:'Poppins',sans-serif;letter-spacing:-0.01em;}
 
-section{padding:5.5rem 3.5rem;}
-.section-inner{max-width:1180px;margin:0 auto;}
-.kicker{
-  font-size:0.78rem;letter-spacing:0.02em;
-  color:var(--accent);margin-bottom:0.9rem;font-weight:600;
+/* ---------- deck mechanics ---------- */
+.deck{position:fixed;inset:0;overflow:hidden;}
+.track{
+  display:flex;
+  height:100%;
+  width:800vw;
+  transform:translateX(calc(var(--i,0) * -100vw));
+  transition:transform .62s cubic-bezier(.76,0,.24,1);
 }
-.section-title{
-  font-family:'Newsreader',serif;
-  font-size:clamp(1.7rem,2.8vw,2.4rem);
-  font-weight:400;
-  letter-spacing:-0.01em;
-  margin-bottom:2.4rem;
-  line-height:1.2;
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;
+  position:relative;
+  display:grid;
+  overflow:hidden;
+}
+.split{grid-template-columns:1fr 1fr;}
+.full{grid-template-columns:1fr;}
+
+.pane-text{
+  padding:clamp(2rem,5vw,5.5rem) clamp(1.6rem,4.5vw,5rem);
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:2;
+  overflow-y:auto;
+}
+.pane-wide{
+  padding:clamp(2rem,4.5vw,4.5rem) clamp(1.6rem,5vw,6rem);
+  display:flex;flex-direction:column;justify-content:center;
+  overflow-y:auto;
 }
 
-/* ---- Sample Deliverable (surfaced near top) ---- */
-.sample{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.sample-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:4.5rem;align-items:center;}
-.sample-copy .section-title{margin-bottom:1.4rem;}
-.sample-lead{color:var(--slate);font-size:1.05rem;line-height:1.7;font-weight:300;max-width:52ch;margin-bottom:2rem;}
-.sample-foot{margin-top:1.3rem;font-size:0.8rem;color:var(--soft);font-weight:300;}
-.deck-preview{
-  display:flex;flex-direction:column;gap:1.4rem;
-  background:#fbf7f0;border:1px solid var(--line2);border-radius:12px;
-  padding:2.3rem 2.2rem 1.9rem;text-decoration:none;color:var(--ink);
-  position:relative;overflow:hidden;
-  transition:transform .25s, box-shadow .25s, border-color .25s;
+.imgpane{position:relative;background-size:cover;background-position:center;}
+.imgpane.feather-left::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right, var(--bg) 0%, rgba(244,240,231,.45) 14%, rgba(244,240,231,0) 30%);
 }
-.deck-preview::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
-.deck-preview:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(26,29,35,0.10);border-color:var(--accent);}
-.dp-top{display:flex;flex-direction:column;gap:0.45rem;padding-top:0.3rem;}
-.dp-eyebrow{font-family:'Newsreader',serif;font-size:1.55rem;font-weight:500;color:var(--ink);line-height:1.1;}
-.dp-region{font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-weight:600;}
-.dp-chips{display:flex;flex-wrap:wrap;gap:0.5rem;}
-.dp-chips span{font-size:0.74rem;color:var(--slate);background:#fff;border:1px solid var(--line);border-radius:20px;padding:0.35rem 0.85rem;}
-.dp-open{font-size:0.85rem;font-weight:600;color:var(--accent);margin-top:0.2rem;}
-
-.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:4.5rem;align-items:start;}
-.about-text p{color:var(--slate);font-size:1rem;margin-bottom:1.3rem;max-width:62ch;line-height:1.75;font-weight:300;}
-.about-text p strong{color:var(--ink);font-weight:500;}
-.langs{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:1.6rem;}
-.lang-pill{
-  font-size:0.78rem;font-weight:400;
-  padding:0.4rem 0.85rem;border:1px solid var(--line2);border-radius:4px;
-  background:#fff;color:var(--slate);
+.imgpane.feather-right::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to left, var(--bg) 0%, rgba(244,240,231,.45) 14%, rgba(244,240,231,0) 30%);
 }
-.cred-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:2rem;}
-.cred-title{font-size:0.78rem;font-weight:600;color:var(--ink);letter-spacing:0.02em;margin-bottom:1.2rem;}
-.cred-row{display:flex;align-items:baseline;gap:0.7rem;padding:0.7rem 0;border-bottom:1px solid var(--line);font-size:0.88rem;color:var(--slate);}
-.cred-row:last-child{border-bottom:none;}
-.cred-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
 
-.exp-block{
-  border-top:1px solid var(--line);
-  padding:2.8rem 0;
-  display:grid;grid-template-columns:260px 1fr;gap:3rem;
+/* ---------- shared type ---------- */
+.band{
+  display:inline-block;align-self:flex-start;
+  background:var(--band);color:var(--num);
+  font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:.45rem 1rem;border-radius:7px;margin-bottom:1.2rem;
 }
-.exp-block:last-child{border-bottom:1px solid var(--line);}
-.exp-cat{font-family:'Newsreader',serif;font-size:1.3rem;font-weight:500;color:var(--accent2);margin-bottom:0.6rem;line-height:1.25;}
-.exp-catdesc{font-size:0.85rem;color:var(--soft);line-height:1.6;}
-.role-list{display:flex;flex-direction:column;gap:1.6rem;}
-.role-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.2rem;}
-.role-title{font-size:0.98rem;font-weight:600;color:var(--ink);}
-.role-time{font-size:0.76rem;color:var(--accent);font-weight:500;white-space:nowrap;}
-.role-org{font-size:0.85rem;color:var(--slate);margin-bottom:0.5rem;font-weight:500;}
-.role-desc{font-size:0.9rem;color:var(--soft);line-height:1.65;font-weight:300;}
+.slide-title{
+  font-size:clamp(1.75rem,3.6vw,2.8rem);font-weight:800;line-height:1.06;
+  margin-bottom:.5rem;
+}
+.lead{
+  font-size:clamp(2.2rem,4.2vw,3.3rem);font-weight:800;line-height:1.05;margin-bottom:1.2rem;
+}
+.framing{color:var(--muted);font-size:.93rem;font-weight:400;max-width:46ch;margin-bottom:1.4rem;line-height:1.6;}
+.region{font-weight:700;font-size:1.08rem;margin-bottom:.35rem;font-family:'Poppins',sans-serif;}
+.subnote{color:var(--muted);font-size:.93rem;margin-bottom:1.7rem;}
+.stay{font-weight:700;font-size:.97rem;margin-bottom:1.6rem;font-family:'Poppins',sans-serif;}
+.flag{font-family:'Inter',sans-serif;}
 
-.work{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;}
-.work-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1.8rem;transition:border-color .2s, transform .2s, box-shadow .2s;border-top:3px solid var(--accent);}
-.work-card:hover{border-color:var(--line2);transform:translateY(-3px);box-shadow:0 12px 28px rgba(26,29,35,0.07);}
-.work-cat{font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.02em;margin-bottom:0.9rem;}
-.work-title{font-family:'Newsreader',serif;font-size:1.2rem;font-weight:500;margin-bottom:0.7rem;line-height:1.3;}
-.work-desc{font-size:0.86rem;color:var(--slate);line-height:1.6;font-weight:300;margin-bottom:1.2rem;}
+/* ---------- timeline ---------- */
+.timeline{display:flex;flex-direction:column;gap:1.45rem;}
+.tl-day{display:grid;grid-template-columns:34px 1fr;gap:1rem;position:relative;}
+.tl-num{
+  width:34px;height:34px;border-radius:9px;background:var(--band);
+  color:var(--num);font-weight:600;font-size:.95rem;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.tl-day:not(:last-child)::before{
+  content:'';position:absolute;left:16.5px;top:38px;bottom:-1.45rem;
+  width:1.5px;background:var(--line);
+}
+.tl-head{font-weight:700;font-size:.95rem;margin-bottom:.45rem;font-family:'Poppins',sans-serif;}
+.tl-line{font-size:.9rem;color:#2c2c2c;margin-bottom:.3rem;line-height:1.5;}
+.tl-line:last-child{margin-bottom:0;}
+.tl-time{font-weight:600;color:var(--ink);}
+.status{font-weight:600;color:var(--gold);white-space:nowrap;}
+.stars{letter-spacing:-1px;}
 
-.contact{background:linear-gradient(135deg, #1f2d2d 0%, #1a1d23 100%);color:#fff;}
-.contact .kicker{color:#d99873;}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center;}
-.contact-title{font-family:'Newsreader',serif;font-size:clamp(1.9rem,3vw,2.8rem);font-weight:400;margin-bottom:1.4rem;line-height:1.15;letter-spacing:-0.01em;}
-.contact-desc{color:#aeb8c2;font-size:1rem;max-width:46ch;margin-bottom:2rem;font-weight:300;line-height:1.7;}
-.btn-light{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:500;background:#fff;color:var(--ink);padding:0.85rem 1.7rem;border-radius:4px;text-decoration:none;transition:background .2s;}
-.btn-light:hover{background:var(--accent-soft);}
-.contact-email-mobile{display:none;}
-.contact-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:2rem;}
-.field{margin-bottom:1.2rem;}
-.field label{display:block;font-size:0.74rem;color:#8a96a3;margin-bottom:0.4rem;font-weight:500;}
-.field input,.field textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);border-radius:5px;color:#fff;font-family:'Inter',sans-serif;font-size:0.9rem;padding:0.65rem 0.8rem;outline:none;transition:border-color .2s;}
-.field input:focus,.field textarea:focus{border-color:#d99873;}
-.field textarea{resize:none;height:80px;}
-.field input::placeholder,.field textarea::placeholder{color:#6b7785;}
-.submit-btn{margin-top:0.3rem;background:#fff;border:none;color:var(--ink);font-size:0.82rem;font-weight:600;padding:0.8rem 1.7rem;border-radius:4px;cursor:pointer;transition:background .2s;}
-.submit-btn:hover{background:var(--accent-soft);}
+/* ---------- feature box ---------- */
+.feature{
+  border:1px solid var(--band-edge);border-radius:13px;overflow:hidden;
+  background:rgba(221,231,241,.32);max-width:560px;
+}
+.feature-row{padding:1.05rem 1.4rem;}
+.feature-row:not(:last-child){border-bottom:1px solid var(--band-edge);}
+.feature-row b{font-family:'Poppins',sans-serif;font-weight:600;font-size:.96rem;display:block;margin-bottom:.15rem;}
+.feature-row span{color:var(--muted);font-size:.88rem;}
 
-footer{padding:2.2rem 3.5rem;background:var(--ink);color:#7b8794;display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;border-top:1px solid rgba(255,255,255,0.08);}
+/* ---------- dining cards ---------- */
+.dine-list{display:flex;flex-direction:column;gap:1rem;max-width:600px;}
+.dine-card{
+  border:1px solid var(--line);border-radius:12px;background:var(--card);
+  padding:1.15rem 1.4rem;
+}
+.dine-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:.98rem;margin-bottom:.45rem;}
+.dine-desc{color:var(--muted);font-size:.88rem;line-height:1.55;}
 
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s, transform .6s;}
-.reveal.show{opacity:1;transform:none;}
+/* ---------- notable tables ---------- */
+.notable-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:.5rem;
+}
+.nt-card{}
+.nt-img{height:120px;border-radius:11px;background-size:cover;background-position:center;margin-bottom:.85rem;}
+.nt-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:.94rem;margin-bottom:.25rem;line-height:1.25;}
+.nt-stars{margin-bottom:.5rem;}
+.nt-desc{color:var(--muted);font-size:.84rem;line-height:1.5;}
 
-/* ============================================================
-   MOBILE LAYER — rebuilt to adapt, not compress.
-   Desktop styles above are untouched.
-   ============================================================ */
-@media(max-width:900px){
-  nav{padding:1.1rem 1.4rem;}
-  .nav-toggle{display:flex;}
-  .nav-links{
-    position:absolute;top:100%;left:0;right:0;
-    flex-direction:column;align-items:stretch;gap:0;
-    background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);
-    padding:0.4rem 1.4rem 1.2rem;
-    max-height:0;overflow:hidden;opacity:0;pointer-events:none;
-    transition:max-height .32s ease, opacity .25s ease;
+/* ---------- tables ---------- */
+.table-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:.98rem;margin:1.6rem 0 .8rem;}
+.tbl-wrap{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:rgba(255,255,255,.35);}
+table{width:100%;border-collapse:collapse;}
+th,td{text-align:left;padding:.85rem 1.3rem;font-size:.9rem;}
+th{font-family:'Poppins',sans-serif;font-weight:600;color:var(--ink);font-size:.88rem;border-bottom:1px solid var(--line);}
+tbody tr:not(:last-child) td{border-bottom:1px solid var(--line);}
+td .status{font-weight:600;}
+.foot{color:var(--soft);font-size:.86rem;margin-top:1.2rem;}
+.disclaimer{color:var(--soft);font-size:.86rem;margin-top:1.7rem;max-width:62ch;line-height:1.55;}
+
+/* ---------- chrome ---------- */
+.printbtn{
+  position:fixed;top:1.4rem;right:1.5rem;z-index:40;
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.7);border:1px solid var(--line);
+  color:var(--soft);font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:.55rem .9rem;border-radius:8px;cursor:pointer;backdrop-filter:blur(6px);
+  transition:color .2s,border-color .2s;
+}
+.printbtn:hover{color:var(--ink);border-color:var(--band-edge);}
+
+.nav-arrow{
+  position:fixed;top:50%;transform:translateY(-50%);z-index:40;
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.6);border:1px solid var(--line);
+  color:var(--ink);font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);
+  transition:background .2s,opacity .2s;
+}
+.nav-arrow:hover{background:#fff;}
+.nav-arrow[disabled]{opacity:.25;cursor:default;}
+.nav-prev{left:1.3rem;}
+.nav-next{right:1.3rem;}
+
+.dots{
+  position:fixed;bottom:1.7rem;left:50%;transform:translateX(-50%);z-index:40;
+  display:flex;gap:.5rem;align-items:center;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;background:#d8cfc0;border:none;cursor:pointer;
+  padding:0;transition:width .3s,background .3s;
+}
+.dot.active{width:26px;border-radius:5px;background:var(--accent);}
+
+.counter{
+  position:fixed;bottom:1.6rem;right:1.8rem;z-index:40;
+  font-size:.8rem;color:var(--soft);font-weight:500;letter-spacing:.05em;
+}
+.counter b{color:var(--gold-soft);font-weight:600;}
+
+/* ---------- responsive ---------- */
+@media(max-width:820px){
+  body{overflow:auto;}
+  .deck{position:static;}
+  .track{
+    flex-direction:column;width:100%;height:auto;transform:none !important;
   }
-  .nav-links.open{max-height:420px;opacity:1;pointer-events:auto;}
-  .nav-links a:not(.nav-cta){
-    display:block;padding:0.95rem 0;font-size:1rem;color:var(--ink);
-    border-bottom:1px solid var(--line);
+  .slide{width:100%;height:auto;min-height:100vh;}
+  .split{grid-template-columns:1fr;grid-template-rows:240px 1fr;}
+  .imgpane{min-height:240px;}
+  .imgpane.feather-left::after,.imgpane.feather-right::after{
+    background:linear-gradient(to bottom, rgba(244,240,231,0) 60%, var(--bg) 100%);
   }
-  .nav-links .nav-cta{
-    display:inline-block;margin-top:0.9rem;font-size:0.98rem;
-    padding:0.75rem 1.5rem;text-align:center;
-  }
-
-  .hero{padding:6.5rem 1.5rem 3.2rem;min-height:auto;text-align:center;}
-  .hero-inner{display:flex;flex-direction:column;align-items:center;}
-  .hero-eyebrow{font-size:0.85rem;}
-  .hero-name{font-size:clamp(2rem,8vw,2.9rem);max-width:none;margin-bottom:1.4rem;}
-  .hero-sub{font-size:1.05rem;max-width:none;margin-bottom:2rem;}
-  .hero-actions{justify-content:center;gap:0.8rem;}
-  .btn-primary{font-size:1rem;padding:0.9rem 1.8rem;}
-  .hero-secondary{
-    display:inline-block;font-size:1rem;color:var(--ink);
-    border:1px solid var(--line2);padding:0.9rem 1.8rem;border-radius:4px;
-  }
-  .hero-meta{
-    display:grid;grid-template-columns:1fr 1fr;gap:1.6rem 1rem;
-    width:100%;max-width:360px;margin:2.6rem auto 0;justify-items:center;
-    text-align:center;
-  }
-  .meta-item{align-items:center;gap:0.3rem;}
-  .meta-value{font-size:2rem;}
-  .meta-label{font-size:0.85rem;}
-
-  section{padding:3.6rem 1.5rem;}
-  .section-title{font-size:clamp(1.6rem,6.5vw,2.1rem);margin-bottom:2rem;}
-  .kicker{font-size:0.82rem;}
-
-  .sample-grid{grid-template-columns:1fr;gap:2.2rem;}
-  .sample-lead{font-size:1.05rem;max-width:none;}
-  .sample .btn-primary{display:block;width:100%;text-align:center;font-size:1.02rem;padding:1.05rem 1.7rem;}
-  .deck-preview{padding:1.9rem;}
-  .dp-eyebrow{font-size:1.4rem;}
-
-  .about-grid{grid-template-columns:1fr;gap:2.4rem;}
-  .about-text p{font-size:1.02rem;max-width:none;}
-  .lang-pill{font-size:0.88rem;padding:0.45rem 0.9rem;}
-  .cred-card{padding:1.6rem;}
-  .cred-row{font-size:0.95rem;padding:0.8rem 0;}
-
-  .exp-block{grid-template-columns:1fr;gap:1.4rem;padding:2.4rem 0;}
-  .exp-cat{font-size:1.35rem;}
-  .exp-catdesc{font-size:0.9rem;}
-  .role-list{gap:0;}
-  .role{padding:1.5rem 0;border-top:1px solid var(--line);}
-  .role:first-child{border-top:none;padding-top:0.3rem;}
-  .role-title{font-size:1.05rem;}
-  .role-time{font-size:0.82rem;}
-  .role-org{font-size:0.92rem;}
-  .role-desc{font-size:0.95rem;}
-
-  .work-grid{grid-template-columns:1fr;gap:1.1rem;}
-  .work-card{padding:1.6rem;}
-  .work-title{font-size:1.25rem;}
-  .work-desc{font-size:0.95rem;}
-
-  .contact-grid{grid-template-columns:1fr;gap:1.6rem;}
-  .contact-desc{font-size:1.02rem;max-width:none;}
-  .btn-light{font-size:1rem;padding:0.95rem 1.8rem;}
-  .contact-card{display:none;}
-  .contact-email-mobile{
-    display:block;margin-top:1.4rem;font-size:0.95rem;color:#aeb8c2;
-    text-decoration:none;word-break:break-all;
-  }
-  .contact-email-mobile:hover{color:#fff;}
-
-  footer{flex-direction:column;gap:0.6rem;text-align:center;padding:2rem 1.5rem;}
+  .notable-grid{grid-template-columns:1fr 1fr;}
+  .nav-arrow{display:none;}
+  .dots{display:none;}
+  .counter{position:fixed;}
+  .printbtn{position:absolute;}
+  table{font-size:.85rem;}
+  th,td{padding:.7rem .9rem;}
+}
+@media(max-width:520px){
+  .notable-grid{grid-template-columns:1fr;}
+  .tbl-wrap{overflow-x:auto;}
 }
 
-@media(max-width:380px){
-  .hero-meta{gap:1.3rem 0.8rem;}
-  .meta-value{font-size:1.8rem;}
-  .hero-actions{flex-direction:column;width:100%;}
-  .hero-actions .btn-primary,.hero-actions .hero-secondary{width:100%;text-align:center;}
+/* ---------- print ---------- */
+@media print{
+  body{overflow:visible;background:#fff;}
+  .deck{position:static;}
+  .track{flex-direction:column;width:100%;height:auto;transform:none !important;}
+  .slide{width:100%;height:auto;min-height:auto;page-break-after:always;}
+  .split{grid-template-columns:1.1fr 1fr;}
+  .imgpane{min-height:340px;}
+  .nav-arrow,.dots,.counter,.printbtn{display:none !important;}
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="logo">Chahira Grimes</a>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#sample">Sample Work</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#work">Approach</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
-  </ul>
-</nav>
+<button class="printbtn" onclick="window.print()" aria-label="Print or save as PDF">⤓ Print / PDF</button>
 
-<section class="hero">
-  <div class="hero-inner">
-  <p class="hero-eyebrow">Executive Operations · International Sourcing · Project Coordination</p>
-  <h1 class="hero-name">Keeping complex executive operations moving across borders.</h1>
-  <p class="hero-sub">From executive operations and international sourcing to multi-country travel and project coordination, I build systems that keep complex work moving. Eighteen years across Europe, North America, and the Middle East, where precision and discretion matter.</p>
-  <div class="hero-actions">
-    <a href="#sample" class="btn-primary">See a sample deliverable →</a>
-    <a href="#contact" class="btn-text hero-secondary">Get in touch</a>
-  </div>
-  <div class="hero-meta">
-    <div class="meta-item"><span class="meta-value">18</span><span class="meta-label">Years of experience</span></div>
-    <div class="meta-item"><span class="meta-value">3</span><span class="meta-label">Continents covered</span></div>
-    <div class="meta-item"><span class="meta-value">4</span><span class="meta-label">Languages</span></div>
-    <div class="meta-item"><span class="meta-value">6</span><span class="meta-label">Credentials</span></div>
-  </div>
-  </div>
-</section>
+<div class="deck">
+  <div class="track" id="track">
 
-<section class="sample reveal" id="sample">
-  <div class="section-inner sample-grid">
-    <div class="sample-copy">
-      <p class="kicker">Selected Work</p>
-      <h2 class="section-title">A sample of the work, not a description of it.</h2>
-      <p class="sample-lead">Representative of the executive-level planning and coordination I regularly produce: a multi-destination brief spanning travel, stays, dining, and the operational layer behind them, verified and confirmed end to end.</p>
-      <a href="selected-work.html" target="_blank" rel="noopener" class="btn-primary">View the full deliverable →</a>
-      <p class="sample-foot">Real venues, illustrative composition. Details anonymised for confidentiality.</p>
-    </div>
-    <a class="deck-preview" href="selected-work.html" target="_blank" rel="noopener" aria-label="Open the sample deliverable in a new tab">
-      <div class="dp-top">
-        <span class="dp-eyebrow">A Seven-Day Journey</span>
-        <span class="dp-region">Paris · French Riviera · Venice</span>
-      </div>
-      <div class="dp-chips">
-        <span>All Confirmed</span><span>24/7 Concierge</span><span>Privacy</span><span>Curated</span>
-      </div>
-      <span class="dp-open">Open in a new tab →</span>
-    </a>
-  </div>
-</section>
-
-<section class="reveal" id="experience">
-  <div class="section-inner">
-    <p class="kicker">Experience</p>
-    <h2 class="section-title">Eighteen years, organized by capability.</h2>
-
-    <div class="exp-block">
-      <div>
-        <div class="exp-cat">Executive Operations & Support</div>
-        <div class="exp-catdesc">The support behind senior leadership.</div>
-      </div>
-      <div class="role-list">
-        <div class="role">
-          <div class="role-top"><span class="role-title">Sr. Executive Assistant / PA to Chairman</span><span class="role-time">2023 – Present</span></div>
-          <div class="role-org">FUPS / FUPS Bank</div>
-          <p class="role-desc">High-level executive and personal support to the Chairman across both group entities. Manage executive priorities, day-to-day operations, and projects across teams using structured and AI-assisted tools; handle complex cross-border travel and internal communications; and source rare and high-end items internationally, all with full discretion.</p>
-        </div>
-        <div class="role">
-          <div class="role-top"><span class="role-title">Lead Administrative Assistant · EA to President</span><span class="role-time">2019 – 2022</span></div>
-          <div class="role-org">Honeywell — Turkey, Central Asia & North Africa</div>
-          <p class="role-desc">Executive support to the President and senior leadership. Managed internal communications across the organization, oversaw logistics for townhalls and corporate events, supported HR with work permits and employee engagement, and administered office purchasing and reporting.</p>
-        </div>
-        <div class="role">
-          <div class="role-top"><span class="role-title">Chief Administrative Officer</span><span class="role-time">2006 – 2007</span></div>
-          <div class="role-org">Consolidated Contractors Company — Algiers</div>
-          <p class="role-desc">Senior administrative leadership early in my career, establishing the standard of operational ownership carried through every role since.</p>
+    <!-- 01 — COVER -->
+    <section class="slide split">
+      <div class="pane-text">
+        <h1 class="lead">A Seven-Day Journey</h1>
+        <p class="framing">Representative of multi-destination travel and arrangements I coordinate on a regular basis; details anonymised for confidentiality.</p>
+        <p class="region">Paris · French Riviera · Venice</p>
+        <p class="subnote">Real venues, illustrative composition.</p>
+        <div class="feature">
+          <div class="feature-row"><b>✅ All Confirmed</b><span>Arrangements verified in advance</span></div>
+          <div class="feature-row"><b>🔔 24/7 Concierge</b><span>Support throughout the journey</span></div>
+          <div class="feature-row"><b>🔒 Privacy</b><span>Discretion guaranteed</span></div>
+          <div class="feature-row"><b>✨ Curated</b><span>Experiences tailored to taste</span></div>
         </div>
       </div>
-    </div>
+      <div class="imgpane feather-left" style="background-image:url('https://images.pexels.com/photos/20413318/pexels-photo-20413318.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
+    </section>
 
-    <div class="exp-block">
-      <div>
-        <div class="exp-cat">Project Coordination & Systems</div>
-        <div class="exp-catdesc">Building the structure that makes operations scale.</div>
-      </div>
-      <div class="role-list">
-        <div class="role">
-          <div class="role-top"><span class="role-title">Project Coordinator</span><span class="role-time">2023</span></div>
-          <div class="role-org">Bureau Veritas Consumer Products Services — EMEA & NA</div>
-          <p class="role-desc">Coordinated project activities, timelines, and resources across regions. Built workflow automation and a working CRM in Asana to manage the full customer lifecycle for the sales team. Trained and onboarded cross-functional team members and managed progress reporting.</p>
+    <!-- 02 — PARIS -->
+    <section class="slide split">
+      <div class="imgpane feather-right" style="background-image:url('https://images.pexels.com/photos/31058041/pexels-photo-31058041.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
+      <div class="pane-text">
+        <span class="band">Days 1–3</span>
+        <h2 class="slide-title">Paris 🇫🇷</h2>
+        <p class="stay">Stay: Le Bristol Paris — Rue du Faubourg Saint-Honoré (Oetker Collection)</p>
+        <div class="timeline">
+          <div class="tl-day">
+            <div class="tl-num">1</div>
+            <div>
+              <div class="tl-head">Day 1 · Arrival</div>
+              <div class="tl-line"><span class="tl-time">1:00 PM</span> — Arrival, Paris–Charles de Gaulle ✈️</div>
+              <div class="tl-line"><span class="tl-time">1:30 PM</span> — Private transfer to Le Bristol Paris 🚗 <span class="status">✅ Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">8:00 PM</span> — Dinner at Epicure <span class="stars">⭐⭐⭐</span> (Chef Éric Frechon) <span class="status">✅ Confirmed</span></div>
+            </div>
+          </div>
+          <div class="tl-day">
+            <div class="tl-num">2</div>
+            <div>
+              <div class="tl-head">Day 2 · Right Bank</div>
+              <div class="tl-line"><span class="tl-time">10:00 AM</span> — Private early-access visit, Musée du Louvre <span class="status">✅ Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">3:00 PM</span> — Place Vendôme — couture &amp; jewellery appointments arranged</div>
+              <div class="tl-line"><span class="tl-time">6:30 PM</span> — Cocktails, Hemingway Bar, Ritz Paris</div>
+            </div>
+          </div>
+          <div class="tl-day">
+            <div class="tl-num">3</div>
+            <div>
+              <div class="tl-head">Day 3 · Gastronomy</div>
+              <div class="tl-line">Morning at leisure along the Seine</div>
+              <div class="tl-line"><span class="tl-time">8:00 PM</span> — Dinner at Le Cinq <span class="stars">⭐⭐⭐</span> (Four Seasons Hotel George V, Chef Christian Le Squer) <span class="status">✅ Confirmed</span></div>
+            </div>
+          </div>
         </div>
-        <div class="role">
-          <div class="role-top"><span class="role-title">Custom Data-Management Application</span><span class="role-time">Independent build</span></div>
-          <div class="role-org">Self-directed project</div>
-          <p class="role-desc">Designed and built a web-based application to manage a large contact network, relationship data, and the coordination of ongoing work — handling the full pipeline from data structure through to a working interface.</p>
+      </div>
+    </section>
+
+    <!-- 03 — FRENCH RIVIERA -->
+    <section class="slide split">
+      <div class="pane-text">
+        <span class="band">Days 4–5</span>
+        <h2 class="slide-title">French Riviera 🌊</h2>
+        <p class="stay">Stay: Grand-Hôtel du Cap-Ferrat, A Four Seasons Hotel — Saint-Jean-Cap-Ferrat</p>
+        <div class="timeline">
+          <div class="tl-day">
+            <div class="tl-num">1</div>
+            <div>
+              <div class="tl-head">Day 4 · To the Coast</div>
+              <div class="tl-line"><span class="tl-time">9:30 AM</span> — Private transfer to airport; flight Paris → Nice (approx. 1h25) ✈️ <span class="status">✅ Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">12:30 PM</span> — Coastal transfer to the Cap-Ferrat peninsula 🚗</div>
+              <div class="tl-line">Evening at leisure on the terrace overlooking the Mediterranean</div>
+            </div>
+          </div>
+          <div class="tl-day">
+            <div class="tl-num">2</div>
+            <div>
+              <div class="tl-head">Day 5 · Coast &amp; Sea</div>
+              <div class="tl-line"><span class="tl-time">10:00 AM</span> — Private boat day along the Cap 🛥 <span class="status">✅ Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">1:00 PM</span> — Lunch at Hôtel du Cap-Eden-Roc, Antibes <span class="status">✅ Confirmed</span></div>
+              <div class="tl-line">Afternoon spa; dinner at the hotel</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="imgpane feather-left" style="background-image:url('https://images.pexels.com/photos/32486469/pexels-photo-32486469.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
+    </section>
 
-    <div class="exp-block">
-      <div>
-        <div class="exp-cat">Languages & Education</div>
-        <div class="exp-catdesc">Formal foundation in translation and instruction.</div>
-      </div>
-      <div class="role-list">
-        <div class="role">
-          <div class="role-top"><span class="role-title">Language Instructor (English / CLIL)</span><span class="role-time">2012 – 2019</span></div>
-          <div class="role-org">Çevre Koleji, Birebir İngilizce & others — Istanbul</div>
-          <p class="role-desc">Designed and delivered language instruction across multiple institutions, with certifications in TESOL/TEFL and Early Childhood Education. A BA in Language Interpretation & Translation underpins fluent professional work across four languages.</p>
+    <!-- 04 — VENICE -->
+    <section class="slide split">
+      <div class="pane-text">
+        <span class="band">Days 6–8</span>
+        <h2 class="slide-title">Venice 🇮🇹</h2>
+        <p class="stay">Stay: Aman Venice — Palazzo Papadopoli, Grand Canal</p>
+        <div class="timeline">
+          <div class="tl-day">
+            <div class="tl-num">1</div>
+            <div>
+              <div class="tl-head">Day 6 · Arrival</div>
+              <div class="tl-line"><span class="tl-time">11:00 AM</span> — Flight Nice → Venice (approx. 1h20) ✈️</div>
+              <div class="tl-line"><span class="tl-time">1:00 PM</span> — Private water taxi across the lagoon 🛶 <span class="status">✅ Confirmed</span></div>
+              <div class="tl-line"><span class="tl-time">8:30 PM</span> — Dinner at Arva, the hotel's restaurant <span class="status">✅ Confirmed</span></div>
+            </div>
+          </div>
+          <div class="tl-day">
+            <div class="tl-num">2</div>
+            <div>
+              <div class="tl-head">Day 7 · The Floating City</div>
+              <div class="tl-line"><span class="tl-time">9:30 AM</span> — Chef-led visit to the Rialto Market 🍽 <span class="status">✅ Confirmed</span></div>
+              <div class="tl-line">Afternoon at St Mark's; optional performance at La Fenice 🎭</div>
+              <div class="tl-line"><span class="tl-time">8:00 PM</span> — Farewell dinner, Club del Doge at The Gritti Palace <span class="status">⏳ Requested</span></div>
+            </div>
+          </div>
+          <div class="tl-day">
+            <div class="tl-num">3</div>
+            <div>
+              <div class="tl-head">Day 8 · Departure</div>
+              <div class="tl-line"><span class="tl-time">11:00 AM</span> — Private water transfer to Marco Polo airport ✈️ <span class="status">✅ Confirmed</span></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="imgpane feather-left" style="background-image:url('https://images.pexels.com/photos/34121991/pexels-photo-34121991.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
+    </section>
+
+    <!-- 05 — SIGNATURE DINING -->
+    <section class="slide split">
+      <div class="pane-text">
+        <span class="band">Signature Dining</span>
+        <h2 class="slide-title">The Tables at the Heart of the Journey 🍽</h2>
+        <div class="dine-list" style="margin-top:1.2rem;">
+          <div class="dine-card">
+            <div class="dine-name">Epicure — Le Bristol Paris <span class="stars">⭐⭐⭐</span></div>
+            <div class="dine-desc">Chef Éric Frechon's celebrated dining room, opening onto the hotel's private courtyard garden. Lunch 12:30–14:00 · Dinner 19:30–22:00.</div>
+          </div>
+          <div class="dine-card">
+            <div class="dine-name">Le Cinq — Four Seasons Hotel George V <span class="stars">⭐⭐⭐</span></div>
+            <div class="dine-desc">Chef Christian Le Squer's three-star room, set among the hotel's iconic floral displays. Dinner from 19:00.</div>
+          </div>
+          <div class="dine-card">
+            <div class="dine-name">Arva — Aman Venice</div>
+            <div class="dine-desc">Refined Italian dining inside Palazzo Papadopoli, focused on local, seasonal Venetian produce. Lunch 12:30–15:00 · Dinner 19:00–22:00.</div>
+          </div>
+        </div>
+      </div>
+      <div class="imgpane feather-left" style="background-image:url('https://images.pexels.com/photos/30469688/pexels-photo-30469688.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
+    </section>
+
+    <!-- 06 — NOTABLE TABLES -->
+    <section class="slide full">
+      <div class="pane-wide">
+        <h2 class="slide-title">Notable Tables En Route ✨</h2>
+        <p class="framing" style="max-width:60ch;margin-bottom:2rem;">A wider selection of celebrated dining, matched to each destination along the way.</p>
+        <div class="notable-grid">
+          <div class="nt-card">
+            <div class="nt-img" style="background-image:url('https://images.pexels.com/photos/2504911/pexels-photo-2504911.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+            <div class="nt-name">Le Louis XV – Alain Ducasse · Monaco</div>
+            <div class="nt-stars"><span class="stars">⭐⭐⭐</span></div>
+            <div class="nt-desc">Mediterranean Haute cuisine. ~25 min from Cap-Ferrat. A landmark of the Riviera at the Hôtel de Paris Monte-Carlo.</div>
+          </div>
+          <div class="nt-card">
+            <div class="nt-img" style="background-image:url('https://images.pexels.com/photos/32486469/pexels-photo-32486469.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+            <div class="nt-name">Mirazur · Menton</div>
+            <div class="nt-stars"><span class="stars">⭐⭐⭐</span></div>
+            <div class="nt-desc">Creative, garden-to-table. ~50 min along the coast. Chef Mauro Colagreco's terraced restaurant perched above the sea.</div>
+          </div>
+          <div class="nt-card">
+            <div class="nt-img" style="background-image:url('https://images.pexels.com/photos/30469688/pexels-photo-30469688.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+            <div class="nt-name">Glam — Enrico Bartolini · Venice</div>
+            <div class="nt-stars"><span class="stars">⭐⭐</span></div>
+            <div class="nt-desc">Creative, Contemporary. Inside Palazzo Venart; Venice's two-star table, inspired by the lagoon and its seasons.</div>
+          </div>
+          <div class="nt-card">
+            <div class="nt-img" style="background-image:url('https://images.pexels.com/photos/34121991/pexels-photo-34121991.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+            <div class="nt-name">Quadri · Venice</div>
+            <div class="nt-stars"><span class="stars">⭐</span></div>
+            <div class="nt-desc">Modern Venetian cuisine. Overlooking Piazza San Marco — traditional dishes reinterpreted with a contemporary turn.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 — AVAILABILITY & RESERVATIONS -->
+    <section class="slide full">
+      <div class="pane-wide">
+        <h2 class="slide-title">Availability &amp; Reservations</h2>
+        <p class="framing" style="max-width:60ch;margin-bottom:.5rem;">The operational layer — what is held, confirmed, or on request.</p>
+
+        <div class="table-title">Stay Availability</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Property</th><th>Room Category</th><th>Dates</th><th>Rate (from)</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Le Bristol Paris</td><td>Deluxe Room</td><td>Days 1–3</td><td>€1,500 / night</td><td><span class="status">✅ Confirmed</span></td></tr>
+              <tr><td>Grand-Hôtel du Cap-Ferrat</td><td>Prestige, sea view</td><td>Days 4–5</td><td>€1,400 / night</td><td><span class="status">⏳ On request</span></td></tr>
+              <tr><td>Aman Venice</td><td>Palazzo Stanza</td><td>Days 6–7</td><td>€2,400 / night</td><td><span class="status">✅ Confirmed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-title">Dining Reservations</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Venue</th><th>Day</th><th>Time</th><th>Party</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Epicure — Le Bristol</td><td>Day 1</td><td>20:00</td><td>2</td><td><span class="status">✅ Confirmed</span></td></tr>
+              <tr><td>Le Cinq — George V</td><td>Day 3</td><td>20:00</td><td>2</td><td><span class="status">✅ Confirmed</span></td></tr>
+              <tr><td>Hôtel du Cap-Eden-Roc</td><td>Day 5</td><td>13:00</td><td>2</td><td><span class="status">✅ Confirmed</span></td></tr>
+              <tr><td>Arva — Aman Venice</td><td>Day 6</td><td>20:30</td><td>2</td><td><span class="status">✅ Confirmed</span></td></tr>
+              <tr><td>Club del Doge — Gritti Palace</td><td>Day 7</td><td>20:00</td><td>2</td><td><span class="status">⏳ Requested</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="foot">Illustrative figures for format demonstration; live availability and rates confirmed at booking.</p>
+      </div>
+    </section>
+
+    <!-- 08 — THE STANDARD -->
+    <section class="slide split">
+      <div class="pane-text">
+        <h2 class="slide-title">The Standard</h2>
+        <p class="framing">Every detail planned, verified, and confirmed before arrival — so the journey reads as one seamless experience.</p>
+        <div class="feature">
+          <div class="feature-row"><b>✅ All Confirmed</b><span>Arrangements verified and held in advance</span></div>
+          <div class="feature-row"><b>🔔 24/7 Concierge</b><span>Dedicated support throughout the journey</span></div>
+          <div class="feature-row"><b>🔒 Privacy</b><span>Absolute discretion guaranteed</span></div>
+          <div class="feature-row"><b>✨ Curated</b><span>Every experience tailored to taste</span></div>
+        </div>
+        <p class="disclaimer">Sample deliverable. Destinations and venues are real; the composition is illustrative and does not represent any client's actual travel.</p>
+      </div>
+      <div class="imgpane feather-left" style="background-image:url('https://images.pexels.com/photos/28776071/pexels-photo-28776071.jpeg?auto=compress&cs=tinysrgb&w=1600')"></div>
+    </section>
 
   </div>
-</section>
+</div>
 
-<section class="work reveal" id="work">
-  <div class="section-inner">
-    <p class="kicker">How I Work</p>
-    <h2 class="section-title">The same standard, whatever the task.</h2>
-    <div class="work-grid">
-      <div class="work-card">
-        <div class="work-cat">01 — Understand</div>
-        <h3 class="work-title">Start with the real problem</h3>
-        <p class="work-desc">Every task begins with understanding not just the request, but the standard behind it and what success actually looks like.</p>
-      </div>
-      <div class="work-card">
-        <div class="work-cat">02 — Build structure</div>
-        <h3 class="work-title">Put the right system in place</h3>
-        <p class="work-desc">Whether it's a CRM, a workflow, or a travel plan, I build the structure that makes the work repeatable and reliable rather than improvised.</p>
-      </div>
-      <div class="work-card">
-        <div class="work-cat">03 — Execute with discretion</div>
-        <h3 class="work-title">Handle it quietly and completely</h3>
-        <p class="work-desc">Sensitive work stays confidential, and details are verified before anything moves forward — no assumptions, no loose ends.</p>
-      </div>
-      <div class="work-card">
-        <div class="work-cat">04 — Follow through</div>
-        <h3 class="work-title">Finish properly</h3>
-        <p class="work-desc">Nothing is considered done until it's confirmed done, to the right standard. Follow-through is where most things are won or lost.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<button class="nav-arrow nav-prev" id="prev" aria-label="Previous slide">‹</button>
+<button class="nav-arrow nav-next" id="next" aria-label="Next slide">›</button>
 
-<section class="about reveal" id="about">
-  <div class="section-inner about-grid">
-    <div class="about-text">
-      <p class="kicker">About</p>
-      <h2 class="section-title">An operations professional with broad range.</h2>
-      <p>My career began in Algeria in executive and administrative roles, and has since spanned Turkey, the Gulf, and international project work across Europe, North America, and the Middle East. Throughout, the core of my work has stayed the same: keeping complex, demanding environments organized, accountable, and moving forward.</p>
-      <p>Alongside that, I've worked across international sourcing for senior principals, CRM and workflow systems, multi-region logistics, and four languages. <strong>These aren't separate paths — they're what eighteen years in operations actually looks like.</strong></p>
-      <p>What executives rely on is consistent: clear judgment, complete discretion, and work that is finished properly before it leaves my hands.</p>
-      <div class="langs">
-        <span class="lang-pill">English</span>
-        <span class="lang-pill">French</span>
-        <span class="lang-pill">Arabic</span>
-        <span class="lang-pill">Turkish</span>
-        <span class="lang-pill" style="opacity:0.6;">Spanish · elementary</span>
-        <span class="lang-pill" style="opacity:0.6;">German · elementary</span>
-      </div>
-    </div>
-    <div class="cred-card">
-      <div class="cred-title">CERTIFICATIONS & CREDENTIALS</div>
-      <div class="cred-row"><span class="cred-dot"></span>Certificate in Project Management</div>
-      <div class="cred-row"><span class="cred-dot"></span>Customer Relationship Management</div>
-      <div class="cred-row"><span class="cred-dot"></span>Certificate in Export Compliance</div>
-      <div class="cred-row"><span class="cred-dot"></span>TESOL / TEFL Certificate</div>
-      <div class="cred-row"><span class="cred-dot"></span>Diploma in Day Care Management</div>
-      <div class="cred-row"><span class="cred-dot"></span>Early Childhood Education Certificate</div>
-      <div class="cred-row"><span class="cred-dot"></span>BA, Language Interpretation & Translation</div>
-    </div>
-  </div>
-</section>
-
-<section class="contact reveal" id="contact">
-  <div class="section-inner contact-grid">
-    <div>
-      <p class="kicker">Get in touch</p>
-      <h2 class="contact-title">Contact</h2>
-      <p class="contact-desc">For enquiries regarding executive operations, project coordination, sourcing, or related work, you're welcome to reach out directly.</p>
-      <a href="mailto:cliffs.hidden2117@eagreverest.com" class="btn-light">Email me →</a>
-      <a href="mailto:cliffs.hidden2117@eagreverest.com" class="contact-email-mobile">cliffs.hidden2117@eagreverest.com</a>
-    </div>
-    <div class="contact-card">
-      <div class="field">
-        <label>Name</label>
-        <input type="text" id="cf-name" placeholder="Your name">
-      </div>
-      <div class="field">
-        <label>Email</label>
-        <input type="email" id="cf-email" placeholder="you@email.com">
-      </div>
-      <div class="field">
-        <label>Message</label>
-        <textarea id="cf-message" placeholder="How can I help?"></textarea>
-      </div>
-      <button class="submit-btn" id="cf-submit">Send message</button>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>Chahira Grimes — Executive Operations</span>
-  <span>© 2026</span>
-</footer>
+<div class="dots" id="dots"></div>
+<div class="counter"><b id="cur">01</b> / 08</div>
 
 <script>
-const obs = new IntersectionObserver(es=>{
-  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); } });
-}, {threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+(function(){
+  var track=document.getElementById('track');
+  var total=track.children.length;
+  var i=0;
+  var dotsWrap=document.getElementById('dots');
+  var curEl=document.getElementById('cur');
+  var prev=document.getElementById('prev');
+  var next=document.getElementById('next');
 
-const navToggle = document.getElementById('nav-toggle');
-const navLinks = document.getElementById('nav-links');
-navToggle.addEventListener('click', function(){
-  const open = navLinks.classList.toggle('open');
-  navToggle.classList.toggle('open', open);
-  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', function(){
-  navLinks.classList.remove('open');
-  navToggle.classList.remove('open');
-  navToggle.setAttribute('aria-expanded','false');
-  navToggle.setAttribute('aria-label','Open menu');
-}));
+  for(var d=0;d<total;d++){
+    var b=document.createElement('button');
+    b.className='dot';b.setAttribute('aria-label','Go to slide '+(d+1));
+    (function(n){b.addEventListener('click',function(){go(n);});})(d);
+    dotsWrap.appendChild(b);
+  }
+  var dots=dotsWrap.children;
 
-document.getElementById('cf-submit').addEventListener('click', function(){
-  const name = document.getElementById('cf-name').value || 'there';
-  const email = document.getElementById('cf-email').value || '';
-  const message = document.getElementById('cf-message').value || '';
-  const subject = encodeURIComponent('Enquiry from ' + name);
-  const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-  window.location.href = 'mailto:cliffs.hidden2117@eagreverest.com?subject=' + subject + '&body=' + body;
-});
+  function render(){
+    track.style.setProperty('--i',i);
+    curEl.textContent=String(i+1).padStart(2,'0');
+    for(var k=0;k<dots.length;k++)dots[k].classList.toggle('active',k===i);
+    prev.disabled=(i===0);
+    next.disabled=(i===total-1);
+  }
+  function go(n){i=Math.max(0,Math.min(total-1,n));render();}
+
+  prev.addEventListener('click',function(){go(i-1);});
+  next.addEventListener('click',function(){go(i+1);});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'){go(i+1);}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){go(i-1);}
+  });
+
+  // touch swipe (desktop deck only; mobile scrolls vertically)
+  var x0=null;
+  track.addEventListener('touchstart',function(e){if(window.innerWidth>820)x0=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',function(e){
+    if(x0===null||window.innerWidth<=820)return;
+    var dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>50){go(dx<0?i+1:i-1);}
+    x0=null;
+  },{passive:true});
+
+  render();
+})();
 </script>
 
 </body>
