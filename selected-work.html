@@ -150,17 +150,6 @@ td .status{font-weight:600;}
 .foot{color:var(--soft);font-size:.86rem;margin-top:1.2rem;}
 .disclaimer{color:var(--soft);font-size:.86rem;margin-top:1.7rem;max-width:62ch;line-height:1.55;}
 
-.printbtn{
-  position:fixed;top:1.4rem;right:1.5rem;z-index:40;
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:rgba(255,255,255,.7);border:1px solid var(--line);
-  color:var(--soft);font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;
-  letter-spacing:.12em;text-transform:uppercase;
-  padding:.55rem .9rem;border-radius:8px;cursor:pointer;backdrop-filter:blur(6px);
-  transition:color .2s,border-color .2s;
-}
-.printbtn:hover{color:var(--ink);border-color:var(--band-edge);}
-
 .nav-arrow{
   position:fixed;top:50%;transform:translateY(-50%);z-index:40;
   width:46px;height:46px;border-radius:50%;
@@ -206,7 +195,6 @@ td .status{font-weight:600;}
   .nav-arrow{display:none;}
   .dots{display:none;}
   .counter{position:fixed;}
-  .printbtn{position:absolute;}
   table{font-size:.85rem;}
   th,td{padding:.7rem .9rem;}
 }
@@ -222,13 +210,11 @@ td .status{font-weight:600;}
   .slide{width:100%;height:auto;min-height:auto;page-break-after:always;}
   .split{grid-template-columns:1.1fr 1fr;}
   .imgpane{min-height:340px;}
-  .nav-arrow,.dots,.counter,.printbtn{display:none !important;}
+  .nav-arrow,.dots,.counter{display:none !important;}
 }
 </style>
 </head>
 <body>
-
-<button class="printbtn" onclick="window.print()" aria-label="Print or save as PDF">&#8595; Print / PDF</button>
 
 <div class="deck">
   <div class="track" id="track">
