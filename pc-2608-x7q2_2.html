@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porto Cervo · 20 – 23 August 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #09131E; }
+@keyframes pulseBar {
+  0%,100% { opacity:0.3; transform:scaleY(1); }
+  50%      { opacity:0.8; transform:scaleY(1.2); }
+}
+@media (max-width:720px) {
+  .accom-grid { grid-template-columns:1fr !important; }
+  .day-grid   { grid-template-columns:1fr !important; }
+  .day-photo  { display:none !important; }
+  .hero-content { padding:0 24px 48px !important; }
+  .top-bar      { padding:20px 24px !important; }
+  .sec-pad      { padding-left:24px !important; padding-right:24px !important; }
+  .day-inner    { padding:0 24px 60px !important; }
+}
+::-webkit-scrollbar { width:0; }
+@media print {
+  @page { size:A4 portrait; margin:14mm 16mm; }
+  .no-print { display:none !important; }
+  * { opacity:1 !important; transform:none !important; transition:none !important; }
+  .print-hero { display:none !important; }
+  .print-header { display:block !important; }
+  body { background:#fff !important; }
+  section[data-dark="true"] { background:#f4f4f4 !important; }
+  section[data-dark="true"] * { color:#111 !important; border-color:#ccc !important; }
+  .day-grid   { grid-template-columns:1fr !important; }
+  .day-photo  { display:none !important; }
+  .accom-grid { grid-template-columns:1fr !important; }
+  .event-row  { break-inside:avoid; }
+  .day-section{ break-inside:avoid; }
+}
+</style>
+<script>
+function checkPwd(){
+  var v = document.getElementById('pwd').value;
+  if(v === 'Costasmeralda-sardinia'){
+    sessionStorage.setItem('pc_auth','1');
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('root').style.visibility = 'visible';
+  } else {
+    var e = document.getElementById('err');
+    e.style.opacity = '1';
+    document.getElementById('pwd').value = '';
+    setTimeout(function(){ e.style.opacity = '0'; }, 2500);
+  }
+}
+window.addEventListener('load', function(){
+  if(sessionStorage.getItem('pc_auth') === '1'){
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('root').style.visibility = 'visible';
+  } else {
+    document.getElementById('root').style.visibility = 'hidden';
+    document.getElementById('pwd').focus();
+  }
+});
+</script>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#09131E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;">
+  <div style="width:1px;height:48px;background:linear-gradient(to bottom,transparent,rgba(196,168,130,0.4));margin-bottom:2.5rem;"></div>
+  <div style="font-family:'Cormorant',Georgia,serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:300;font-style:italic;color:#F7F2EA;margin-bottom:0.5rem;text-align:center;">Porto Cervo</div>
+  <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#C4A882;margin-bottom:3rem;text-align:center;">Travel Programme · 20 – 23 August 2026</div>
+  <div style="width:100%;max-width:300px;">
+    <input id="pwd" type="password" placeholder="Access code" autocomplete="off"
+      onkeydown="if(event.key==='Enter'){checkPwd();}"
+      style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(196,168,130,0.3);border-radius:3px;color:#F7F2EA;font-family:'Inter',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;outline:none;text-align:center;letter-spacing:0.05em;"/>
+    <div id="err" style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#92400E;text-align:center;margin-top:0.75rem;min-height:16px;opacity:0;transition:opacity .3s;">Incorrect access code</div>
+    <button type="button" onclick="checkPwd();"
+      style="margin-top:0.75rem;width:100%;background:rgba(196,168,130,0.12);border:1px solid rgba(196,168,130,0.3);border-radius:3px;color:#C4A882;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:0.85rem;cursor:pointer;">
+      Enter
+    </button>
+  </div>
+  <div style="width:1px;height:48px;background:linear-gradient(to top,transparent,rgba(196,168,130,0.4));margin-top:2.5rem;"></div>
+</div>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const IMGS = {
+  hero:      "https://images.unsplash.com/photo-1634405277712-617c29ea436e?w=1800&h=1200&fit=crop&auto=format",
+  coastline: "https://images.unsplash.com/photo-1782053492067-2e1d144b77d3?w=1400&h=900&fit=crop&auto=format",
+  terrace:   "https://images.unsplash.com/photo-1776068040104-4931100c5219?w=900&h=1200&fit=crop&auto=format",
+  yacht:     "https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?w=900&h=1200&fit=crop&auto=format",
+  night:     "https://images.unsplash.com/photo-1781624627362-91f1d2dfb09d?w=900&h=1200&fit=crop&auto=format",
+};
+
+const C = {
+  navy:"#09131E", navyMid:"#112033", parchment:"#F7F2EA", cream:"#EDE8DC",
+  white:"#FFFFFF", ink:"#0D1A24", body:"#3B4A55", muted:"#7A8A94",
+  sand:"#C4A882", gold:"#B8862A", goldPale:"rgba(184,134,42,0.15)",
+  teal:"#4A8FA6", tealPale:"rgba(74,143,166,0.12)",
+  confirm:"#166534", confirmBg:"#DCFCE7", amber:"#92400E", amberBg:"rgba(251,191,36,0.1)",
+};
+
+// ── Icons ────────────────────────────────────────────────────────────────────
+const IMapPin   = () => <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>;
+const IAnchor   = () => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M5 14H2a10 10 0 0 0 20 0h-3"/></svg>;
+const IFork     = () => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>;
+const ICar      = () => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><rect x="9" y="17" width="6" height="4" rx="1"/><path d="M1 11h20"/></svg>;
+const IAlert    = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>;
+const IDownload = () => <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>;
+const IShare    = () => <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>;
+const ICheck    = () => <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>;
+
+// ── Data ─────────────────────────────────────────────────────────────────────
+const DAYS = [
+  {
+    n:20, date:"Wednesday", photo:IMGS.night, photoAlt:"Illuminated cliffside terrace at night over the sea",
+    events:[
+      { time:"–", kind:"transport", title:"Airport Transfer · Arrival", note:"Not yet arranged", status:"pending" },
+      { time:"20:00", kind:"dining", title:"Matsuhisa", venue:"Cala di Volpe", guests:7,
+        note:"Smart casual or formal · Long trousers for gentlemen", status:"confirmed",
+        hasMenu:true, menuUrl:"https://glamorous-assets.ams3.digitaloceanspaces.com/media/documents/Matsuhisa_2025_-_menu.pdf" },
+    ],
+  },
+  {
+    n:21, date:"Thursday", photo:IMGS.terrace, photoAlt:"Terrace with lounge chairs overlooking turquoise sea",
+    events:[
+      { time:"11:30", kind:"transport", title:"Mercedes V-Class", venue:"With chauffeur", status:"confirmed" },
+      { time:"20:00", kind:"dining", title:"Pedri Garden", guests:7, status:"confirmed",
+        hasMenu:true, menuUrl:"https://www.pedriportocervo.com/wp-content/uploads/Pedri-Garden-Menu-2026_3.pdf" },
+    ],
+  },
+  {
+    n:22, date:"Friday", photo:IMGS.yacht, photoAlt:"Aerial view of white superyacht on calm turquoise water",
+    events:[
+      { time:"09:00", kind:"activity", title:"Yacht Tour", venue:"09:00 – 19:00",
+        note:"Awaiting agreement signature & payment", status:"confirmed" },
+      { time:"12:00", kind:"transport", title:"Mercedes V-Class", venue:"With chauffeur",
+        note:"Awaiting payment", status:"confirmed" },
+      { time:"15:00", kind:"dining", title:"Nikki Beach", guests:6, status:"confirmed",
+        hasMenu:true, menuUrl:"https://nikkibeach.com/costa-smeralda/" },
+      { time:"19:30", kind:"dining", title:"Zuma Porto Cervo", guests:6, status:"confirmed", terrace:true,
+        note:"Waitlisted for terrace",
+        hasMenu:true, menuUrl:"https://www.zumarestaurant.com/en/porto-cervo/menu" },
+    ],
+  },
+  {
+    n:23, date:"Sunday", photo:IMGS.coastline, photoAlt:"Coastal town overlooking the blue sea",
+    events:[
+      { time:"–", kind:"transport", title:"Airport Transfer · Departure", note:"Not yet arranged", status:"pending" },
+    ],
+  },
+];
+
+function kindIcon(k) {
+  if (k==="dining")    return <IFork />;
+  if (k==="transport") return <ICar />;
+  return <IAnchor />;
+}
+
+function useOnScreen(ref) {
+  const [v,setV] = useState(false);
+  useEffect(()=>{
+    const obs = new IntersectionObserver(([e])=>{ if(e.isIntersecting) setV(true); },{threshold:0.12});
+    if(ref.current) obs.observe(ref.current);
+    return ()=>obs.disconnect();
+  },[]);
+  return v;
+}
+
+function FadeIn({children, delay=0}) {
+  const ref = useRef(null);
+  const v = useOnScreen(ref);
+  return <div ref={ref} style={{opacity:v?1:0,transform:v?"none":"translateY(22px)",transition:`opacity .7s ease ${delay}s,transform .7s ease ${delay}s`}}>{children}</div>;
+}
+
+function Pill({status}) {
+  const m = { confirmed:{bg:C.confirmBg,color:C.confirm,label:"Confirmed"}, waitlisted:{bg:C.amberBg,color:C.amber,label:"Waitlisted"}, pending:{bg:"rgba(107,114,128,0.1)",color:C.muted,label:"To Arrange"} };
+  const s = m[status];
+  return <span style={{fontFamily:"'Space Mono',monospace",fontSize:"9px",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",padding:"3px 8px",borderRadius:"3px",background:s.bg,color:s.color,flexShrink:0}}>{s.label}</span>;
+}
+
+// ── Hero ─────────────────────────────────────────────────────────────────────
+function Hero() {
+  const [sc,setSc]=useState(0);
+  useEffect(()=>{
+    const fn=()=>setSc(window.scrollY);
+    window.addEventListener("scroll",fn,{passive:true});
+    return ()=>window.removeEventListener("scroll",fn);
+  },[]);
+  return (
+    <section className="print-hero" style={{position:"relative",height:"100vh",overflow:"hidden"}}>
+      <div style={{position:"absolute",inset:0,transform:`translateY(${sc*.35}px)`}}>
+        <img src={IMGS.hero} alt="Sailboats on turquoise Costa Smeralda water" style={{width:"100%",height:"115%",objectFit:"cover",display:"block"}}/>
+      </div>
+      <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom,rgba(9,19,30,0.15) 0%,rgba(9,19,30,0.35) 50%,rgba(9,19,30,0.85) 100%)"}}/>
+      <div className="top-bar" style={{position:"absolute",top:0,left:0,right:0,padding:"28px 48px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        <span style={{fontFamily:"'Space Mono',monospace",fontSize:"10px",letterSpacing:"0.22em",textTransform:"uppercase",color:"rgba(255,255,255,0.55)"}}>Travel Programme</span>
+        <span style={{fontFamily:"'Space Mono',monospace",fontSize:"10px",letterSpacing:"0.16em",textTransform:"uppercase",color:"rgba(255,255,255,0.4)"}}>20 – 23 Aug 2026</span>
+      </div>
+      <div className="hero-content" style={{position:"absolute",bottom:0,left:0,right:0,padding:"0 48px 72px"}}>
+        <div style={{maxWidth:"780px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:"10px",marginBottom:"16px"}}>
+            <div style={{width:"32px",height:"1px",background:C.sand}}/>
+            <span style={{fontFamily:"'Inter',sans-serif",fontSize:"12px",fontWeight:400,letterSpacing:"0.12em",textTransform:"uppercase",color:C.sand}}>Costa Smeralda · Sardinia</span>
+          </div>
+          <h1 style={{fontFamily:"'Cormorant',serif",fontSize:"clamp(4rem,9vw,8rem)",fontWeight:300,fontStyle:"italic",color:C.white,lineHeight:0.95,margin:"0 0 28px",letterSpacing:"-0.01em"}}>Porto<br/>Cervo</h1>
+          <div style={{display:"flex",alignItems:"center",gap:"20px",flexWrap:"wrap"}}>
+            <span style={{fontFamily:"'Inter',sans-serif",fontSize:"13px",fontWeight:300,color:"rgba(255,255,255,0.65)"}}>Hotel Pitrizza, Luxury Collection</span>
+            <span style={{color:"rgba(255,255,255,0.2)"}}>·</span>
+            <span style={{fontFamily:"'Inter',sans-serif",fontSize:"13px",fontWeight:300,color:"rgba(255,255,255,0.65)"}}>7 guests · 3 nights</span>
+          </div>
+        </div>
+      </div>
+      <div style={{position:"absolute",bottom:"28px",right:"48px"}}>
+        <div style={{width:"1px",height:"40px",background:"linear-gradient(to bottom,transparent,rgba(255,255,255,0.3))",animation:"pulseBar 2s ease-in-out infinite"}}/>
+      </div>
+    </section>
+  );
+}
+
+// ── Accommodation ─────────────────────────────────────────────────────────────
+function AccommodationSection() {
+  return (
+    <section data-dark="true" style={{background:C.navy,padding:"96px 48px",position:"relative",overflow:"hidden"}}>
+      <div style={{position:"absolute",inset:0,backgroundImage:`url(${IMGS.coastline})`,backgroundSize:"cover",backgroundPosition:"center",opacity:0.08}}/>
+      <div className="sec-pad" style={{maxWidth:"900px",margin:"0 auto",position:"relative"}}>
+        <FadeIn>
+          <div style={{fontFamily:"'Space Mono',monospace",fontSize:"10px",letterSpacing:"0.2em",textTransform:"uppercase",color:C.teal,marginBottom:"48px"}}>Accommodation</div>
+        </FadeIn>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"64px",alignItems:"start"}} className="accom-grid">
+          <FadeIn delay={0.1}>
+            <h2 style={{fontFamily:"'Cormorant',serif",fontSize:"clamp(1.8rem,3.5vw,2.8rem)",fontWeight:400,color:C.white,lineHeight:1.2,margin:"0 0 8px"}}>Hotel Pitrizza,<br/><em>Luxury Collection</em></h2>
+            <div style={{display:"flex",alignItems:"center",gap:"6px",fontFamily:"'Inter',sans-serif",fontSize:"12px",color:"rgba(255,255,255,0.35)",marginBottom:"40px"}}>
+              <IMapPin/> Costa Smeralda, 07021 Porto Cervo · +39 0789 930111
+            </div>
+            <div style={{display:"flex",flexDirection:"column",gap:"20px"}}>
+              {[
+                {title:"2-Bedroom Pool Casa di Sopra",detail:"Sea view · private pool · sleeps 6",dates:"20 → 23 Aug · 3 nights"},
+                {title:"3× Frontline Sea Room",detail:"Beach access · sea-view terrace",dates:"20 → 23 Aug · 3 nights"},
+              ].map(r=>(
+                <div key={r.title} style={{borderTop:"1px solid rgba(255,255,255,0.08)",paddingTop:"20px"}}>
+                  <div style={{display:"flex",alignItems:"center",gap:"10px",marginBottom:"6px",flexWrap:"wrap"}}>
+                    <span style={{fontFamily:"'Inter',sans-serif",fontWeight:500,fontSize:"14px",color:C.white}}>{r.title}</span>
+                    <Pill status="confirmed"/>
+                  </div>
+                  <div style={{fontFamily:"'Inter',sans-serif",fontSize:"12.5px",color:"rgba(255,255,255,0.4)",fontStyle:"italic"}}>{r.detail}</div>
+                  <div style={{fontFamily:"'Space Mono',monospace",fontSize:"10px",color:C.sand,letterSpacing:"0.06em",marginTop:"4px"}}>{r.dates}</div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div style={{background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"2px",padding:"28px 28px 24px",marginBottom:"16px"}}>
+              <div style={{fontFamily:"'Space Mono',monospace",fontSize:"9px",letterSpacing:"0.2em",textTransform:"uppercase",color:C.teal,marginBottom:"20px"}}>Dress Code</div>
+              <div style={{display:"flex",flexDirection:"column",gap:"14px"}}>
+                {[
+                  {icon:"👔",text:"Smart-casual or formal. Long trousers mandatory. No shorts or beachwear."},
+                  {icon:"👗",text:"Smart-casual or formal. Elegant attire expected. No beachwear."},
+                ].map((d,i)=>(
+                  <div key={i} style={{display:"flex",gap:"12px",fontFamily:"'Inter',sans-serif",fontSize:"13px",color:"rgba(255,255,255,0.55)",lineHeight:1.6}}>
+                    <span style={{flexShrink:0,fontSize:"16px"}}>{d.icon}</span>{d.text}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{display:"flex",gap:"12px",alignItems:"flex-start",background:"rgba(251,191,36,0.06)",border:"1px solid rgba(184,134,42,0.18)",borderRadius:"2px",padding:"18px 20px"}}>
+              <span style={{color:C.gold,flexShrink:0,marginTop:"1px"}}><IAlert/></span>
+              <p style={{fontFamily:"'Inter',sans-serif",fontSize:"12.5px",color:"rgba(255,255,255,0.45)",lineHeight:1.65,margin:0}}>
+                Cancellations must be made at least <strong style={{color:"rgba(255,255,255,0.7)",fontWeight:500}}>24 hours before</strong> each reservation to avoid penalty charges.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Programme Intro ───────────────────────────────────────────────────────────
+function ProgrammeIntro() {
+  return (
+    <section style={{background:C.parchment,padding:"72px 48px 56px",borderBottom:`1px solid ${C.cream}`}}>
+      <div className="sec-pad" style={{maxWidth:"900px",margin:"0 auto"}}>
+        <FadeIn>
+          <div style={{display:"flex",alignItems:"center",gap:"20px"}}>
+            <div style={{fontFamily:"'Space Mono',monospace",fontSize:"10px",letterSpacing:"0.22em",textTransform:"uppercase",color:C.teal}}>Programme</div>
+            <div style={{flex:1,height:"1px",background:C.cream}}/>
+            <div style={{fontFamily:"'Space Mono',monospace",fontSize:"10px",letterSpacing:"0.1em",color:C.muted}}>20 – 22 August 2026</div>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+// ── Day Block ─────────────────────────────────────────────────────────────────
+function DayBlock({day, flip}) {
+  const ref = useRef(null);
+  const v = useOnScreen(ref);
+  return (
+    <section ref={ref} className="day-section" style={{background:C.parchment,opacity:v?1:0,transform:v?"none":"translateY(30px)",transition:"opacity .8s ease,transform .8s ease"}}>
+      <div className="day-inner day-grid" style={{maxWidth:"900px",margin:"0 auto",padding:"0 48px 80px",display:"grid",gridTemplateColumns:flip?"1fr 360px":"360px 1fr",gap:"64px",alignItems:"start"}}>
+
+        {!flip && (
+          <div className="day-photo" style={{position:"sticky",top:"32px",borderRadius:"2px",overflow:"hidden",aspectRatio:"3/4"}}>
+            <img src={day.photo} alt={day.photoAlt} style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}/>
+          </div>
+        )}
+
+        <div>
+          <div style={{display:"flex",alignItems:"baseline",gap:"12px",borderBottom:`1px solid ${C.cream}`,paddingBottom:"20px"}}>
+            <span style={{fontFamily:"'Cormorant',serif",fontSize:"80px",fontWeight:300,color:C.ink,lineHeight:1}}>{day.n}</span>
+            <div>
+              <div style={{fontFamily:"'Cormorant',serif",fontSize:"22px",fontWeight:400,color:C.body,lineHeight:1.2}}>August</div>
+              <div style={{fontFamily:"'Space Mono',monospace",fontSize:"9px",letterSpacing:"0.16em",textTransform:"uppercase",color:C.muted,marginTop:"2px"}}>{day.date}</div>
+            </div>
+          </div>
+          <div>
+            {day.events.map((ev,i)=>(
+              <div key={i} className="event-row" style={{borderBottom:`1px solid ${C.cream}`,padding:"22px 0",display:"grid",gridTemplateColumns:"52px 1fr auto",gap:"0 16px",alignItems:"start"}}>
+                <div style={{fontFamily:"'Space Mono',monospace",fontSize:"11px",color:C.muted,paddingTop:"3px"}}>{ev.time}</div>
+                <div>
+                  <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"4px",flexWrap:"wrap"}}>
+                    <span style={{display:"inline-flex",alignItems:"center",color:C.teal}}>{kindIcon(ev.kind)}</span>
+                    <span style={{fontFamily:"'Inter',sans-serif",fontWeight:600,fontSize:"14px",color:C.ink}}>{ev.title}</span>
+                    {ev.venue && <span style={{fontFamily:"'Inter',sans-serif",fontSize:"13px",color:C.muted}}>· {ev.venue}</span>}
+                    {ev.guests && <span style={{fontFamily:"'Space Mono',monospace",fontSize:"9px",letterSpacing:"0.1em",color:C.muted,textTransform:"uppercase"}}>{ev.guests} guests</span>}
+                  </div>
+                  {ev.note && <p style={{fontFamily:"'Inter',sans-serif",fontSize:"12px",color:ev.terrace?C.amber:C.muted,fontStyle:"italic",lineHeight:1.55,margin:"0 0 6px"}}>{ev.note}</p>}
+                  {ev.hasMenu && ev.menuUrl && (
+                    <a href={ev.menuUrl} target="_blank" rel="noopener noreferrer" style={{fontFamily:"'Inter',sans-serif",fontSize:"11.5px",fontWeight:500,color:C.gold,textDecoration:"none",letterSpacing:"0.02em"}}>View Menu →</a>
+                  )}
+                </div>
+                <div style={{paddingTop:"2px",display:"flex",flexDirection:"column",gap:"6px",alignItems:"flex-end"}}>
+                  <Pill status={ev.status}/>
+                  {ev.terrace && <span style={{fontFamily:"'Space Mono',monospace",fontSize:"9px",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",padding:"3px 8px",borderRadius:"3px",background:C.amberBg,color:C.amber,whiteSpace:"nowrap"}}>Terrace · WL</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {flip && (
+          <div className="day-photo" style={{position:"sticky",top:"32px",borderRadius:"2px",overflow:"hidden",aspectRatio:"3/4"}}>
+            <img src={day.photo} alt={day.photoAlt} style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}/>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+// ── Closing ───────────────────────────────────────────────────────────────────
+function Closing() {
+  return (
+    <section style={{background:C.navy,padding:"80px 48px",position:"relative",overflow:"hidden"}}>
+      <div style={{position:"absolute",inset:0,backgroundImage:`url(${IMGS.coastline})`,backgroundSize:"cover",backgroundPosition:"center 60%",opacity:0.12}}/>
+      <div className="sec-pad" style={{maxWidth:"900px",margin:"0 auto",position:"relative",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:"24px"}}>
+        <div>
+          <div style={{fontFamily:"'Cormorant',serif",fontSize:"clamp(1.4rem,3vw,2rem)",fontWeight:400,fontStyle:"italic",color:C.white,marginBottom:"6px"}}>Hotel Pitrizza, Luxury Collection</div>
+          <div style={{fontFamily:"'Inter',sans-serif",fontSize:"12px",color:"rgba(255,255,255,0.35)",letterSpacing:"0.03em"}}>Porto Cervo · Costa Smeralda · Sardinia</div>
+        </div>
+        <div style={{fontFamily:"'Space Mono',monospace",fontSize:"9px",letterSpacing:"0.2em",textTransform:"uppercase",color:"rgba(255,255,255,0.2)"}}>20 – 23 August 2026</div>
+      </div>
+    </section>
+  );
+}
+
+// ── Floating Actions ──────────────────────────────────────────────────────────
+function FloatingActions() {
+  const [copied,setCopied]=useState(false);
+  const handleShare=async()=>{
+    const url=window.location.href;
+    if(navigator.share){try{await navigator.share({title:"Porto Cervo · Travel Programme",text:"20 – 23 August 2026 · Hotel Pitrizza, Luxury Collection",url});}catch{}}
+    else{await navigator.clipboard.writeText(url);setCopied(true);setTimeout(()=>setCopied(false),2200);}
+  };
+  const btn={display:"flex",alignItems:"center",gap:"7px",padding:"10px 16px",borderRadius:"3px",fontFamily:"'Space Mono',monospace",fontSize:"10px",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",cursor:"pointer",border:"none"};
+  return (
+    <div className="no-print" style={{position:"fixed",bottom:"28px",right:"28px",display:"flex",flexDirection:"column",gap:"8px",zIndex:100}}>
+      <button onClick={handleShare} style={{...btn,background:"rgba(9,19,30,0.88)",backdropFilter:"blur(12px)",color:copied?"#4ade80":"rgba(255,255,255,0.75)",border:"1px solid rgba(255,255,255,0.1)",boxShadow:"0 4px 24px rgba(0,0,0,0.4)"}}>
+        {copied?<ICheck/>:<IShare/>}{copied?"Copied!":"Share"}
+      </button>
+      <button onClick={()=>window.print()} style={{...btn,background:C.navy,color:C.sand,border:"1px solid rgba(196,168,130,0.25)",boxShadow:"0 4px 24px rgba(0,0,0,0.4)"}}>
+        <IDownload/> Save PDF
+      </button>
+    </div>
+  );
+}
+
+// ── Print header ──────────────────────────────────────────────────────────────
+function PrintHeader() {
+  return (
+    <div className="print-header" style={{display:"none",padding:"0 0 20px",borderBottom:"1px solid #ddd",marginBottom:"24px"}}>
+      <div style={{fontFamily:"'Space Mono',monospace",fontSize:"9px",letterSpacing:"0.2em",textTransform:"uppercase",color:"#888",marginBottom:"6px"}}>Travel Programme · Porto Cervo</div>
+      <div style={{fontFamily:"'Cormorant',serif",fontSize:"28px",fontWeight:400,fontStyle:"italic",color:"#111"}}>20 – 23 August 2026</div>
+      <div style={{fontFamily:"'Inter',sans-serif",fontSize:"12px",color:"#555",marginTop:"4px"}}>Hotel Pitrizza, Luxury Collection · Costa Smeralda</div>
+    </div>
+  );
+}
+
+// ── App ───────────────────────────────────────────────────────────────────────
+function App() {
+  return (
+    <React.Fragment>
+      <PrintHeader/>
+      <Hero/>
+      <AccommodationSection/>
+      <ProgrammeIntro/>
+      {DAYS.map((day,i)=><DayBlock key={day.n} day={day} flip={i%2===1}/>)}
+      <Closing/>
+      <FloatingActions/>
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
