@@ -1,5 +1,37 @@
-import { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
-import { ChevronLeft, ChevronRight, Download } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Seven-Day Journey — Paris · French Riviera · Venice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #0C0B09; }
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef, useCallback } = React;
+
+// ── Icons (inline replacements for lucide-react) ────────────────────────────────
+function ChevronLeft({ size = 16, style }) {
+  return (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={style}><path d="m15 18-6-6 6-6" /></svg>);
+}
+function ChevronRight({ size = 16, style }) {
+  return (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={style}><path d="m9 18 6-6-6-6" /></svg>);
+}
+function Download({ size = 16, style }) {
+  return (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={style}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>);
+}
 
 // ── Palette ────────────────────────────────────────────────────────────────────
 const C = {
@@ -15,14 +47,12 @@ const C = {
   line:        "rgba(237,229,204,0.07)",
   lineGold:    "rgba(201,168,76,0.18)",
 };
-
 // ── Fonts ──────────────────────────────────────────────────────────────────────
 const F = {
   display: "'Playfair Display', Georgia, serif",
   body:    "'DM Sans', system-ui, sans-serif",
   mono:    "'DM Mono', monospace",
 };
-
 // ── Photos ─────────────────────────────────────────────────────────────────────
 const P = {
   cover:   "https://images.unsplash.com/photo-1509299349698-dd22323b5963?w=1400&h=900&fit=crop&auto=format",
@@ -32,9 +62,7 @@ const P = {
   dining:  "https://images.unsplash.com/photo-1651977560780-9dd0a6071db6?w=900&h=1400&fit=crop&auto=format",
   closing: "https://images.unsplash.com/photo-1661954864180-e61dea14208a?w=900&h=1400&fit=crop&auto=format",
 };
-
 const TOTAL = 8;
-
 // ── Print styles ───────────────────────────────────────────────────────────────
 const PRINT_STYLES = `
 @media print {
@@ -57,34 +85,30 @@ const PRINT_STYLES = `
 }
 @media screen { .print-deck { display: none !important; } }
 `;
-
 // ── Shared atoms ───────────────────────────────────────────────────────────────
-
-function Label({ children }: { children: ReactNode }) {
+function Label({ children }) {
   return (
     <div style={{
       display: "flex", alignItems: "center", gap: "0.55rem",
       fontFamily: F.mono, fontSize: "0.6rem", letterSpacing: "0.2em",
-      textTransform: "uppercase" as const, color: C.gold, marginBottom: "1rem",
+      textTransform: "uppercase", color: C.gold, marginBottom: "1rem",
     }}>
       <div style={{ width: "20px", height: "1px", background: C.gold, flexShrink: 0 }} />
       {children}
     </div>
   );
 }
-
-function Confirmed({ pending = false }: { pending?: boolean }) {
+function Confirmed({ pending = false }) {
   return (
     <span style={{
       fontFamily: F.mono, fontSize: "0.63rem", letterSpacing: "0.06em",
-      color: pending ? "#8AA87A" : C.gold, fontWeight: 500, whiteSpace: "nowrap" as const,
+      color: pending ? "#8AA87A" : C.gold, fontWeight: 500, whiteSpace: "nowrap",
     }}>
       {pending ? "⏳ Requested" : "✓ Confirmed"}
     </span>
   );
 }
-
-function TlDay({ n, head, lines }: { n: number; head: string; lines: ReactNode[] }) {
+function TlDay({ n, head, lines }) {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "26px 1fr", gap: "0.75rem" }}>
       <div style={{
@@ -108,8 +132,7 @@ function TlDay({ n, head, lines }: { n: number; head: string; lines: ReactNode[]
     </div>
   );
 }
-
-function FeatureRow({ icon, title, sub }: { icon: string; title: string; sub: string }) {
+function FeatureRow({ icon, title, sub }) {
   return (
     <div style={{
       display: "grid", gridTemplateColumns: "28px 1fr", gap: "0.7rem",
@@ -125,8 +148,7 @@ function FeatureRow({ icon, title, sub }: { icon: string; title: string; sub: st
     </div>
   );
 }
-
-function PhotoPane({ src, alt, fade = "right" }: { src: string; alt: string; fade?: "left" | "right" | "bottom" }) {
+function PhotoPane({ src, alt, fade = "right" }) {
   const gradient =
     fade === "right" ? `linear-gradient(to right, ${C.bg} 0%, rgba(12,11,9,0.5) 25%, transparent 55%)` :
     fade === "left"  ? `linear-gradient(to left,  ${C.bg} 0%, rgba(12,11,9,0.5) 25%, transparent 55%)` :
@@ -138,17 +160,15 @@ function PhotoPane({ src, alt, fade = "right" }: { src: string; alt: string; fad
     </div>
   );
 }
-
-function GoldRule({ my = "1rem" }: { my?: string }) {
+function GoldRule({ my = "1rem" }) {
   return <div style={{ height: "1px", background: C.lineGold, margin: `${my} 0` }} />;
 }
-
-function SectionTag({ children }: { children: ReactNode }) {
+function SectionTag({ children }) {
   return (
     <div style={{
       display: "inline-flex", alignItems: "center", gap: "0.4rem",
       fontFamily: F.mono, fontSize: "0.58rem", letterSpacing: "0.2em",
-      textTransform: "uppercase" as const, color: C.gold,
+      textTransform: "uppercase", color: C.gold,
       border: `1px solid ${C.lineGold}`, borderRadius: "3px",
       padding: "0.3rem 0.6rem", marginBottom: "0.9rem",
     }}>
@@ -156,7 +176,6 @@ function SectionTag({ children }: { children: ReactNode }) {
     </div>
   );
 }
-
 // ── Slide 1: Cover ─────────────────────────────────────────────────────────────
 function Slide1() {
   return (
@@ -209,7 +228,6 @@ function Slide1() {
     </div>
   );
 }
-
 // ── Slide 2: Paris ─────────────────────────────────────────────────────────────
 function Slide2() {
   return (
@@ -252,7 +270,6 @@ function Slide2() {
     </div>
   );
 }
-
 // ── Slide 3: French Riviera ────────────────────────────────────────────────────
 function Slide3() {
   return (
@@ -291,7 +308,6 @@ function Slide3() {
     </div>
   );
 }
-
 // ── Slide 4: Venice ────────────────────────────────────────────────────────────
 function Slide4() {
   return (
@@ -333,7 +349,6 @@ function Slide4() {
     </div>
   );
 }
-
 // ── Slide 5: Signature Dining ──────────────────────────────────────────────────
 function Slide5() {
   return (
@@ -385,7 +400,6 @@ function Slide5() {
     </div>
   );
 }
-
 // ── Slide 6: Notable Tables En Route ──────────────────────────────────────────
 function Slide6() {
   const tables = [
@@ -418,7 +432,6 @@ function Slide6() {
       alt: "Venetian canal and historic buildings",
     },
   ];
-
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: C.bg, padding: "2.5rem 4rem" }}>
       <div style={{ marginBottom: "1.5rem" }}>
@@ -455,20 +468,18 @@ function Slide6() {
     </div>
   );
 }
-
 // ── Slide 7: Availability & Reservations ──────────────────────────────────────
 function Slide7() {
-  const thStyle: React.CSSProperties = {
+  const thStyle = {
     fontFamily: F.mono, fontWeight: 500, fontSize: "0.62rem", letterSpacing: "0.14em",
     textTransform: "uppercase", color: C.muted, padding: "0.65rem 0.9rem",
     borderBottom: `1px solid ${C.lineGold}`, textAlign: "left", background: C.surface,
   };
-  const tdStyle: React.CSSProperties = {
+  const tdStyle = {
     fontFamily: F.body, fontWeight: 400, fontSize: "0.76rem",
     color: C.creamSub, padding: "0.65rem 0.9rem", borderBottom: `1px solid ${C.line}`,
   };
-  const tdNameStyle: React.CSSProperties = { ...tdStyle, color: C.cream, fontWeight: 500 };
-
+  const tdNameStyle = { ...tdStyle, color: C.cream, fontWeight: 500 };
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: C.bg, padding: "2.5rem 4rem", overflowY: "hidden" }}>
       <div style={{ marginBottom: "1.4rem" }}>
@@ -483,11 +494,10 @@ function Slide7() {
           The operational layer — what is held, confirmed, or on request.
         </p>
       </div>
-
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", flex: 1, minHeight: 0 }}>
         {/* Stay Availability */}
         <div>
-          <div style={{ fontFamily: F.mono, fontSize: "0.6rem", letterSpacing: "0.18em", textTransform: "uppercase" as const, color: C.gold, marginBottom: "0.7rem" }}>
+          <div style={{ fontFamily: F.mono, fontSize: "0.6rem", letterSpacing: "0.18em", textTransform: "uppercase", color: C.gold, marginBottom: "0.7rem" }}>
             Stay Availability
           </div>
           <div style={{ border: `1px solid ${C.lineGold}`, borderRadius: "6px", overflow: "hidden" }}>
@@ -527,10 +537,9 @@ function Slide7() {
             </table>
           </div>
         </div>
-
         {/* Dining Reservations */}
         <div>
-          <div style={{ fontFamily: F.mono, fontSize: "0.6rem", letterSpacing: "0.18em", textTransform: "uppercase" as const, color: C.gold, marginBottom: "0.7rem" }}>
+          <div style={{ fontFamily: F.mono, fontSize: "0.6rem", letterSpacing: "0.18em", textTransform: "uppercase", color: C.gold, marginBottom: "0.7rem" }}>
             Dining Reservations
           </div>
           <div style={{ border: `1px solid ${C.lineGold}`, borderRadius: "6px", overflow: "hidden" }}>
@@ -574,7 +583,6 @@ function Slide7() {
     </div>
   );
 }
-
 // ── Slide 8: The Standard ──────────────────────────────────────────────────────
 function Slide8() {
   return (
@@ -616,26 +624,22 @@ function Slide8() {
     </div>
   );
 }
-
 // ── Slides registry ────────────────────────────────────────────────────────────
 const SLIDES = [Slide1, Slide2, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8];
-
 // ── App shell ──────────────────────────────────────────────────────────────────
-export default function App() {
+function App() {
   const [current, setCurrent] = useState(0);
-  const [prev, setPrev]       = useState<number | null>(null);
-  const [dir, setDir]         = useState<1 | -1>(1);
+  const [prev, setPrev]       = useState(null);
+  const [dir, setDir]         = useState(1);
   const [busy, setBusy]       = useState(false);
-  const timerRef              = useRef<ReturnType<typeof setTimeout>>();
-
+  const timerRef              = useRef();
   useEffect(() => {
     const tag = document.createElement("style");
     tag.textContent = PRINT_STYLES;
     document.head.appendChild(tag);
     return () => { document.head.removeChild(tag); };
   }, []);
-
-  const goTo = useCallback((index: number, direction: 1 | -1) => {
+  const goTo = useCallback((index, direction) => {
     if (busy || index < 0 || index >= TOTAL) return;
     setBusy(true);
     setDir(direction);
@@ -644,32 +648,25 @@ export default function App() {
     clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => { setPrev(null); setBusy(false); }, 560);
   }, [busy, current]);
-
   const next = useCallback(() => goTo(current + 1,  1), [current, goTo]);
   const back = useCallback(() => goTo(current - 1, -1), [current, goTo]);
-
   useEffect(() => {
-    const fn = (e: KeyboardEvent) => {
+    const fn = (e) => {
       if (e.key === "ArrowRight" || e.key === "PageDown") next();
       if (e.key === "ArrowLeft"  || e.key === "PageUp")   back();
     };
     window.addEventListener("keydown", fn);
     return () => window.removeEventListener("keydown", fn);
   }, [next, back]);
-
   useEffect(() => () => clearTimeout(timerRef.current), []);
-
   const enterX = dir === 1 ? "translateX(2.5%)" : "translateX(-2.5%)";
   const exitX  = dir === 1 ? "translateX(-2%)"  : "translateX(2%)";
-
-  const renderSlide = (index: number) => {
+  const renderSlide = (index) => {
     const S = SLIDES[index];
     return <S />;
   };
-
   return (
     <div className="fixed inset-0 overflow-hidden" style={{ background: C.bg, fontFamily: F.body }}>
-
       {/* Slide stage */}
       <div className="absolute inset-0">
         {prev !== null && (
@@ -690,7 +687,6 @@ export default function App() {
           {renderSlide(current)}
         </div>
       </div>
-
       {/* Prev arrow */}
       <button
         onClick={back} disabled={current === 0}
@@ -706,7 +702,6 @@ export default function App() {
           <ChevronLeft size={14} style={{ color: C.creamSub }} />
         </div>
       </button>
-
       {/* Next arrow */}
       <button
         onClick={next} disabled={current === TOTAL - 1}
@@ -722,7 +717,6 @@ export default function App() {
           <ChevronRight size={14} style={{ color: C.creamSub }} />
         </div>
       </button>
-
       {/* Dot indicators */}
       <div className="no-print absolute bottom-5 left-0 right-0 z-30 flex justify-center items-center gap-2">
         {Array.from({ length: TOTAL }).map((_, i) => (
@@ -738,7 +732,6 @@ export default function App() {
           />
         ))}
       </div>
-
       {/* Slide counter */}
       <div className="no-print absolute bottom-4 right-8 z-30" style={{
         fontFamily: F.mono, fontSize: "0.62rem", letterSpacing: "0.12em", color: C.muted,
@@ -747,7 +740,6 @@ export default function App() {
         {" / "}
         {String(TOTAL).padStart(2, "0")}
       </div>
-
       {/* Export PDF */}
       <button
         onClick={() => window.print()}
@@ -762,7 +754,6 @@ export default function App() {
         <Download size={9} style={{ color: C.gold }} />
         Export PDF
       </button>
-
       {/* Hidden print deck */}
       <div className="print-deck">
         {SLIDES.map((S, i) => (
@@ -772,3 +763,8 @@ export default function App() {
     </div>
   );
 }
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
