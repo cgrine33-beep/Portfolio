@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porto Cervo · 20 – 23 August 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#09131E;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+::-webkit-scrollbar{width:0;}
+
+/* Gate */
+#gate{position:fixed;inset:0;z-index:9999;background:#09131E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
+#gate .g-line{width:1px;height:48px;background:linear-gradient(to bottom,transparent,rgba(196,168,130,0.4));margin-bottom:2.5rem;}
+#gate .g-line-b{width:1px;height:48px;background:linear-gradient(to top,transparent,rgba(196,168,130,0.4));margin-top:2.5rem;}
+#gate h1{font-family:'Cormorant',serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:300;font-style:italic;color:#F7F2EA;margin-bottom:.5rem;text-align:center;}
+#gate .sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#C4A882;margin-bottom:3rem;text-align:center;}
+#gate .wrap{width:100%;max-width:300px;}
+#gate input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(196,168,130,.3);border-radius:3px;color:#F7F2EA;font-family:'Inter',sans-serif;font-size:.9rem;padding:.85rem 1rem;outline:none;text-align:center;letter-spacing:.05em;}
+#gate .err{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;color:#92400E;text-align:center;margin-top:.75rem;min-height:16px;opacity:0;transition:opacity .3s;}
+#gate button{margin-top:.75rem;width:100%;background:rgba(196,168,130,.12);border:1px solid rgba(196,168,130,.3);border-radius:3px;color:#C4A882;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.85rem;cursor:pointer;}
+
+/* Fade in */
+.fade{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.fade.show{opacity:1;transform:none;}
+
+/* Hero */
+.hero{position:relative;height:100vh;overflow:hidden;}
+.hero-img{position:absolute;inset:0;width:100%;height:115%;object-fit:cover;display:block;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(9,19,30,.15) 0%,rgba(9,19,30,.35) 50%,rgba(9,19,30,.85) 100%);}
+.hero-top{position:absolute;top:0;left:0;right:0;padding:28px 48px;display:flex;justify-content:space-between;align-items:center;}
+.hero-top span{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.hero-top .hero-date{letter-spacing:.16em;color:rgba(255,255,255,.4);}
+.hero-content{position:absolute;bottom:0;left:0;right:0;padding:0 48px 72px;}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.hero-eyebrow div{width:32px;height:1px;background:#C4A882;}
+.hero-eyebrow span{font-family:'Inter',sans-serif;font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:#C4A882;}
+.hero h1{font-family:'Cormorant',serif;font-size:clamp(4rem,9vw,8rem);font-weight:300;font-style:italic;color:#fff;line-height:.95;margin:0 0 28px;letter-spacing:-.01em;}
+.hero-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.hero-meta span{font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:rgba(255,255,255,.65);}
+.hero-meta .dot{color:rgba(255,255,255,.2);}
+.scroll-cue{position:absolute;bottom:28px;right:48px;width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.3));animation:pulseBar 2s ease-in-out infinite;}
+@keyframes pulseBar{0%,100%{opacity:.3;transform:scaleY(1);}50%{opacity:.8;transform:scaleY(1.2);}}
+
+/* Accommodation */
+.accom-section{background:#09131E;padding:96px 48px;position:relative;overflow:hidden;}
+.accom-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.08;}
+.accom-inner{max-width:900px;margin:0 auto;position:relative;}
+.section-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#4A8FA6;margin-bottom:48px;}
+.accom-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.accom-name{font-family:'Cormorant',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;color:#fff;line-height:1.2;margin:0 0 8px;}
+.accom-addr{display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,.35);margin-bottom:40px;}
+.room-list{display:flex;flex-direction:column;gap:20px;}
+.room-item{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;}
+.room-title-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+.room-title{font-family:'Inter',sans-serif;font-weight:500;font-size:14px;color:#fff;}
+.badge-conf{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:#DCFCE7;color:#166534;flex-shrink:0;}
+.badge-wl{background:rgba(251,191,36,.1);color:#92400E;}
+.badge-arr{background:rgba(107,114,128,.1);color:#7A8A94;}
+.room-detail{font-family:'Inter',sans-serif;font-size:12.5px;color:rgba(255,255,255,.4);font-style:italic;}
+.room-dates{font-family:'Space Mono',monospace;font-size:10px;color:#C4A882;letter-spacing:.06em;margin-top:4px;}
+.dress-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:2px;padding:28px 28px 24px;margin-bottom:16px;}
+.dress-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#4A8FA6;margin-bottom:20px;}
+.dress-row{display:flex;gap:12px;font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:14px;}
+.dress-row:last-child{margin-bottom:0;}
+.dress-icon{flex-shrink:0;font-size:16px;}
+.cancel-box{display:flex;gap:12px;align-items:flex-start;background:rgba(251,191,36,.06);border:1px solid rgba(184,134,42,.18);border-radius:2px;padding:18px 20px;}
+.cancel-box svg{flex-shrink:0;margin-top:1px;color:#B8862A;}
+.cancel-box p{font-family:'Inter',sans-serif;font-size:12.5px;color:rgba(255,255,255,.45);line-height:1.65;margin:0;}
+
+/* Programme intro */
+.prog-intro{background:#F7F2EA;padding:72px 48px 56px;border-bottom:1px solid #EDE8DC;}
+.prog-intro-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:20px;}
+.prog-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#4A8FA6;}
+.prog-line{flex:1;height:1px;background:#EDE8DC;}
+.prog-dates{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;color:#7A8A94;}
+
+/* Day blocks */
+.day-section{background:#F7F2EA;}
+.day-grid{max-width:900px;margin:0 auto;padding:0 48px 80px;display:grid;gap:64px;align-items:start;}
+.day-grid.normal{grid-template-columns:360px 1fr;}
+.day-grid.flip{grid-template-columns:1fr 360px;}
+.day-photo{position:sticky;top:32px;border-radius:2px;overflow:hidden;aspect-ratio:3/4;}
+.day-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.day-num-row{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #EDE8DC;padding-bottom:20px;margin-bottom:0;}
+.day-num{font-family:'Cormorant',serif;font-size:80px;font-weight:300;color:#0D1A24;line-height:1;}
+.day-month{font-family:'Cormorant',serif;font-size:22px;font-weight:400;color:#3B4A55;line-height:1.2;}
+.day-weekday{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#7A8A94;margin-top:2px;}
+.event-row{border-bottom:1px solid #EDE8DC;padding:22px 0;display:grid;grid-template-columns:52px 1fr auto;gap:0 16px;align-items:start;}
+.event-time{font-family:'Space Mono',monospace;font-size:11px;color:#7A8A94;padding-top:3px;}
+.event-body{}
+.event-title-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap;}
+.event-icon{display:inline-flex;align-items:center;color:#4A8FA6;}
+.event-name{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:#0D1A24;}
+.event-venue{font-family:'Inter',sans-serif;font-size:13px;color:#7A8A94;}
+.event-guests{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:#7A8A94;text-transform:uppercase;}
+.event-note{font-family:'Inter',sans-serif;font-size:12px;color:#7A8A94;font-style:italic;line-height:1.55;margin:0 0 6px;}
+.event-note.amber{color:#92400E;}
+.event-menu{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:500;color:#B8862A;text-decoration:none;letter-spacing:.02em;}
+.event-badges{padding-top:2px;display:flex;flex-direction:column;gap:6px;align-items:flex-end;}
+.terrace-badge{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:rgba(251,191,36,.1);color:#92400E;white-space:nowrap;}
+
+/* Closing */
+.closing{background:#09131E;padding:80px 48px;position:relative;overflow:hidden;}
+.closing-bg{position:absolute;inset:0;background-size:cover;background-position:center 60%;opacity:.12;}
+.closing-inner{max-width:900px;margin:0 auto;position:relative;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.closing-name{font-family:'Cormorant',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:400;font-style:italic;color:#fff;margin-bottom:6px;}
+.closing-loc{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.03em;}
+.closing-date{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);}
+
+/* Save PDF button */
+.fab{position:fixed;bottom:28px;right:28px;z-index:100;}
+.fab button{display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:3px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;background:#09131E;color:#C4A882;border:1px solid rgba(196,168,130,.25);box-shadow:0 4px 24px rgba(0,0,0,.4);}
+
+/* Responsive */
+@media(max-width:720px){
+  .hero-top{padding:20px 24px;}
+  .hero-content{padding:0 24px 48px;}
+  .accom-section{padding:64px 24px;}
+  .accom-grid{grid-template-columns:1fr;}
+  .prog-intro{padding:48px 24px 40px;}
+  .day-grid.normal,.day-grid.flip{grid-template-columns:1fr;padding:0 24px 60px;}
+  .day-photo{display:none;}
+  .closing{padding:60px 24px;}
+}
+
+@media print{
+  @page{size:A4 portrait;margin:14mm 16mm;}
+  #gate,.fab{display:none!important;}
+  *{opacity:1!important;transform:none!important;transition:none!important;}
+  body{background:#fff!important;}
+  .accom-section{background:#f4f4f4!important;}
+  .accom-section *{color:#111!important;border-color:#ccc!important;}
+  .day-grid.normal,.day-grid.flip{grid-template-columns:1fr!important;}
+  .day-photo{display:none!important;}
+  .accom-grid{grid-template-columns:1fr!important;}
+  .event-row{break-inside:avoid;}
+  .day-section{break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+
+<!-- MAIN CONTENT -->
+<div id="main">
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" id="heroImg" src="https://images.unsplash.com/photo-1634405277712-617c29ea436e?w=1800&h=1200&fit=crop&auto=format" alt="Sailboats on turquoise Costa Smeralda water"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-top">
+    <span>Travel Programme</span>
+    <span class="hero-date">20 – 23 Aug 2026</span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><div></div><span>Costa Smeralda · Sardinia</span></div>
+    <h1>Porto<br>Cervo</h1>
+    <div class="hero-meta">
+      <span>Hotel Pitrizza, Luxury Collection</span>
+      <span class="dot">·</span>
+      <span>6 guests · 3 nights</span>
+    </div>
+  </div>
+  <div class="scroll-cue"></div>
+</section>
+
+<!-- ACCOMMODATION -->
+<section class="accom-section">
+  <div class="accom-bg" style="background-image:url('https://images.unsplash.com/photo-1782053492067-2e1d144b77d3?w=1400&h=900&fit=crop&auto=format')"></div>
+  <div class="accom-inner">
+    <div class="section-label fade">Accommodation</div>
+    <div class="accom-grid">
+      <div class="fade">
+        <h2 class="accom-name">Hotel Pitrizza,<br><em>Luxury Collection</em></h2>
+        <div class="accom-addr">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Costa Smeralda, 07021 Porto Cervo · +39 0789 930111
+        </div>
+        <div class="room-list">
+          <div class="room-item">
+            <div class="room-title-row">
+              <span class="room-title">2-Bedroom Pool Casa di Sopra</span>
+              <span class="badge-conf">Confirmed</span>
+            </div>
+            <div class="room-detail">Sea view · private pool · sleeps 6</div>
+            <div class="room-dates">20 → 23 Aug · 3 nights</div>
+          </div>
+          <div class="room-item">
+            <div class="room-title-row">
+              <span class="room-title">3× Frontline Sea Room</span>
+              <span class="badge-conf">Confirmed</span>
+            </div>
+            <div class="room-detail">Beach access · sea-view terrace</div>
+            <div class="room-dates">20 → 23 Aug · 3 nights</div>
+          </div>
+        </div>
+      </div>
+      <div class="fade">
+        <div class="dress-box">
+          <div class="dress-label">Dress Code</div>
+          <div class="dress-row"><span class="dress-icon">👔</span> Smart-casual or formal. Long trousers mandatory. No shorts or beachwear.</div>
+          <div class="dress-row"><span class="dress-icon">👗</span> Smart-casual or formal. Elegant attire expected. No beachwear.</div>
+        </div>
+        <div class="cancel-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+          <p>Cancellations must be made at least <strong style="color:rgba(255,255,255,.7);font-weight:500;">24 hours before</strong> each reservation to avoid penalty charges.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME INTRO -->
+<section class="prog-intro">
+  <div class="prog-intro-inner fade">
+    <span class="prog-label">Programme</span>
+    <div class="prog-line"></div>
+    <span class="prog-dates">20 – 23 August 2026</span>
+  </div>
+</section>
+
+<!-- DAY 20 -->
+<section class="day-section">
+  <div class="day-grid normal fade">
+    <div class="day-photo">
+      <img src="https://images.unsplash.com/photo-1781624627362-91f1d2dfb09d?w=900&h=1200&fit=crop&auto=format" alt="Illuminated cliffside terrace at night"/>
+    </div>
+    <div>
+      <div class="day-num-row">
+        <span class="day-num">20</span>
+        <div><div class="day-month">August</div><div class="day-weekday">Wednesday</div></div>
+      </div>
+      <!-- Airport Transfer -->
+      <div class="event-row">
+        <div class="event-time">–</div>
+        <div class="event-body">
+          <div class="event-title-row">
+            <span class="event-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><rect x="9" y="17" width="6" height="4" rx="1"/><path d="M1 11h20"/></svg></span>
+            <span class="event-name">Airport Transfer · Arrival</span>
+          </div>
+          <p class="event-note">Not yet arranged</p>
+        </div>
+        <div class="event-badges"><span class="badge-conf badge-arr">To Arrange</span></div>
+      </div>
+      <!-- Matsuhisa -->
+      <div class="event-row">
+        <div class="event-time">20:00</div>
+        <div class="event-body">
+          <div class="event-title-row">
+            <span class="event-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>
+            <span class="event-name">Matsuhisa</span>
+            <span class="event-venue">· Cala di Volpe</span>
+            <span class="event-guests">7 guests</span>
+          </div>
+          <p class="event-note">Smart casual or formal · Long trousers for gentlemen</p>
+          <a class="event-menu" href="https://glamorous-assets.ams3.digitaloceanspaces.com/media/documents/Matsuhisa_2025_-_menu.pdf" target="_blank">View Menu →</a>
+        </div>
+        <div class="event-badges"><span class="badge-conf">Confirmed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 21 -->
+<section class="day-section">
+  <div class="day-grid flip fade">
+    <div>
+      <div class="day-num-row">
+        <span class="day-num">21</span>
+        <div><div class="day-month">August</div><div class="day-weekday">Thursday</div></div>
+      </div>
+      <!-- Mercedes -->
+      <div class="event-row">
+        <div class="event-time">11:30</div>
+        <div class="event-body">
+          <div class="event-title-row">
+            <span class="event-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><rect x="9" y="17" width="6" height="4" rx="1"/><path d="M1 11h20"/></svg></span>
+            <span class="event-name">Mercedes V-Class</span>
+            <span class="event-venue">· With chauffeur</span>
+          </div>
+        </div>
+        <div class="event-badges"><span class="badge-conf">Confirmed</span></div>
+      </div>
+      <!-- Pedri Garden -->
+      <div class="event-row">
+        <div class="event-time">20:00</div>
+        <div class="event-body">
+          <div class="event-title-row">
+            <span class="event-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>
+            <span class="event-name">Pedri Garden</span>
+            <span class="event-guests">7 guests</span>
+          </div>
+          <a class="event-menu" href="https://www.pedriportocervo.com/wp-content/uploads/Pedri-Garden-Menu-2026_3.pdf" target="_blank">View Menu →</a>
+        </div>
+        <div class="event-badges"><span class="badge-conf">Confirmed</span></div>
+      </div>
+    </div>
+    <div class="day-photo">
+      <img src="https://images.unsplash.com/photo-1776068040104-4931100c5219?w=900&h=1200&fit=crop&auto=format" alt="Terrace with lounge chairs overlooking turquoise sea"/>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 22 -->
+<section class="day-section">
+  <div class="day-grid normal fade">
+    <div class="day-photo">
+      <img src="https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?w=900&h=1200&fit=crop&auto=format" alt="Aerial view of white superyacht"/>
+    </div>
+    <div>
+      <div class="day-num-row">
+        <span class="day-num">22</span>
+        <div><div class="day-month">August</div><div class="day-weekday">Friday</div></div>
+      </div>
+      <!-- Yacht Tour -->
+      <div class="event-row">
+        <div class="event-time">09:00</div>
+        <div class="event-body">
+          <div class="event-title-row">
+            <span class="event-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M5 14H2a10 10 0 0 0 20 0h-3"/></svg></span>
+            <span class="event-name">Yacht Tour</span>
+            <span class="event-venue">· 09:00 – 19:00</span>
+          </div>
+          <p class="event-note">Awaiting agreement signature &amp; payment</p>
+        </div>
+        <div class="event-badges"><span class="badge-conf">Confirmed</span></div>
+      </div>
+      <!-- Mercedes -->
+      <div class="event-row">
+        <div class="event-time">12:00</div>
+        <div class="event-body">
+          <div class="event-title-row">
+            <span class="event-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><rect x="9" y="17" width="6" height="4" rx="1"/><path d="M1 11h20"/></svg></span>
+            <span class="event-name">Mercedes V-Class</span>
+            <span class="event-venue">· With chauffeur</span>
+          </div>
+          <p class="event-note">Awaiting payment</p>
+        </div>
+        <div class="event-badges"><span class="badge-conf">Confirmed</span></div>
+      </div>
+      <!-- Nikki Beach -->
+      <div class="event-row">
+        <div class="event-time">15:00</div>
+        <div class="event-body">
+          <div class="event-title-row">
+            <span class="event-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>
+            <span class="event-name">Nikki Beach</span>
+            <span class="event-guests">6 guests</span>
+          </div>
+          <a class="event-menu" href="https://nikkibeach.com/costa-smeralda/" target="_blank">View Menu →</a>
+        </div>
+        <div class="event-badges"><span class="badge-conf">Confirmed</span></div>
+      </div>
+      <!-- Zuma -->
+      <div class="event-row">
+        <div class="event-time">19:30</div>
+        <div class="event-body">
+          <div class="event-title-row">
+            <span class="event-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>
+            <span class="event-name">Zuma Porto Cervo</span>
+            <span class="event-guests">6 guests</span>
+          </div>
+          <p class="event-note amber">Waitlisted for terrace</p>
+          <a class="event-menu" href="https://www.zumarestaurant.com/en/porto-cervo/menu" target="_blank">View Menu →</a>
+        </div>
+        <div class="event-badges">
+          <span class="badge-conf">Confirmed</span>
+          <span class="terrace-badge">Terrace · WL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 23 -->
+<section class="day-section">
+  <div class="day-grid flip fade">
+    <div>
+      <div class="day-num-row">
+        <span class="day-num">23</span>
+        <div><div class="day-month">August</div><div class="day-weekday">Sunday</div></div>
+      </div>
+      <!-- Airport Transfer Departure -->
+      <div class="event-row">
+        <div class="event-time">–</div>
+        <div class="event-body">
+          <div class="event-title-row">
+            <span class="event-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><rect x="9" y="17" width="6" height="4" rx="1"/><path d="M1 11h20"/></svg></span>
+            <span class="event-name">Airport Transfer · Departure</span>
+          </div>
+          <p class="event-note">Not yet arranged</p>
+        </div>
+        <div class="event-badges"><span class="badge-conf badge-arr">To Arrange</span></div>
+      </div>
+    </div>
+    <div class="day-photo">
+      <img src="https://images.unsplash.com/photo-1782053492067-2e1d144b77d3?w=900&h=1200&fit=crop&auto=format" alt="Coastal town overlooking the blue sea"/>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-bg" style="background-image:url('https://images.unsplash.com/photo-1782053492067-2e1d144b77d3?w=1400&h=900&fit=crop&auto=format')"></div>
+  <div class="closing-inner">
+    <div>
+      <div class="closing-name">Hotel Pitrizza, Luxury Collection</div>
+      <div class="closing-loc">Porto Cervo · Costa Smeralda · Sardinia</div>
+    </div>
+    <div class="closing-date">20 – 23 August 2026</div>
+  </div>
+</section>
+
+<!-- SAVE PDF -->
+<div class="fab">
+  <button onclick="window.print()">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Save PDF
+  </button>
+</div>
+
+</div><!-- end #main -->
+
+<script>
+// Parallax hero
+window.addEventListener('scroll', function(){
+  var img = document.getElementById('heroImg');
+  if(img) img.style.transform = 'translateY(' + (window.scrollY * 0.35) + 'px)';
+}, {passive: true});
+
+// Fade-in on scroll
+var fades = document.querySelectorAll('.fade');
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); } });
+}, {threshold: 0.1});
+fades.forEach(function(el){ obs.observe(el); });
+</script>
+
+</body>
+</html>
