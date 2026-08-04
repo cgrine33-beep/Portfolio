@@ -100,14 +100,16 @@
         margin-top:1rem;border-top:1px solid var(--lineGold);padding-top:.9rem;}
 
   /* ---------- controls ---------- */
-  .nav{position:fixed;top:0;bottom:0;width:70px;border:none;background:transparent;cursor:pointer;z-index:40;
-       display:flex;align-items:center;color:var(--creamSub);}
+  .nav{position:fixed;top:0;bottom:0;width:76px;border:none;background:transparent;cursor:pointer;z-index:40;
+       display:flex;align-items:center;color:var(--gold);}
   .nav.prev{left:0;padding-left:1rem;justify-content:flex-start;}
   .nav.next{right:0;padding-right:1rem;justify-content:flex-end;}
-  .nav .circ{width:36px;height:36px;border-radius:50%;background:rgba(43,40,35,0.05);
+  .nav .circ{width:46px;height:46px;border-radius:50%;background:rgba(255,253,247,0.94);
        border:1px solid var(--lineGold);display:flex;align-items:center;justify-content:center;
-       opacity:.35;transition:opacity .2s ease;}
-  .nav:hover .circ{opacity:1;}
+       color:var(--gold);opacity:.95;box-shadow:0 3px 16px rgba(43,40,35,0.28);
+       transition:opacity .2s ease,transform .2s ease;}
+  .nav .circ svg{width:19px;height:19px;}
+  .nav:hover .circ{opacity:1;transform:scale(1.07);}
   .nav:disabled{opacity:0;pointer-events:none;}
   .dots{position:fixed;bottom:22px;left:0;right:0;z-index:40;display:flex;justify-content:center;align-items:center;gap:8px;}
   .dots button{height:4px;width:6px;border:none;border-radius:3px;background:var(--lineGold);cursor:pointer;padding:0;
@@ -128,7 +130,11 @@
     .features{max-width:none;}
     .cards{grid-template-columns:1fr 1fr;}
     .tables{grid-template-columns:1fr;}
-    .nav{width:44px;}
+    .nav{width:60px;}
+    .nav.prev{padding-left:.5rem;} .nav.next{padding-right:.5rem;}
+    .dots{bottom:16px;} .dots button{height:6px;width:8px;} .dots button.on{width:26px;}
+    .counter{bottom:14px;right:14px;}
+    .export{top:14px;right:12px;}
   }
   @media (max-width:460px){ .cards{grid-template-columns:1fr;} }
 
@@ -206,7 +212,7 @@
           <p><span class="gold">1:00 PM</span> — Lunch at Hôtel du Cap-Eden-Roc, Antibes <span class="conf">✓ Confirmed</span></p>
           <p>Afternoon spa; dinner at the hotel</p></div></div>
       </div>
-      <div class="photo"><img src="https://images.unsplash.com/photo-1759849245204-03dbb4f5bade?w=900&h=1400&fit=crop&auto=format" alt="Rocky Mediterranean coastline with sailboats" loading="lazy"></div>
+      <div class="photo"><img src="https://images.unsplash.com/photo-1491166617655-0723a0999cfc?w=900&h=1400&fit=crop&auto=format" alt="French Riviera coastline on the Côte d'Azur" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1759849245204-03dbb4f5bade?w=900&h=1400&fit=crop&auto=format'"></div>
     </div>
   </section>
 
@@ -386,6 +392,22 @@
     if (e.key==="ArrowRight" || e.key==="PageDown"){ show(cur+1); }
     if (e.key==="ArrowLeft"  || e.key==="PageUp"){ show(cur-1); }
   });
+
+  /* touch swipe (phones/tablets) */
+  var tX=null, tY=null, deckEl=document.querySelector(".deck");
+  deckEl.addEventListener("touchstart", function(e){
+    tX=e.changedTouches[0].clientX; tY=e.changedTouches[0].clientY;
+  }, {passive:true});
+  deckEl.addEventListener("touchend", function(e){
+    if (tX===null) return;
+    var dx=e.changedTouches[0].clientX - tX;
+    var dy=e.changedTouches[0].clientY - tY;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)){
+      if (dx < 0) show(cur+1); else show(cur-1);
+    }
+    tX=null; tY=null;
+  }, {passive:true});
+
   show(0);
 })();
 </script>
